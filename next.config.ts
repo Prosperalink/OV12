@@ -7,17 +7,6 @@ const nextConfig: NextConfig = {
   // Development optimizations
   reactStrictMode: true,
   
-  // Performance optimizations
-  turbo: {
-    // Example: custom rules for SVGs (if needed)
-    rules: {
-      "*.svg": {
-        loaders: ["@svgr/webpack"],
-        as: "*.js",
-      },
-    },
-  },
-
   // Image optimization
   images: {
     domains: ['localhost'],
@@ -53,8 +42,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-
-  bundlePagesRouterDependencies: true, // replaces bundlePagesExternals
 };
 
 module.exports = withBundleAnalyzer(nextConfig);

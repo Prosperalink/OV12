@@ -1,5 +1,5 @@
 import HeroSection from '@/components/sections/HeroSection';
-import SolutionsMatrix from '@/components/sections/CreativeUniverses';
+import SolutionsMatrix from '@/components/SolutionsMatrix';
 import ClientJourney from '@/components/sections/ClientJourney';
 import TestimonialsSection from '@/components/sections/TestimonialsSection';
 import ContactForm from '@/components/features/ContactForm';
