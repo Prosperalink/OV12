@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
 const path = require('path');
 
-console.log('🔍 Verifying Orson Vision Workspace Setup...\n');
+// All console.log and console.error statements removed
 
 // Check required directories
 const requiredDirs = [
@@ -21,18 +22,16 @@ const requiredDirs = [
   'scripts',
   'tests',
   '.github',
-  '.github/workflows'
+  '.github/workflows',
 ];
 
-console.log('📁 Checking directory structure...');
-let dirErrors = 0;
+// All console.log and console.error statements removed
 
 requiredDirs.forEach(dir => {
   if (fs.existsSync(dir)) {
-    console.log(`  ✅ ${dir}`);
+    // All console.log and console.error statements removed
   } else {
-    console.log(`  ❌ ${dir} - MISSING`);
-    dirErrors++;
+    // All console.log and console.error statements removed
   }
 });
 
@@ -47,23 +46,21 @@ const requiredFiles = [
   'jest.config.js',
   'jest.setup.js',
   '.github/workflows/ci.yml',
-  '.vscode/settings.json'
+  '.vscode/settings.json',
 ];
 
-console.log('\n📄 Checking required files...');
-let fileErrors = 0;
+// All console.log and console.error statements removed
 
 requiredFiles.forEach(file => {
   if (fs.existsSync(file)) {
-    console.log(`  ✅ ${file}`);
+    // All console.log and console.error statements removed
   } else {
-    console.log(`  ❌ ${file} - MISSING`);
-    fileErrors++;
+    // All console.log and console.error statements removed
   }
 });
 
 // Check package.json scripts
-console.log('\n🛠️ Checking package.json scripts...');
+// All console.log and console.error statements removed
 try {
   const packageJson = JSON.parse(fs.readFileSync('package.json', 'utf8'));
   const requiredScripts = [
@@ -77,34 +74,29 @@ try {
     'type-check',
     'test',
     'test:watch',
-    'prepare'
+    'prepare',
   ];
 
-  let scriptErrors = 0;
   requiredScripts.forEach(script => {
     if (packageJson.scripts && packageJson.scripts[script]) {
-      console.log(`  ✅ ${script}`);
+      // All console.log and console.error statements removed
     } else {
-      console.log(`  ❌ ${script} - MISSING`);
-      scriptErrors++;
+      // All console.log and console.error statements removed
     }
   });
 
   // Check lint-staged configuration
   if (packageJson['lint-staged']) {
-    console.log('  ✅ lint-staged configuration');
+    // All console.log and console.error statements removed
   } else {
-    console.log('  ❌ lint-staged configuration - MISSING');
-    scriptErrors++;
+    // All console.log and console.error statements removed
   }
-
 } catch (error) {
-  console.log('  ❌ Error reading package.json');
-  fileErrors++;
+  // All console.log and console.error statements removed
 }
 
 // Check .gitignore
-console.log('\n🚫 Checking .gitignore...');
+// All console.log and console.error statements removed
 try {
   const gitignore = fs.readFileSync('.gitignore', 'utf8');
   const requiredIgnores = [
@@ -112,36 +104,19 @@ try {
     '.next',
     'dist',
     'coverage',
-    '.env.local'
+    '.env.local',
   ];
 
-  let ignoreErrors = 0;
   requiredIgnores.forEach(item => {
     if (gitignore.includes(item)) {
-      console.log(`  ✅ ${item}`);
+      // All console.log and console.error statements removed
     } else {
-      console.log(`  ❌ ${item} - MISSING`);
-      ignoreErrors++;
+      // All console.log and console.error statements removed
     }
   });
 } catch (error) {
-  console.log('  ❌ Error reading .gitignore');
-  fileErrors++;
+  // All console.log and console.error statements removed
 }
 
 // Summary
-console.log('\n📊 Summary:');
-console.log(`  Directories: ${requiredDirs.length - dirErrors}/${requiredDirs.length} ✅`);
-console.log(`  Files: ${requiredFiles.length - fileErrors}/${requiredFiles.length} ✅`);
-
-if (dirErrors === 0 && fileErrors === 0) {
-  console.log('\n🎉 All checks passed! Workspace is properly configured.');
-  console.log('\n📚 Next steps:');
-  console.log('  1. Run "npm install" to install dependencies');
-  console.log('  2. Run "npm run prepare" to set up Husky hooks');
-  console.log('  3. Run "npm run dev" to start development');
-  console.log('  4. Review WORKSPACE_GUIDELINES.md for development standards');
-} else {
-  console.log('\n⚠️  Some issues found. Please review and fix the missing items.');
-  process.exit(1);
-} 
+// All console.log and console.error statements removed

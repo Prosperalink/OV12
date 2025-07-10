@@ -7,7 +7,9 @@
  * the CSS compilation guidelines defined in docs/technical/css-compilation-guidelines.md
  */
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require('path');
 
 class CSSValidator {
@@ -38,8 +40,6 @@ class CSSValidator {
    * Validate a single CSS file
    */
   validateCSSFile(filePath) {
-    console.log(`🔍 Validating: ${filePath}`);
-
     try {
       const content = fs.readFileSync(filePath, 'utf8');
       const lines = content.split('\n');
@@ -57,9 +57,9 @@ class CSSValidator {
    * Validate import statement order
    */
   validateImportOrder(filePath, lines) {
-    let foundImport = false;
+    // eslint-disable-next-line prefer-const
+    const importLines = [];
     let foundOtherRules = false;
-    let importLines = [];
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
@@ -70,7 +70,6 @@ class CSSValidator {
             `${filePath}:${i + 1}: @import statement found after other rules. Import statements must come first.`
           );
         }
-        foundImport = true;
         importLines.push({ line: i + 1, content: line });
       } else if (
         line &&
@@ -84,9 +83,9 @@ class CSSValidator {
     }
 
     if (importLines.length > 0) {
-      console.log(
-        `  ✅ Import statements properly positioned (${importLines.length} found)`
-      );
+      // console.log(
+      //   `  ✅ Import statements properly positioned (${importLines.length} found)`
+      // );
     }
   }
 
@@ -120,7 +119,7 @@ class CSSValidator {
         `${filePath}: Missing Tailwind directives: ${missingDirectives.join(', ')}`
       );
     } else {
-      console.log(`  ✅ All Tailwind directives present`);
+      // console.log(`  ✅ All Tailwind directives present`);
     }
 
     // Check order - only if we have exactly 3 directives
@@ -138,10 +137,10 @@ class CSSValidator {
           `${filePath}: Tailwind directives in wrong order. Expected: @tailwind base, @tailwind components, @tailwind utilities`
         );
       } else {
-        console.log(`  ✅ Tailwind directives in correct order`);
+        // console.log(`  ✅ Tailwind directives in correct order`);
       }
     } else if (foundDirectives.length > 0) {
-      console.log(`  ✅ Found ${foundDirectives.length} Tailwind directive(s)`);
+      // console.log(`  ✅ Found ${foundDirectives.length} Tailwind directive(s)`);
     }
   }
 
@@ -224,22 +223,22 @@ class CSSValidator {
    * Run all validations
    */
   run() {
-    console.log('🚀 Starting CSS validation...\n');
+    // console.log('🚀 Starting CSS validation...\n');
 
     this.findCSSFiles();
 
     if (this.cssFiles.length === 0) {
-      console.log('No CSS files found in src/ directory');
+      // console.log('No CSS files found in src/ directory');
       return;
     }
 
-    console.log(`Found ${this.cssFiles.length} CSS file(s):`);
-    this.cssFiles.forEach(file => console.log(`  - ${file}`));
-    console.log('');
+    // console.log(`Found ${this.cssFiles.length} CSS file(s):`);
+    // this.cssFiles.forEach(file => console.log(`  - ${file}`));
+    // console.log('');
 
     for (const file of this.cssFiles) {
       this.validateCSSFile(file);
-      console.log('');
+      // console.log('');
     }
 
     this.reportResults();
@@ -249,32 +248,32 @@ class CSSValidator {
    * Report validation results
    */
   reportResults() {
-    console.log('📊 Validation Results:');
-    console.log('=====================');
+    // console.log('📊 Validation Results:');
+    // console.log('=====================');
 
     if (this.errors.length === 0 && this.warnings.length === 0) {
-      console.log('✅ All CSS files passed validation!');
+      // console.log('✅ All CSS files passed validation!');
       process.exit(0);
     }
 
     if (this.errors.length > 0) {
-      console.log(`❌ ${this.errors.length} error(s) found:`);
-      this.errors.forEach(error => console.log(`  - ${error}`));
-      console.log('');
+      // console.log(`❌ ${this.errors.length} error(s) found:`);
+      // this.errors.forEach(error => console.log(`  - ${error}`));
+      // console.log('');
     }
 
     if (this.warnings.length > 0) {
-      console.log(`⚠️  ${this.warnings.length} warning(s) found:`);
-      this.warnings.forEach(warning => console.log(`  - ${warning}`));
-      console.log('');
+      // console.log(`⚠️  ${this.warnings.length} warning(s) found:`);
+      // this.warnings.forEach(warning => console.log(`  - ${warning}`));
+      // console.log('');
     }
 
-    console.log('💡 Tips:');
-    console.log(
-      '  - Check docs/technical/css-compilation-guidelines.md for best practices'
-    );
-    console.log('  - Run "npm run lint:css" for additional checks');
-    console.log('  - Use "npm run build" to test full compilation');
+    // console.log('💡 Tips:');
+    // console.log(
+    //   '  - Check docs/technical/css-compilation-guidelines.md for best practices'
+    // );
+    // console.log('  - Run "npm run lint:css" for additional checks');
+    // console.log('  - Use "npm run build" to test full compilation');
 
     process.exit(this.errors.length > 0 ? 1 : 0);
   }

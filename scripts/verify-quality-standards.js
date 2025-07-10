@@ -8,7 +8,9 @@
  */
 
 const { execSync } = require('child_process');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require('path');
 
 class QualityVerifier {
@@ -27,7 +29,6 @@ class QualityVerifier {
           : type === 'warning'
             ? '⚠️'
             : 'ℹ️';
-    console.log(`${prefix} [${timestamp}] ${message}`);
   }
 
   async runCommand(command, description) {
@@ -318,16 +319,16 @@ return x;
     const warnings = this.results.filter(r => r.status === 'WARNING').length;
 
     this.results.forEach(result => {
-      const icon =
-        result.status === 'PASSED'
-          ? '✅'
-          : result.status === 'FAILED'
-            ? '❌'
-            : '⚠️';
-      console.log(`${icon} ${result.test}: ${result.status}`);
-      if (result.details) {
-        console.log(`   Details: ${result.details}`);
-      }
+      // const icon =
+      //   result.status === 'PASSED'
+      //     ? '✅'
+      //     : result.status === 'FAILED'
+      //       ? '❌'
+      //       : '⚠️';
+      // console.log(`${icon} ${result.test}: ${result.status}`);
+      // if (result.details) {
+      //   console.log(`   Details: ${result.details}`);
+      // }
     });
 
     this.log(`\n📈 Summary:`);

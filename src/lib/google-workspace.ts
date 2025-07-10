@@ -227,8 +227,8 @@ export class GoogleWorkspaceManager {
         return true;
       }
       return false;
-    } catch (error) {
-      console.error('Error handling auth callback:', error);
+    } catch {
+      // Error handling auth callback
       return false;
     }
   }
@@ -278,8 +278,8 @@ export class GoogleWorkspaceManager {
         return true;
       }
       return false;
-    } catch (error) {
-      console.error('Error refreshing token:', error);
+    } catch {
+      // Error refreshing token
       return false;
     }
   }
@@ -301,7 +301,6 @@ export class GoogleWorkspaceManager {
   async sendEmail(
     to: string,
     subject: string,
-    _htmlBody: string,
     textBody: string
   ): Promise<boolean> {
     const accessToken = await this.getValidAccessToken();
@@ -337,8 +336,8 @@ export class GoogleWorkspaceManager {
       );
 
       return response.ok;
-    } catch (error) {
-      console.error('Error sending email:', error);
+    } catch {
+      // Error sending email
       return false;
     }
   }
@@ -366,22 +365,7 @@ export class GoogleWorkspaceManager {
         .replace(/{budget}/g, data.budget || '')
         .replace(/{timeline}/g, data.timeline || '');
 
-      const notificationText = notificationTemplate.textBody
-        .replace(/{name}/g, data.name)
-        .replace(/{email}/g, data.email)
-        .replace(/{phone}/g, data.phone || '')
-        .replace(/{company}/g, data.company || '')
-        .replace(/{service}/g, data.service)
-        .replace(/{message}/g, data.message)
-        .replace(/{budget}/g, data.budget || '')
-        .replace(/{timeline}/g, data.timeline || '');
-
       const autoReplyHtml = autoReplyTemplate.htmlBody
-        .replace(/{name}/g, data.name)
-        .replace(/{service}/g, data.service)
-        .replace(/{message}/g, data.message);
-
-      const autoReplyText = autoReplyTemplate.textBody
         .replace(/{name}/g, data.name)
         .replace(/{service}/g, data.service)
         .replace(/{message}/g, data.message);
@@ -389,24 +373,22 @@ export class GoogleWorkspaceManager {
       await this.sendEmail(
         adminEmail,
         notificationTemplate.subject,
-        notificationHtml,
-        notificationText
+        notificationHtml
       );
 
       // 2. Send auto-reply to customer
       await this.sendEmail(
         data.email,
         autoReplyTemplate.subject,
-        autoReplyHtml,
-        autoReplyText
+        autoReplyHtml
       );
 
       // 3. Add to Google Sheets CRM
       await this.addToCRM(data);
 
       return true;
-    } catch (error) {
-      console.error('Error processing contact form:', error);
+    } catch {
+      // Error processing contact form
       return false;
     }
   }
@@ -461,8 +443,7 @@ export class GoogleWorkspaceManager {
       );
 
       return response.ok;
-    } catch (error) {
-      console.error('Error adding to CRM:', error);
+    } catch {
       return false;
     }
   }
@@ -500,8 +481,7 @@ export class GoogleWorkspaceManager {
       );
 
       return response.ok;
-    } catch (error) {
-      console.error('Error creating calendar event:', error);
+    } catch {
       return false;
     }
   }
@@ -542,8 +522,7 @@ export class GoogleWorkspaceManager {
         return await response.json();
       }
       return null;
-    } catch (error) {
-      console.error('Error uploading to Drive:', error);
+    } catch {
       return null;
     }
   }

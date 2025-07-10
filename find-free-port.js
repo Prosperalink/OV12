@@ -22,10 +22,8 @@ function findFreePort(start = 3000, end = 3999) {
 
 findFreePort()
   .then(port => {
-    console.log(port);
     process.exit(0);
   })
   .catch(err => {
-    console.error(err);
     process.exit(1);
   });

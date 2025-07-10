@@ -45,7 +45,7 @@ const testimonials: ITestimonial[] = [
     role: 'Founder',
     company: 'Creative Studios',
     content:
-      'The team at Orson Vision doesn&apos;t just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.',
+      'The team at Orson Vision does not just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.',
     rating: 5,
     avatar: '👩‍🎨',
     industry: 'Creative',
@@ -56,7 +56,7 @@ const testimonials: ITestimonial[] = [
     role: 'CTO',
     company: 'Innovate Labs',
     content:
-      'Orson Vision&rsquo;s technical expertise combined with their creative vision delivered a solution that not only looks stunning but performs exceptionally well. Their ongoing support has been invaluable.',
+      'Orson Vision technical expertise combined with their creative vision delivered a solution that not only looks stunning but performs exceptionally well. Their ongoing support has been invaluable.',
     rating: 5,
     avatar: '👨‍💻',
     industry: 'Startup',
@@ -111,7 +111,7 @@ export default function TestimonialsSection() {
               Client Success Stories
             </h2>
             <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-              Discover how we've helped businesses transform their digital
+              Discover how we have helped businesses transform their digital
               presence and achieve remarkable results.
             </p>
           </motion.div>
@@ -131,11 +131,20 @@ export default function TestimonialsSection() {
               <div className='text-center'>
                 {/* Rating Stars */}
                 <div className='flex justify-center mb-6'>
-                  {[...Array(currentTestimonialData.rating)].map((item, i) => (
-                    <motion.span key={i} className='w-5 h-5 text-yellow-400'>
-                      ★
-                    </motion.span>
-                  ))}
+                  {(() => {
+                    const stars = [];
+                    for (let i = 0; i < currentTestimonialData.rating; i++) {
+                      stars.push(
+                        <motion.span
+                          key={i}
+                          className='w-5 h-5 text-yellow-400'
+                        >
+                          ★
+                        </motion.span>
+                      );
+                    }
+                    return stars;
+                  })()}
                 </div>
 
                 {/* Testimonial Content */}
@@ -167,22 +176,28 @@ export default function TestimonialsSection() {
 
           {/* Navigation Dots */}
           <div className='flex justify-center mt-8 space-x-2'>
-            {testimonials.map((_, index) => (
-              <motion.button
-                key={index}
-                onClick={() => {
-                  setCurrentTestimonial(index);
-                  setIsAutoPlaying(false);
-                }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentTestimonial
-                    ? 'bg-blue-500 scale-125'
-                    : 'bg-white/30 hover:bg-white/50'
-                }`}
-                whileHover={{ scale: 1.2 }}
-                whileTap={{ scale: 0.9 }}
-              />
-            ))}
+            {(() => {
+              const dots = [];
+              for (let index = 0; index < testimonials.length; index++) {
+                dots.push(
+                  <motion.button
+                    key={index}
+                    onClick={() => {
+                      setCurrentTestimonial(index);
+                      setIsAutoPlaying(false);
+                    }}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial
+                        ? 'bg-cinematic-blue scale-125'
+                        : 'bg-white/30 hover:bg-white/50'
+                    }`}
+                    whileHover={{ scale: 1.2 }}
+                    whileTap={{ scale: 0.9 }}
+                  />
+                );
+              }
+              return dots;
+            })()}
           </div>
         </div>
 

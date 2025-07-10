@@ -1,5 +1,5 @@
-const https = require('https');
 const fs = require('fs');
+const https = require('https');
 const path = require('path');
 
 // Asset list: { url, dest }
@@ -64,14 +64,11 @@ function download(url, dest) {
       fs.mkdirSync(dir, { recursive: true });
     }
     if (fs.existsSync(dest)) {
-      console.log(`✔ Skipping (already exists): ${dest}`);
       return resolve();
     }
-    
-    console.log(`Downloading: ${url} -> ${dest}`);
-    
+
     const file = fs.createWriteStream(dest);
-    const request = https.get(url, (response) => {
+    const request = https.get(url, response => {
       if (response.statusCode !== 200) {
         fs.unlinkSync(dest);
         return reject(`Failed to get '${url}' (${response.statusCode})`);
@@ -79,16 +76,15 @@ function download(url, dest) {
       response.pipe(file);
       file.on('finish', () => {
         file.close();
-        console.log(`✔ Downloaded: ${dest}`);
         resolve();
       });
     });
-    
-    request.on('error', (err) => {
+
+    request.on('error', err => {
       fs.unlinkSync(dest);
       reject(err.message);
     });
-    
+
     request.setTimeout(30000, () => {
       request.destroy();
       fs.unlinkSync(dest);
@@ -98,13 +94,11 @@ function download(url, dest) {
 }
 
 (async () => {
-  console.log('Starting asset downloads...');
   for (const asset of assets) {
     try {
       await download(asset.url, path.join(__dirname, asset.dest));
     } catch (err) {
-      console.error(`✖ Error downloading ${asset.url}: ${err}`);
+      // console.error(`✖ Error downloading ${asset.url}: ${err}`);
     }
   }
-  console.log('All downloads complete.');
-})(); 
+})();

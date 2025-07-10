@@ -117,11 +117,17 @@ export default function TestimonialsSection() {
               {/* Rating Stars */}
               <div className='flex justify-center mb-6'>
                 {currentTestimonialData &&
-                  [...Array(currentTestimonialData.rating)].map((item, i) => (
-                    <span key={i} className='text-2xl text-yellow-400 mx-1'>
-                      ⭐
-                    </span>
-                  ))}
+                  (() => {
+                    const stars = [];
+                    for (let i = 0; i < currentTestimonialData.rating; i++) {
+                      stars.push(
+                        <span key={i} className='text-2xl text-yellow-400 mx-1'>
+                          ⭐
+                        </span>
+                      );
+                    }
+                    return stars;
+                  })()}
               </div>
 
               {/* Testimonial Content */}
@@ -156,20 +162,26 @@ export default function TestimonialsSection() {
 
           {/* Navigation Dots */}
           <div className='flex justify-center mt-8 space-x-2'>
-            {testimonials.map((testimonial, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  setCurrentTestimonial(index);
-                  setIsAutoPlaying(false);
-                }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentTestimonial
-                    ? 'bg-blue-500 scale-125'
-                    : 'bg-white/30 hover:bg-white/50'
-                }`}
-              />
-            ))}
+            {(() => {
+              const dots = [];
+              for (let index = 0; index < testimonials.length; index++) {
+                dots.push(
+                  <button
+                    key={index}
+                    onClick={() => {
+                      setCurrentTestimonial(index);
+                      setIsAutoPlaying(false);
+                    }}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial
+                        ? 'bg-blue-500 scale-125'
+                        : 'bg-white/30 hover:bg-white/50'
+                    }`}
+                  />
+                );
+              }
+              return dots;
+            })()}
           </div>
         </div>
 

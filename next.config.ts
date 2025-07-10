@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -58,14 +59,17 @@ const nextConfig: NextConfig = {
   },
 
   // Webpack configuration (only for production builds)
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev }) => {
     // Only apply webpack config for production builds
     if (!dev) {
       // Bundle analyzer
       if (process.env.ANALYZE === 'true') {
-        const { BundleAnalyzerPlugin } = require('@next/bundle-analyzer');
+        // eslint-disable-next-line @typescript-eslint/no-require-imports
+        const {
+          BundleAnalyzerPlugin: bundleAnalyzerPlugin,
+        } = require('@next/bundle-analyzer');
         config.plugins.push(
-          new BundleAnalyzerPlugin({
+          new bundleAnalyzerPlugin({
             analyzerMode: 'static',
             openAnalyzer: false,
           })

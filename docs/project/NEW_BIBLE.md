@@ -21,9 +21,11 @@
 ## 🎬 PROJECT OVERVIEW
 
 ### **Mission**
+
 Orson Vision crafts immersive digital experiences through cinematic humanism, blending cutting-edge technology with human-centered design to create moments that inspire, transform, and connect.
 
 ### **Core Values**
+
 - **Cinematic Excellence**: Every interaction is crafted like a film scene
 - **Human-Centered**: Technology serves humanity, not replaces it
 - **Performance First**: Speed and efficiency in everything we build
@@ -32,6 +34,7 @@ Orson Vision crafts immersive digital experiences through cinematic humanism, bl
 - **Google Workspace Native**: Full utilization of paid services
 
 ### **Target Audience**
+
 - **Primary**: Small to medium businesses in Tunisia
 - **Secondary**: International clients seeking quality
 - **Tertiary**: Startups and entrepreneurs
@@ -41,6 +44,7 @@ Orson Vision crafts immersive digital experiences through cinematic humanism, bl
 ## 🏗️ TECHNICAL ARCHITECTURE
 
 ### **Frontend Stack**
+
 ```typescript
 // Core Technologies
 - Next.js 15 (React framework with App Router)
@@ -64,6 +68,7 @@ Orson Vision crafts immersive digital experiences through cinematic humanism, bl
 ```
 
 ### **Backend Strategy (Phase 2)**
+
 ```typescript
 // Google Workspace API - Comprehensive Integration
 - Gmail API (Automated email notifications and client communication)
@@ -80,6 +85,7 @@ Orson Vision crafts immersive digital experiences through cinematic humanism, bl
 ```
 
 ### **AI Integration (Phase 2)**
+
 ```typescript
 // AI Services
 - OpenAI API (Content generation and automation)
@@ -89,6 +95,7 @@ Orson Vision crafts immersive digital experiences through cinematic humanism, bl
 ```
 
 ### **Visual Asset Strategy**
+
 ```typescript
 // Asset Management
 - Free Content Libraries (Unsplash, Pexels, Pixabay, Coverr)
@@ -99,6 +106,7 @@ Orson Vision crafts immersive digital experiences through cinematic humanism, bl
 ```
 
 ### **Project Structure**
+
 ```
 orson-vision/
 ├── src/
@@ -130,14 +138,15 @@ orson-vision/
 ## 🎨 DESIGN SYSTEM
 
 ### **Color Palette**
+
 ```css
 /* Light Mode Colors */
 :root {
-  --primary-blue: #111827;        /* Dark blue for text */
-  --primary-blue-bg: #1e3a8a;     /* Dark blue for backgrounds */
-  --primary-blue-light: #3b82f6;  /* Lighter blue for accents */
-  --accent-gold: #F59E0B;         /* Primary gold/orange */
-  --accent-gold-light: #FBBF24;   /* Lighter gold for highlights */
+  --primary-blue: #111827; /* Dark blue for text */
+  --primary-blue-bg: #1e3a8a; /* Dark blue for backgrounds */
+  --primary-blue-light: #3b82f6; /* Lighter blue for accents */
+  --accent-gold: #f59e0b; /* Primary gold/orange */
+  --accent-gold-light: #fbbf24; /* Lighter gold for highlights */
   --text-primary: #111827;
   --text-secondary: #6b7280;
   --bg-primary: #ffffff;
@@ -145,12 +154,12 @@ orson-vision/
 }
 
 /* Dark Mode Colors */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --primary-blue: #3b82f6;
   --primary-blue-bg: #1e3a8a;
   --primary-blue-light: #60a5fa;
-  --accent-gold: #FBBF24;
-  --accent-gold-light: #FCD34D;
+  --accent-gold: #fbbf24;
+  --accent-gold-light: #fcd34d;
   --text-primary: #f9fafb;
   --text-secondary: #d1d5db;
   --bg-primary: #111827;
@@ -159,15 +168,24 @@ orson-vision/
 
 /* Gradient Classes */
 .bg-cinematic-blue {
-  background: linear-gradient(135deg, var(--primary-blue-bg) 0%, var(--primary-blue-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--primary-blue-bg) 0%,
+    var(--primary-blue-light) 100%
+  );
 }
 
 .bg-cinematic-gold {
-  background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-gold-light) 100%);
+  background: linear-gradient(
+    135deg,
+    var(--accent-gold) 0%,
+    var(--accent-gold-light) 100%
+  );
 }
 ```
 
 ### **Logo Iconography & Brand Elements**
+
 ```css
 /* Logo Element Styling */
 .logo-orson {
@@ -186,14 +204,16 @@ orson-vision/
 ```
 
 ### **Brand Identity Guidelines**
+
 - **"O" in Orson**: The stylized camera lens or focus ring within the letter "O" in "ORSON" reinforces the "Vision" aspect, cinematic connection, and precision
 - **Play Button Triangle**: The triangular play button icon containing a circular element (eye/lens) directly symbolizes video, motion, and cinematic output
-- **Color Symbolism**: 
+- **Color Symbolism**:
   - Dark Blue (#111827/#1e3a8a): Trust, professionalism, reliability, stability, digital realm
   - Gold/Orange (#F59E0B/#FBBF24): Creativity, innovation, warmth, premium quality, cinematic golden hour glow
 - **Visual Language**: Logo elements embody "Cinematic Humanism" and "Digital Innovation," creating a visual language that speaks to both technical expertise and human-centered approach
 
 ### **Typography**
+
 ```css
 /* Font Stack */
 font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -215,6 +235,7 @@ text-6xl;   /* 60px */
 ```
 
 ### **Animation System**
+
 ```css
 /* Fade In Animation */
 .fade-in {
@@ -255,11 +276,14 @@ text-6xl;   /* 60px */
 
 /* Theme Transition */
 * {
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 ```
 
 ### **Component Patterns**
+
 ```tsx
 // Standard Component Structure with Theme Support
 import { ReactNode } from 'react';
@@ -271,16 +295,13 @@ interface ComponentProps {
   // Add specific props
 }
 
-export default function ComponentName({ 
-  children, 
-  className = '' 
+export default function ComponentName({
+  children,
+  className = '',
 }: ComponentProps) {
   return (
-    <AnimationObserver 
-      animationClass="fade-in" 
-      className={className}
-    >
-      <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-white">
+    <AnimationObserver animationClass='fade-in' className={className}>
+      <div className='bg-white dark:bg-gray-800 text-gray-900 dark:text-white'>
         {/* Component content */}
       </div>
     </AnimationObserver>
@@ -293,6 +314,7 @@ export default function ComponentName({
 ## 🔧 DEVELOPMENT GUIDELINES
 
 ### **Code Standards**
+
 ```typescript
 // TypeScript Configuration
 - Strict mode enabled
@@ -326,6 +348,7 @@ export default function ComponentName({
 ```
 
 ### **Component Guidelines**
+
 ```tsx
 // Component Template with Theme Support
 'use client'; // If using hooks or browser APIs
@@ -343,7 +366,7 @@ interface ComponentProps {
 export default function ComponentName({
   title,
   description,
-  className = ''
+  className = '',
 }: ComponentProps) {
   const [state, setState] = useState(false);
 
@@ -356,16 +379,13 @@ export default function ComponentName({
   };
 
   return (
-    <AnimationObserver 
-      animationClass="fade-in" 
-      className={className}
-    >
-      <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
-        <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">
+    <AnimationObserver animationClass='fade-in' className={className}>
+      <div className='bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg'>
+        <h2 className='text-2xl font-bold mb-4 text-gray-900 dark:text-white'>
           {title}
         </h2>
         {description && (
-          <p className="text-gray-600 dark:text-gray-300">{description}</p>
+          <p className='text-gray-600 dark:text-gray-300'>{description}</p>
         )}
       </div>
     </AnimationObserver>
@@ -374,6 +394,7 @@ export default function ComponentName({
 ```
 
 ### **Form Handling**
+
 ```typescript
 // Form Validation Pattern with Google Workspace Integration
 import { useForm } from 'react-hook-form';
@@ -397,19 +418,19 @@ export default function ContactForm() {
     try {
       // 1. Validate data
       const validated = validateForm(data);
-      
+
       // 2. Send to Google Sheets (CRM)
       await updateLeadSheet(validated);
-      
+
       // 3. Send confirmation email via Gmail
       await sendClientEmail(validated);
-      
+
       // 4. Schedule follow-up in Google Calendar
       await scheduleFollowUp(validated);
-      
+
       // 5. Track analytics
       trackEvent('lead_submitted', { service: validated.service });
-      
+
       // 6. Show success state
       reset();
       setSubmitted(true);
@@ -439,6 +460,7 @@ export default function ContactForm() {
 ## 📝 CONTENT STRATEGY
 
 ### **Voice & Tone**
+
 - **Professional**: Confident and trustworthy
 - **Approachable**: Friendly and accessible
 - **Innovative**: Forward-thinking and creative
@@ -446,14 +468,17 @@ export default function ContactForm() {
 - **Global**: International appeal and reach
 
 ### **Content Guidelines**
+
 ```markdown
 # Headlines
+
 - Use action words
 - Keep under 60 characters
 - Include keywords naturally
 - Work in both light and dark themes
 
 # Body Copy
+
 - Write in active voice
 - Use short paragraphs (2-3 sentences)
 - Include specific benefits
@@ -461,6 +486,7 @@ export default function ContactForm() {
 - Consider theme-specific readability
 
 # Call-to-Actions
+
 - Clear and specific
 - Use action verbs
 - Create urgency when appropriate
@@ -469,6 +495,7 @@ export default function ContactForm() {
 ```
 
 ### **SEO Content Structure**
+
 ```html
 <!-- Page Structure -->
 <h1>Main Page Title (One per page)</h1>
@@ -486,6 +513,7 @@ export default function ContactForm() {
 ## ⚡ PERFORMANCE STANDARDS
 
 ### **Lighthouse Targets**
+
 ```javascript
 // Performance Metrics
 {
@@ -497,6 +525,7 @@ export default function ContactForm() {
 ```
 
 ### **Loading Performance**
+
 ```typescript
 // Performance Budgets
 - First Contentful Paint: < 1.5s
@@ -507,30 +536,34 @@ export default function ContactForm() {
 ```
 
 ### **Image Optimization**
+
 ```tsx
 // Next.js Image Component
 import Image from 'next/image';
 
 <Image
-  src="/hero-image.jpg"
-  alt="Orson Vision Hero"
+  src='/hero-image.jpg'
+  alt='Orson Vision Hero'
   width={1200}
   height={630}
   priority={true} // For above-the-fold images
-  placeholder="blur"
-  blurDataURL="data:image/jpeg;base64,..."
-/>
+  placeholder='blur'
+  blurDataURL='data:image/jpeg;base64,...'
+/>;
 ```
 
 ### **Animation Performance**
+
 ```css
 /* Performance-Optimized Animations */
 .animate-element {
   /* Use transform and opacity for GPU acceleration */
   transform: translateY(30px);
   opacity: 0;
-  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
-  
+  transition:
+    transform 0.8s ease-out,
+    opacity 0.8s ease-out;
+
   /* Avoid animating layout properties */
   /* Don't animate: width, height, padding, margin */
 }
@@ -546,6 +579,7 @@ import Image from 'next/image';
 ## 🔒 SECURITY PROTOCOLS
 
 ### **Frontend Security**
+
 ```typescript
 // Content Security Policy
 const csp = `
@@ -570,6 +604,7 @@ const sanitizeInput = (input: string): string => {
 ```
 
 ### **Environment Variables**
+
 ```env
 # Production Environment
 NEXT_PUBLIC_SITE_URL=https://orsonvision.com
@@ -583,11 +618,12 @@ SUPABASE_ANON_KEY=...
 ```
 
 ### **API Security**
+
 ```typescript
 // Rate Limiting
 const rateLimit = {
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+  max: 100, // limit each IP to 100 requests per windowMs
 };
 
 // Authentication
@@ -603,6 +639,7 @@ const authenticateRequest = (req: Request) => {
 ## 🚀 DEPLOYMENT STRATEGY
 
 ### **Vercel Deployment**
+
 ```bash
 # Deployment Commands
 npm run build    # Build for production
@@ -618,6 +655,7 @@ vercel env add GOOGLE_SHEETS_SPREADSHEET_ID
 ```
 
 ### **Domain Configuration**
+
 ```dns
 # DNS Records
 A     @     76.76.19.19
@@ -627,6 +665,7 @@ TXT   @     v=spf1 include:_spf.google.com ~all
 ```
 
 ### **SSL Certificate**
+
 - **Automatic**: Vercel provides free SSL
 - **Custom Domain**: SSL certificate included
 - **Security Headers**: Automatic security headers
@@ -636,6 +675,7 @@ TXT   @     v=spf1 include:_spf.google.com ~all
 ## 🔧 MAINTENANCE PROCEDURES
 
 ### **Regular Maintenance**
+
 ```bash
 # Weekly Tasks
 npm audit          # Security audit
@@ -652,6 +692,7 @@ npm run build      # Test build process
 ```
 
 ### **Monitoring Setup**
+
 ```typescript
 // Error Tracking
 const trackError = (error: Error, context: string) => {
@@ -674,6 +715,7 @@ const monitorGoogleWorkspaceUsage = () => {
 ```
 
 ### **Backup Strategy**
+
 ```bash
 # Database Backups (Phase 2)
 - Daily automated backups
@@ -698,6 +740,7 @@ const monitorGoogleWorkspaceUsage = () => {
 ### **Common Issues**
 
 #### **Build Errors**
+
 ```bash
 # Clear Next.js cache
 rm -rf .next
@@ -710,6 +753,7 @@ npm install
 ```
 
 #### **Performance Issues**
+
 ```typescript
 // Check bundle size
 npm run build
@@ -722,6 +766,7 @@ npm run build
 ```
 
 #### **Animation Issues**
+
 ```css
 /* Check for animation conflicts */
 .animate-element {
@@ -741,9 +786,10 @@ npm run build
 ```
 
 #### **Theme Issues**
+
 ```css
 /* Check theme switching */
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* Ensure all dark mode styles are applied */
 }
 
@@ -752,6 +798,7 @@ npm run build
 ```
 
 #### **Google Workspace Integration Issues**
+
 ```typescript
 // Debug Google Workspace API
 const debugGoogleWorkspace = async () => {
@@ -760,12 +807,12 @@ const debugGoogleWorkspace = async () => {
     const gmail = google.gmail({ version: 'v1', auth });
     const profile = await gmail.users.getProfile({ userId: 'me' });
     console.log('Gmail API working:', profile.data);
-    
+
     // Test Drive API
     const drive = google.drive({ version: 'v3', auth });
     const files = await drive.files.list({ pageSize: 1 });
     console.log('Drive API working:', files.data);
-    
+
     // Test Calendar API
     const calendar = google.calendar({ version: 'v3', auth });
     const calendars = await calendar.calendarList.list();
@@ -777,20 +824,21 @@ const debugGoogleWorkspace = async () => {
 ```
 
 #### **Form Issues**
+
 ```typescript
 // Debug form validation
 const { errors } = useForm();
 console.log('Form errors:', errors);
 
 // Check network requests
-const handleSubmit = async (data) => {
+const handleSubmit = async data => {
   try {
     const response = await fetch('/api/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
+      body: JSON.stringify(data),
     });
-    
+
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -801,6 +849,7 @@ const handleSubmit = async (data) => {
 ```
 
 ### **Debugging Tools**
+
 ```typescript
 // Development Debugging
 const DEBUG = process.env.NODE_ENV === 'development';
@@ -832,16 +881,17 @@ const debugGoogleWorkspaceQuota = async () => {
 ## 🔗 GOOGLE WORKSPACE INTEGRATION
 
 ### **Gmail API**
+
 ```typescript
 // Automated Email Notifications
 const sendClientEmail = async (clientData: ClientData) => {
   const gmail = google.gmail({ version: 'v1', auth });
-  
+
   await gmail.users.messages.send({
     userId: 'me',
     requestBody: {
-      raw: createEmailMessage(clientData)
-    }
+      raw: createEmailMessage(clientData),
+    },
   });
 };
 
@@ -854,21 +904,22 @@ const createEmailMessage = (clientData: ClientData) => {
 ```
 
 ### **Google Drive API**
+
 ```typescript
 // Asset Storage and Management
 const uploadProjectAsset = async (file: File, projectId: string) => {
   const drive = google.drive({ version: 'v3', auth });
-  
+
   const response = await drive.files.create({
     requestBody: {
       name: file.name,
-      parents: [process.env.GOOGLE_DRIVE_FOLDER_ID]
+      parents: [process.env.GOOGLE_DRIVE_FOLDER_ID],
     },
     media: {
-      body: file.stream()
-    }
+      body: file.stream(),
+    },
   });
-  
+
   return response.data;
 };
 
@@ -881,11 +932,12 @@ const organizeProjectFiles = (projectId: string) => {
 ```
 
 ### **Google Calendar API**
+
 ```typescript
 // Meeting Scheduling
 const scheduleClientMeeting = async (meetingData: MeetingData) => {
   const calendar = google.calendar({ version: 'v3', auth });
-  
+
   await calendar.events.insert({
     calendarId: process.env.GOOGLE_CALENDAR_ID,
     requestBody: {
@@ -893,8 +945,8 @@ const scheduleClientMeeting = async (meetingData: MeetingData) => {
       description: meetingData.description,
       start: { dateTime: meetingData.startTime },
       end: { dateTime: meetingData.endTime },
-      attendees: meetingData.attendees
-    }
+      attendees: meetingData.attendees,
+    },
   });
 };
 
@@ -907,24 +959,27 @@ const manageCalendarAvailability = () => {
 ```
 
 ### **Google Sheets API**
+
 ```typescript
 // CRM and Lead Tracking
 const updateLeadSheet = async (leadData: LeadData) => {
   const sheets = google.sheets({ version: 'v4', auth });
-  
+
   await sheets.spreadsheets.values.append({
     spreadsheetId: process.env.GOOGLE_SHEETS_SPREADSHEET_ID,
     range: 'Leads!A:Z',
     valueInputOption: 'RAW',
     insertDataOption: 'INSERT_ROWS',
     resource: {
-      values: [[
-        leadData.name,
-        leadData.email,
-        leadData.service,
-        new Date().toISOString()
-      ]]
-    }
+      values: [
+        [
+          leadData.name,
+          leadData.email,
+          leadData.service,
+          new Date().toISOString(),
+        ],
+      ],
+    },
   });
 };
 
@@ -937,37 +992,41 @@ const generateClientReport = async (clientId: string) => {
 ```
 
 ### **Google Docs API**
+
 ```typescript
 // Collaborative Document Creation
 const createProjectProposal = async (projectData: ProjectData) => {
   const docs = google.docs({ version: 'v1', auth });
-  
+
   const document = await docs.documents.create({
     requestBody: {
-      title: `Proposal - ${projectData.name}`
-    }
+      title: `Proposal - ${projectData.name}`,
+    },
   });
-  
+
   // Add content to document
   await docs.documents.batchUpdate({
     documentId: document.data.documentId,
     requestBody: {
       requests: [
         // Document formatting and content
-      ]
-    }
+      ],
+    },
   });
-  
+
   return document.data;
 };
 ```
 
 ### **Google Meet API**
+
 ```typescript
 // Video Consultation Integration
-const scheduleVideoConsultation = async (consultationData: ConsultationData) => {
+const scheduleVideoConsultation = async (
+  consultationData: ConsultationData
+) => {
   const calendar = google.calendar({ version: 'v3', auth });
-  
+
   const event = await calendar.events.insert({
     calendarId: process.env.GOOGLE_CALENDAR_ID,
     requestBody: {
@@ -980,13 +1039,13 @@ const scheduleVideoConsultation = async (consultationData: ConsultationData) => 
         createRequest: {
           requestId: `meet-${Date.now()}`,
           conferenceSolutionKey: {
-            type: 'hangoutsMeet'
-          }
-        }
-      }
-    }
+            type: 'hangoutsMeet',
+          },
+        },
+      },
+    },
   });
-  
+
   return event.data;
 };
 ```
@@ -996,6 +1055,7 @@ const scheduleVideoConsultation = async (consultationData: ConsultationData) => 
 ## 🎨 VISUAL ASSET MANAGEMENT
 
 ### **Asset Sources**
+
 ```typescript
 // Free Content Libraries
 - Unsplash (High-quality photos)
@@ -1013,6 +1073,7 @@ const scheduleVideoConsultation = async (consultationData: ConsultationData) => 
 ```
 
 ### **Asset Organization**
+
 ```bash
 # File Structure
 public/
@@ -1046,30 +1107,37 @@ public/
 ```
 
 ### **License Compliance**
+
 ```markdown
 # Asset Licensing Documentation
+
 ## Unsplash
+
 - License: Unsplash License
 - Attribution: Required
 - Usage: Commercial use allowed
 
 ## Pexels
+
 - License: Pexels License
 - Attribution: Not required
 - Usage: Commercial use allowed
 
 ## Pixabay
+
 - License: Pixabay License
 - Attribution: Not required
 - Usage: Commercial use allowed
 
 ## Coverr
+
 - License: Coverr License
 - Attribution: Required
 - Usage: Commercial use allowed
 ```
 
 ### **Quality Standards**
+
 ```typescript
 // Image Requirements
 - Resolution: Minimum 1920x1080 for hero images
@@ -1087,6 +1155,7 @@ public/
 ```
 
 ### **Asset Integration**
+
 ```tsx
 // Next.js Image Component with Theme Support
 import Image from 'next/image';
@@ -1120,6 +1189,7 @@ import Image from 'next/image';
 ## 🌙 THEME SYSTEM
 
 ### **Theme Context**
+
 ```typescript
 // Theme Context and Provider
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
@@ -1134,24 +1204,24 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  
+
   useEffect(() => {
     // Check system preference
     const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark';
     setTheme(savedTheme || systemTheme);
   }, []);
-  
+
   useEffect(() => {
     // Update document attribute
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
-  
+
   const toggleTheme = () => {
     setTheme(prev => prev === 'light' ? 'dark' : 'light');
   };
-  
+
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme, setTheme }}>
       {children}
@@ -1169,6 +1239,7 @@ export function useTheme() {
 ```
 
 ### **Theme Toggle Component**
+
 ```tsx
 // Theme Toggle Button
 import { Sun, Moon } from 'lucide-react';
@@ -1176,11 +1247,11 @@ import { useTheme } from './ThemeProvider';
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
-  
+
   return (
     <button
       onClick={toggleTheme}
-      className="
+      className='
         p-2 
         rounded-lg 
         bg-gray-100 
@@ -1191,13 +1262,13 @@ export default function ThemeToggle() {
         dark:hover:bg-gray-700 
         transition-colors 
         duration-200
-      "
+      '
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (
-        <Moon className="w-5 h-5" />
+        <Moon className='w-5 h-5' />
       ) : (
-        <Sun className="w-5 h-5" />
+        <Sun className='w-5 h-5' />
       )}
     </button>
   );
@@ -1205,15 +1276,17 @@ export default function ThemeToggle() {
 ```
 
 ### **Theme-Aware Components**
+
 ```tsx
 // Component with Theme Support
-export default function ServiceCard({ 
-  title, 
-  description, 
-  icon: Icon 
+export default function ServiceCard({
+  title,
+  description,
+  icon: Icon,
 }: ServiceCardProps) {
   return (
-    <div className="
+    <div
+      className='
       bg-white 
       dark:bg-gray-800 
       rounded-2xl 
@@ -1226,8 +1299,10 @@ export default function ServiceCard({
       border 
       border-gray-200 
       dark:border-gray-700
-    ">
-      <div className="
+    '
+    >
+      <div
+        className='
         w-16 
         h-16 
         bg-cinematic-blue 
@@ -1236,26 +1311,31 @@ export default function ServiceCard({
         items-center 
         justify-center 
         mb-6
-      ">
-        <Icon className="w-8 h-8 text-white" />
+      '
+      >
+        <Icon className='w-8 h-8 text-white' />
       </div>
-      
-      <h3 className="
+
+      <h3
+        className='
         text-2xl 
         font-bold 
         mb-4 
         text-gray-900 
         dark:text-white
-      ">
+      '
+      >
         {title}
       </h3>
-      
-      <p className="
+
+      <p
+        className='
         text-gray-600 
         dark:text-gray-300 
         mb-6 
         leading-relaxed
-      ">
+      '
+      >
         {description}
       </p>
     </div>
@@ -1264,6 +1344,7 @@ export default function ServiceCard({
 ```
 
 ### **CSS Variables for Themes**
+
 ```css
 /* Theme Variables */
 :root {
@@ -1280,7 +1361,7 @@ export default function ServiceCard({
   --shadow-secondary: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="dark"] {
+[data-theme='dark'] {
   /* Dark Theme */
   --bg-primary: #111827;
   --bg-secondary: #1f2937;
@@ -1316,6 +1397,7 @@ export default function ServiceCard({
 ## 📚 RESOURCES
 
 ### **Documentation**
+
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/)
@@ -1323,12 +1405,14 @@ export default function ServiceCard({
 - [Google Workspace APIs](https://developers.google.com/workspace)
 
 ### **Tools**
+
 - [Lighthouse](https://developers.google.com/web/tools/lighthouse)
 - [WebPageTest](https://www.webpagetest.org/)
 - [GTmetrix](https://gtmetrix.com/)
 - [Google PageSpeed Insights](https://pagespeed.web.dev/)
 
 ### **Inspiration**
+
 - [Awwwards](https://www.awwwards.com/)
 - [Dribbble](https://dribbble.com/)
 - [Behance](https://www.behance.net/)
@@ -1340,4 +1424,4 @@ export default function ServiceCard({
 
 **Last Updated: January 2025**
 **Version: 2.0**
-**Status: Active** 
+**Status: Active**

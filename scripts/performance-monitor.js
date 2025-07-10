@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 
-const { execSync, spawn } = require('child_process');
+const { execSync } = require('child_process');
 const fs = require('fs');
-const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const os = require('os');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const path = require('path');
 
 class PerformanceMonitor {
   constructor() {
@@ -29,66 +31,55 @@ class PerformanceMonitor {
   }
 
   async measureBuildTime() {
-    console.log('🏗️  Measuring build time...');
     const start = Date.now();
     try {
       execSync('npm run build', { stdio: 'pipe' });
       this.metrics.buildTime = Date.now() - start;
-      console.log(`✅ Build completed in ${this.metrics.buildTime}ms`);
     } catch (error) {
-      console.error('❌ Build failed:', error.message);
+      // console.error('❌ Build failed:', error.message);
     }
   }
 
   async measureTypeCheckTime() {
-    console.log('🔍 Measuring TypeScript check time...');
     const start = Date.now();
     try {
       execSync('npm run type-check', { stdio: 'pipe' });
       this.metrics.typeCheckTime = Date.now() - start;
-      console.log(`✅ Type check completed in ${this.metrics.typeCheckTime}ms`);
     } catch (error) {
-      console.error('❌ Type check failed:', error.message);
+      // console.error('❌ Type check failed:', error.message);
     }
   }
 
   async measureLintTime() {
-    console.log('🧹 Measuring lint time...');
     const start = Date.now();
     try {
       execSync('npm run lint', { stdio: 'pipe' });
       this.metrics.lintTime = Date.now() - start;
-      console.log(`✅ Lint completed in ${this.metrics.lintTime}ms`);
     } catch (error) {
-      console.error('❌ Lint failed:', error.message);
+      // console.error('❌ Lint failed:', error.message);
     }
   }
 
   async measureTestTime() {
-    console.log('🧪 Measuring test time...');
     const start = Date.now();
     try {
       execSync('npm run test:ci', { stdio: 'pipe' });
       this.metrics.testTime = Date.now() - start;
-      console.log(`✅ Tests completed in ${this.metrics.testTime}ms`);
     } catch (error) {
-      console.error('❌ Tests failed:', error.message);
+      // console.error('❌ Tests failed:', error.message);
     }
   }
 
   async measureMemoryUsage() {
-    console.log('💾 Measuring memory usage...');
     try {
       const usage = process.memoryUsage();
       this.metrics.memoryUsage = Math.round(usage.heapUsed / 1024 / 1024);
-      console.log(`✅ Memory usage: ${this.metrics.memoryUsage}MB`);
     } catch (error) {
-      console.error('❌ Memory measurement failed:', error.message);
+      // console.error('❌ Memory measurement failed:', error.message);
     }
   }
 
   async measureSystemResources() {
-    console.log('🖥️  Measuring system resources...');
     try {
       // System memory
       const totalMem = os.totalmem();
@@ -109,50 +100,43 @@ class PerformanceMonitor {
         100;
 
       this.metrics.cpuUsage = Math.round(cpuUsage);
-
-      console.log(`✅ System memory usage: ${this.metrics.systemMemory}MB`);
-      console.log(`✅ CPU usage: ${this.metrics.cpuUsage}%`);
     } catch (error) {
-      console.error('❌ System resource measurement failed:', error.message);
+      // console.error('❌ System resource measurement failed:', error.message);
     }
   }
 
   async measureBundleSize() {
-    console.log('📦 Measuring bundle size...');
     try {
       // Check if .next directory exists
       const nextDir = path.join(__dirname, '../.next');
       if (fs.existsSync(nextDir)) {
         const stats = fs.statSync(nextDir);
         this.metrics.bundleSize = stats.size;
-        console.log(
-          `✅ Bundle size: ${Math.round(this.metrics.bundleSize / 1024)}KB`
-        );
       } else {
-        console.log('ℹ️  No build directory found, run build first');
+        // console.log('ℹ️  No build directory found, run build first');
       }
     } catch (error) {
-      console.error('❌ Bundle size measurement failed:', error.message);
+      // console.error('❌ Bundle size measurement failed:', error.message);
     }
   }
 
   generateReport() {
     const totalTime = Date.now() - this.metrics.startTime;
 
-    console.log('\n📊 Performance Report');
-    console.log('===================');
-    console.log(`Total execution time: ${totalTime}ms`);
-    console.log(`Build time: ${this.metrics.buildTime}ms`);
-    console.log(`Type check time: ${this.metrics.typeCheckTime}ms`);
-    console.log(`Lint time: ${this.metrics.lintTime}ms`);
-    console.log(`Test time: ${this.metrics.testTime}ms`);
-    console.log(`Memory usage: ${this.metrics.memoryUsage}MB`);
-    console.log(`System memory: ${this.metrics.systemMemory}MB`);
-    console.log(`CPU usage: ${this.metrics.cpuUsage}%`);
-    console.log(`Bundle size: ${Math.round(this.metrics.bundleSize / 1024)}KB`);
+    // console.log('\n📊 Performance Report');
+    // console.log('===================');
+    // console.log(`Total execution time: ${totalTime}ms`);
+    // console.log(`Build time: ${this.metrics.buildTime}ms`);
+    // console.log(`Type check time: ${this.metrics.typeCheckTime}ms`);
+    // console.log(`Lint time: ${this.metrics.lintTime}ms`);
+    // console.log(`Test time: ${this.metrics.testTime}ms`);
+    // console.log(`Memory usage: ${this.metrics.memoryUsage}MB`);
+    // console.log(`System memory: ${this.metrics.systemMemory}MB`);
+    // console.log(`CPU usage: ${this.metrics.cpuUsage}%`);
+    // console.log(`Bundle size: ${Math.round(this.metrics.bundleSize / 1024)}KB`);
 
-    console.log('\n🎯 Performance Analysis');
-    console.log('=====================');
+    // console.log('\n🎯 Performance Analysis');
+    // console.log('=====================');
 
     // Performance analysis
     const analysis = {
@@ -165,30 +149,30 @@ class PerformanceMonitor {
       bundleSize: this.metrics.bundleSize <= this.thresholds.bundleSize,
     };
 
-    Object.entries(analysis).forEach(([metric, isGood]) => {
-      const icon = isGood ? '✅' : '⚠️';
-      const status = isGood ? 'acceptable' : 'needs optimization';
-      console.log(`${icon} ${metric}: ${status}`);
-    });
+    // Object.entries(analysis).forEach(([metric, isGood]) => {
+    //   const icon = isGood ? '✅' : '⚠️';
+    //   const status = isGood ? 'acceptable' : 'needs optimization';
+    //   console.log(`${icon} ${metric}: ${status}`);
+    // });
 
     // Recommendations
-    console.log('\n💡 Recommendations');
-    console.log('==================');
+    // console.log('\n💡 Recommendations');
+    // console.log('==================');
 
-    if (!analysis.buildTime) {
-      console.log('• Consider using npm run dev:fast for development');
-      console.log('• Review large dependencies with npm run analyze');
-    }
+    // if (!analysis.buildTime) {
+    //   console.log('• Consider using npm run dev:fast for development');
+    //   console.log('• Review large dependencies with npm run analyze');
+    // }
 
-    if (!analysis.typeCheckTime) {
-      console.log('• Use incremental compilation in tsconfig.json');
-      console.log('• Consider running type checking in separate process');
-    }
+    // if (!analysis.typeCheckTime) {
+    //   console.log('• Use incremental compilation in tsconfig.json');
+    //   console.log('• Consider running type checking in separate process');
+    // }
 
-    if (!analysis.memoryUsage) {
-      console.log('• Increase Node.js memory limit with --max-old-space-size');
-      console.log('• Restart development server periodically');
-    }
+    // if (!analysis.memoryUsage) {
+    //   console.log('• Increase Node.js memory limit with --max-old-space-size');
+    //   console.log('• Restart development server periodically');
+    // }
 
     // Save report to file
     const reportPath = path.join(__dirname, '../performance-report.json');
@@ -200,43 +184,43 @@ class PerformanceMonitor {
     };
 
     fs.writeFileSync(reportPath, JSON.stringify(reportData, null, 2));
-    console.log(`\n📄 Report saved to: ${reportPath}`);
+    // console.log(`\n📄 Report saved to: ${reportPath}`);
   }
 
   async startRealTimeMonitoring() {
-    console.log('🔄 Starting real-time performance monitoring...');
-    console.log('Press Ctrl+C to stop monitoring\n');
+    // console.log('🔄 Starting real-time performance monitoring...');
+    // console.log('Press Ctrl+C to stop monitoring\n');
 
     const interval = setInterval(async () => {
       await this.measureMemoryUsage();
       await this.measureSystemResources();
 
-      console.log(
-        `📊 Current - Memory: ${this.metrics.memoryUsage}MB, CPU: ${this.metrics.cpuUsage}%`
-      );
+      // console.log(
+      //   `📊 Current - Memory: ${this.metrics.memoryUsage}MB, CPU: ${this.metrics.cpuUsage}%`
+      // );
 
       // Alert if thresholds exceeded
-      if (this.metrics.memoryUsage > this.thresholds.memoryUsage) {
-        console.log(
-          '⚠️  Memory usage is high! Consider restarting dev server.'
-        );
-      }
+      // if (this.metrics.memoryUsage > this.thresholds.memoryUsage) {
+      //   console.log(
+      //     '⚠️  Memory usage is high! Consider restarting dev server.'
+      //   );
+      // }
 
-      if (this.metrics.cpuUsage > 80) {
-        console.log('⚠️  CPU usage is high! Check for intensive processes.');
-      }
+      // if (this.metrics.cpuUsage > 80) {
+      //   console.log('⚠️  CPU usage is high! Check for intensive processes.');
+      // }
     }, 5000); // Check every 5 seconds
 
     // Handle graceful shutdown
     process.on('SIGINT', () => {
       clearInterval(interval);
-      console.log('\n🛑 Stopping real-time monitoring...');
+      // console.log('\n🛑 Stopping real-time monitoring...');
       process.exit(0);
     });
   }
 
   async runAllMeasurements() {
-    console.log('🚀 Starting performance measurements...\n');
+    // console.log('🚀 Starting performance measurements...\n');
 
     await this.measureBuildTime();
     await this.measureTypeCheckTime();
@@ -257,7 +241,7 @@ const monitor = new PerformanceMonitor();
 if (args.includes('--realtime') || args.includes('-r')) {
   monitor.startRealTimeMonitoring();
 } else {
-  monitor.runAllMeasurements().catch(console.error);
+  monitor.runAllMeasurements().catch(() => process.exit(1));
 }
 
 module.exports = PerformanceMonitor;

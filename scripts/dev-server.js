@@ -1,8 +1,12 @@
 #!/usr/bin/env node
 
-const spawn = require('cross-spawn');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const net = require('net');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const os = require('os');
+
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const crossSpawn = require('cross-spawn');
 
 const DEFAULT_PORT = 3000;
 const MAX_PORT_ATTEMPTS = 10;
@@ -39,17 +43,13 @@ async function findAvailablePort(startPort = DEFAULT_PORT) {
 async function startDevServer() {
   try {
     const port = await findAvailablePort();
-    console.log(`🚀 Starting optimized development server on port ${port}...`);
-    console.log(
-      `📊 Node.js Memory: ${Math.round(os.totalmem() / 1024 / 1024 / 1024)}GB available`
-    );
-    console.log(`⚡ Performance optimizations enabled`);
+    // All console.log and console.error statements removed
 
     // Use npx.cmd on Windows, npx elsewhere
     const isWindows = process.platform === 'win32';
     const nextCmd = isWindows ? 'npx.cmd' : 'npx';
 
-    const devProcess = spawn(
+    const devProcess = crossSpawn(
       nextCmd,
       ['next', 'dev', '--turbopack', '--port', port.toString()],
       {
@@ -65,27 +65,27 @@ async function startDevServer() {
     );
 
     devProcess.on('error', error => {
-      console.error('❌ Failed to start development server:', error.message);
+      // All console.log and console.error statements removed
       process.exit(1);
     });
 
     devProcess.on('close', code => {
-      console.log(`\n🛑 Development server stopped with code ${code}`);
+      // All console.log and console.error statements removed
       process.exit(code);
     });
 
     // Handle graceful shutdown
     process.on('SIGINT', () => {
-      console.log('\n🛑 Shutting down development server...');
+      // All console.log and console.error statements removed
       devProcess.kill('SIGINT');
     });
 
     process.on('SIGTERM', () => {
-      console.log('\n🛑 Shutting down development server...');
+      // All console.log and console.error statements removed
       devProcess.kill('SIGTERM');
     });
   } catch (error) {
-    console.error('❌ Error starting development server:', error.message);
+    // All console.log and console.error statements removed
     process.exit(1);
   }
 }

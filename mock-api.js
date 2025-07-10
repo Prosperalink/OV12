@@ -1,5 +1,5 @@
-const express = require('express');
 const cors = require('cors');
+const express = require('express');
 const app = express();
 const PORT = process.env.MOCK_API_PORT || 4000;
 
@@ -14,5 +14,5 @@ app.get('/api/hello', (req, res) => {
 // Add more endpoints as needed
 
 app.listen(PORT, () => {
-  console.log(`\u{1F680} Mock API server running on http://localhost:${PORT}`);
+  // All console.log and console.error statements removed
 });

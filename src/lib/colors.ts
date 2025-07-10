@@ -138,7 +138,7 @@ export const colors = {
       violet: '#8b5cf6',
     },
   },
-}
+};
 
 // Color psychology mapping for emotional impact
 export const colorPsychology = {
@@ -152,7 +152,7 @@ export const colorPsychology = {
   error: colors.semantic.error[500],
   calm: colors.cinematic.cool.ocean,
   luxury: colors.cinematic.accent.golden,
-}
+};
 
 // Accessibility-compliant color combinations
 export const accessibleColors = {
@@ -186,7 +186,7 @@ export const accessibleColors = {
       text: colors.neutral.gray[800],
     },
   },
-}
+};
 
 // Theme-specific color mappings
 export const themeColors = {
@@ -206,7 +206,7 @@ export const themeColors = {
     muted: colors.neutral.gray[700],
     accent: colors.cinematic.accent.electric,
   },
-}
+};
 
 // CSS custom properties for colors
 export const colorCSS = `
@@ -256,33 +256,36 @@ export const colorCSS = `
     --color-muted: ${themeColors.dark.muted};
     --color-accent: ${themeColors.dark.accent};
   }
-`
+`;
 
 // Utility functions for color manipulation
 export const getColor = (colorPath: string): string | undefined => {
-  const path = colorPath.split('.')
-  let current: Record<string, unknown> = colors
+  const path = colorPath.split('.');
+  let current: Record<string, unknown> = colors;
 
   for (const key of path) {
-    current = current[key] as Record<string, unknown>
-    if (!current) return undefined
+    current = current[key] as Record<string, unknown>;
+    if (!current) return undefined;
   }
 
-  return current as unknown as string
-}
+  return current as unknown as string;
+};
 
 export const getAccessibleTextColor = (backgroundColor: string) => {
   // Simple contrast calculation (in real implementation, use a proper contrast library)
-  const isLight = backgroundColor.includes('50') || backgroundColor.includes('100') || backgroundColor.includes('200')
-  return isLight ? colors.neutral.gray[900] : colors.neutral.gray[50]
-}
+  const isLight =
+    backgroundColor.includes('50') ||
+    backgroundColor.includes('100') ||
+    backgroundColor.includes('200');
+  return isLight ? colors.neutral.gray[900] : colors.neutral.gray[50];
+};
 
 export const getColorWithOpacity = (color: string, opacity: number) => {
   // Convert hex to rgba
-  const hex = color.replace('#', '')
-  const r = parseInt(hex.substr(0, 2), 16)
-  const g = parseInt(hex.substr(2, 2), 16)
-  const b = parseInt(hex.substr(4, 2), 16)
+  const hex = color.replace('#', '');
+  const r = parseInt(hex.substr(0, 2), 16);
+  const g = parseInt(hex.substr(2, 2), 16);
+  const b = parseInt(hex.substr(4, 2), 16);
 
-  return `rgba(${r}, ${g}, ${b}, ${opacity})`
-}
+  return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+};

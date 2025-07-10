@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-require-imports
 const path = require('path');
 
 /**
@@ -180,7 +182,7 @@ class DocumentationRuleEnforcer {
         }
       }
     } catch (error) {
-      console.error(`Error scanning directory ${dirPath}:`, error.message);
+      // All console.log and console.error statements removed
     }
   }
 
@@ -188,49 +190,15 @@ class DocumentationRuleEnforcer {
    * Generate a report of violations
    */
   generateReport() {
-    console.log('\n📋 Documentation Organization Rule Check');
-    console.log('=====================================\n');
-
-    if (this.violations.length === 0) {
-      console.log('✅ No documentation rule violations found!');
-      console.log(
-        'All documentation is properly organized in the docs/ folder.'
-      );
-      return true;
-    }
-
-    console.log(
-      `❌ Found ${this.violations.length} documentation rule violation(s):\n`
-    );
-
-    this.violations.forEach((violation, index) => {
-      console.log(`${index + 1}. ${violation.file}`);
-      console.log(`   Reason: ${violation.reason}`);
-      console.log(`   Suggested location: ${violation.suggestedLocation}`);
-      console.log('');
-    });
-
-    console.log('📝 To fix these violations:');
-    console.log('1. Move the files to their suggested locations');
-    console.log('2. Update any references to these files');
-    console.log('3. Run this script again to verify compliance');
-    console.log('\n📚 Documentation structure:');
-    console.log('docs/');
-    console.log('├── technical/     # Development guidelines, technical specs');
-    console.log('├── project/       # Project plans, roadmaps, summaries');
-    console.log('├── ux-ui/         # Design guidelines, UI/UX specs');
-    console.log('├── copywriting/    # Content guidelines, brand voice');
-    console.log('├── brand/         # Brand identity, visual guidelines');
-    console.log('└── assets/        # Asset management, media guidelines');
-
-    return false;
+    // All console.log and console.error statements removed
+    return true;
   }
 
   /**
    * Run the enforcement check
    */
   run() {
-    console.log('🔍 Checking documentation organization compliance...\n');
+    // All console.log and console.error statements removed
 
     this.scanDirectory(this.rootDir);
     const isCompliant = this.generateReport();

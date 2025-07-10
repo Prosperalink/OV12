@@ -29,8 +29,6 @@ export async function post(request: NextRequest) {
     });
 
     if (!tokenResponse.ok) {
-      const errorData = await tokenResponse.text();
-      console.error('Token exchange error:', errorData);
       return NextResponse.json(
         { error: 'Failed to exchange authorization code for token' },
         { status: 400 }
@@ -45,8 +43,7 @@ export async function post(request: NextRequest) {
       expires_in: tokenData.expires_in,
       token_type: tokenData.token_type,
     });
-  } catch (error) {
-    console.error('Google OAuth callback error:', error);
+  } catch {
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }

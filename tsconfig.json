@@ -58,5 +58,14 @@
     "*.config.ts",
     "*.config.js"
   ],
-  "exclude": ["node_modules", ".next", "out", "dist", "build", "coverage"]
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "dist",
+    "build",
+    "coverage",
+    "*.js",
+    "scripts/*.js"
+  ]
 }
