@@ -1,131 +1,98 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 
-import AnimationObserver from './AnimationObserver';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface IHeroSectionProps {
-  title?: string;
-  subtitle?: string;
-  description?: string;
-  primaryCtaText?: string;
-  secondaryCtaText?: string;
   videoSrc?: string;
-  posterSrc?: string;
-  backgroundImage?: string;
-  overlay?: boolean;
-  className?: string;
 }
 
-export default function HeroSection({
-  title = 'Orson Vision',
-  subtitle = 'Cinematic Humanism in Digital Innovation',
-  description = 'We craft immersive digital experiences that blend cutting-edge technology with human-centered design, creating moments that inspire and transform.',
-  primaryCtaText = 'Start Your Journey',
-  secondaryCtaText = 'Watch Our Story',
-  videoSrc,
-  posterSrc,
-  backgroundImage,
-  overlay = true,
-  className = '',
-}: IHeroSectionProps) {
+export default function HeroSection({ videoSrc }: IHeroSectionProps) {
+  const { t } = useLanguage();
+
   return (
-    <section
-      role='banner'
-      className={`relative min-h-screen flex items-center justify-center overflow-hidden ${className}`}
-    >
-      {/* Video Background */}
+    <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
+      {/* Background Video */}
       {videoSrc && (
-        <div className='absolute inset-0 w-full h-full'>
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster={posterSrc}
-            className='w-full h-full object-cover'
-            aria-hidden='true'
-          >
-            <source src={videoSrc} type='video/mp4' />
-            {posterSrc && (
-              <Image
-                src={posterSrc}
-                alt='Hero background'
-                fill
-                className='object-cover'
-                priority
-              />
-            )}
-          </video>
-        </div>
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className='absolute inset-0 w-full h-full object-cover'
+        >
+          <source src={videoSrc} type='video/mp4' />
+        </video>
       )}
 
-      {/* Background Image Fallback */}
-      {!videoSrc && backgroundImage && (
-        <div
-          className='absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat'
-          style={{ backgroundImage: `url(${backgroundImage})` }}
-        />
-      )}
+      {/* Overlay */}
+      <div className='absolute inset-0 bg-black/50' />
 
-      {/* Gradient Background Fallback */}
-      {!videoSrc && !backgroundImage && (
-        <div className='absolute inset-0 bg-gradient-to-br from-primary-800 via-primary-600 to-secondary-500' />
-      )}
+      {/* Content */}
+      <div className='relative z-10 text-center text-white px-4 max-w-4xl mx-auto'>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <h1 className='text-5xl md:text-7xl font-bold mb-6'>
+            {t('hero.title')}
+          </h1>
+          <h2 className='text-xl md:text-2xl font-light mb-8 text-gray-200'>
+            {t('hero.subtitle')}
+          </h2>
+          <p className='text-lg md:text-xl mb-12 text-gray-300 max-w-3xl mx-auto leading-relaxed'>
+            {t('hero.description')}
+          </p>
 
-      {/* Video Overlay */}
-      {overlay && (
-        <div className='absolute inset-0 bg-gradient-to-br from-primary-800/80 via-primary-600/60 to-secondary-500/40' />
-      )}
+          {/* CTA Buttons */}
+          <div className='flex flex-col sm:flex-row gap-4 justify-center mb-12'>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='bg-cinematic-blue hover:bg-cinematic-blue/90 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300'
+            >
+              {t('hero.primaryCta')}
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className='border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-black transition-all duration-300'
+            >
+              {t('hero.secondaryCta')}
+            </motion.button>
+          </div>
 
-      {/* Content Container */}
-      <div className='relative z-10 container mx-auto px-4 text-center'>
-        <div className='max-w-4xl mx-auto'>
-          <AnimationObserver animation='fadeInUp' delay={0.5}>
-            {/* Main Headline */}
-            <h1 className='hero-headline mb-8'>
-              <span className='block text-6xl md:text-8xl font-bold text-white mb-4 leading-tight tracking-tight'>
-                {title}
-              </span>
-              <span className='block text-2xl md:text-4xl font-medium text-secondary-400 leading-relaxed'>
-                {subtitle}
-              </span>
-            </h1>
-
-            {/* Description */}
-            <p className='hero-description text-xl md:text-2xl text-white/90 mb-12 max-w-3xl mx-auto leading-relaxed'>
-              {description}
-            </p>
-
-            {/* CTA Buttons */}
-            <div className='hero-cta-buttons flex flex-col sm:flex-row items-center justify-center gap-4 mb-12'>
-              <button className='btn-primary px-8 py-4 bg-secondary-500 hover:bg-secondary-600 text-white font-semibold text-lg rounded-lg transition-all duration-300 transform hover:scale-105 focus:ring-4 focus:ring-secondary-500/50 shadow-lg hover:shadow-xl'>
-                {primaryCtaText}
-                <ArrowRight className='ml-2 w-5 h-5' />
-              </button>
-              <button className='btn-secondary px-8 py-4 bg-transparent border-2 border-white/30 text-white font-semibold text-lg rounded-lg hover:bg-white/10 transition-all duration-300 focus:ring-4 focus:ring-white/30'>
-                {secondaryCtaText}
-              </button>
+          {/* Social Proof */}
+          <div className='flex flex-col sm:flex-row gap-8 justify-center text-sm text-gray-300'>
+            <div className='flex items-center space-x-2'>
+              <span className='text-yellow-400'>★★★★★</span>
+              <span>{t('hero.socialProof')}</span>
             </div>
-
-            {/* Social Proof */}
-            <div className='hero-social-proof mt-12'>
-              <div className='flex items-center justify-center space-x-8 text-white/80 text-sm md:text-base'>
-                <span>4.9/5 from 200+ clients</span>
-                <span>Trusted by 500+ businesses</span>
-              </div>
+            <div className='flex items-center space-x-2'>
+              <span className='text-cinematic-blue'>✓</span>
+              <span>{t('hero.trustedBy')}</span>
             </div>
-          </AnimationObserver>
-        </div>
+          </div>
+        </motion.div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className='absolute bottom-8 left-1/2 transform -translate-x-1/2'>
-        <div className='scroll-indicator animate-bounce'>
-          <div className='w-6 h-6 border-2 border-white/50 border-t-transparent transform rotate-45'></div>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1, duration: 0.8 }}
+        className='absolute bottom-8 left-1/2 transform -translate-x-1/2'
+      >
+        <div className='w-6 h-10 border-2 border-white rounded-full flex justify-center'>
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className='w-1 h-3 bg-white rounded-full mt-2'
+          />
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

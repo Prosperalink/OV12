@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion';
 import { Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+
+import { useTheme } from './ThemeProvider';
 
 export default function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     setMounted(true);
@@ -54,7 +55,7 @@ export default function ThemeToggle() {
   };
 
   const handleToggle = () => {
-    setTheme(theme === 'dark' ? 'light' : 'dark');
+    toggleTheme();
   };
 
   return (

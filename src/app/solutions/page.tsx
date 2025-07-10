@@ -1,291 +1,466 @@
-import { Metadata } from 'next';
+'use client';
+
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
-export const metadata: Metadata = {
-  title: 'Solutions - Orson Vision',
-  description:
-    'Where expertise meets industry. We specialize in crafting digital solutions that are tailored to your specific business needs and industry challenges.',
-};
+import { useLanguage } from '@/contexts/LanguageContext';
 
-const solutions = [
-  {
-    id: 'digital-innovation',
-    title: 'Digital Innovation',
-    subtitle:
-      'Building robust digital foundations that drive growth and competitive advantage',
-    description:
-      'We craft cutting-edge digital solutions that bridge the gap between imagination and implementation, creating seamless user experiences that drive business growth.',
-    icon: '🚀',
-    color: 'from-blue-600 to-cyan-500',
-    bgColor: 'bg-gradient-to-br from-blue-900/20 to-cyan-800/20',
-    href: '/solutions/digital-innovation',
-  },
-  {
-    id: 'creative-design',
-    title: 'Creative Design',
-    subtitle:
-      'Crafting compelling visual narratives that connect with your audience and build lasting brand relationships',
-    description:
-      'We design immersive brand experiences that connect with audiences on an emotional level, building lasting relationships and driving brand loyalty.',
-    icon: '🎨',
-    color: 'from-purple-600 to-pink-500',
-    bgColor: 'bg-gradient-to-br from-purple-900/20 to-pink-800/20',
-    href: '/solutions/creative-design',
-  },
-  {
-    id: 'content-creation',
-    title: 'Content Creation',
-    subtitle:
-      'Producing engaging content that tells your story and drives meaningful conversations across all channels',
-    description:
-      'We produce compelling content that tells your story, engages your audience, and drives meaningful conversations across all digital channels.',
-    icon: '📹',
-    color: 'from-orange-600 to-red-500',
-    bgColor: 'bg-gradient-to-br from-orange-900/20 to-red-800/20',
-    href: '/solutions/content-creation',
-  },
-  {
-    id: 'technology-solutions',
-    title: 'Technology Solutions',
-    subtitle:
-      'Engineering reliable technology solutions that power your digital operations and ensure seamless performance',
-    description:
-      'We architect robust technology solutions that scale with your business, ensuring reliability, security, and performance for your digital operations.',
-    icon: '⚙️',
-    color: 'from-green-600 to-emerald-500',
-    bgColor: 'bg-gradient-to-br from-green-900/20 to-emerald-800/20',
-    href: '/solutions/technology-solutions',
-  },
-  {
-    id: 'strategic-consulting',
-    title: 'Strategic Consulting',
-    subtitle:
-      'Providing strategic guidance to navigate the digital landscape and achieve sustainable business growth',
-    description:
-      'We provide strategic guidance to help you navigate the digital landscape, optimize your operations, and achieve sustainable growth.',
-    icon: '🎯',
-    color: 'from-yellow-600 to-amber-500',
-    bgColor: 'bg-gradient-to-br from-yellow-900/20 to-amber-800/20',
-    href: '/solutions/strategic-consulting',
-  },
-];
+export default function SolutionsPage() {
+  const { t } = useLanguage();
 
-const industries = [
-  'Wedding & Events',
-  'Education & Learning',
-  'Small Business & Startups',
-  'Enterprise & Corporate',
-  'Creative & Artisan',
-  'Tourism & Hospitality',
-];
+  const services = [
+    {
+      key: 'digitalInnovation',
+      href: '/solutions/digital-innovation',
+      icon: '🚀',
+      color: 'from-blue-500 to-purple-600',
+    },
+    {
+      key: 'creativeDesign',
+      href: '/solutions/creative-design',
+      icon: '🎨',
+      color: 'from-pink-500 to-red-600',
+    },
+    {
+      key: 'contentCreation',
+      href: '/solutions/content-creation',
+      icon: '📹',
+      color: 'from-green-500 to-teal-600',
+    },
+    {
+      key: 'technologySolutions',
+      href: '/solutions/technology-solutions',
+      icon: '⚙️',
+      color: 'from-gray-500 to-blue-600',
+    },
+    {
+      key: 'strategicConsulting',
+      href: '/solutions/strategic-consulting',
+      icon: '💡',
+      color: 'from-yellow-500 to-orange-600',
+    },
+  ];
 
-export default function solutionsPage() {
+  const processSteps = [
+    {
+      step: '01',
+      title: 'Discovery & Research',
+      description:
+        'We dive deep into understanding your business, audience, and goals to create a strategic foundation.',
+      icon: '🔍',
+      activities: [
+        'Market Analysis',
+        'User Research',
+        'Competitive Analysis',
+        'Goal Setting',
+      ],
+    },
+    {
+      step: '02',
+      title: 'Strategy & Planning',
+      description:
+        'We develop a comprehensive roadmap that aligns your digital presence with your business objectives.',
+      icon: '📋',
+      activities: [
+        'Content Strategy',
+        'Technical Architecture',
+        'Timeline Planning',
+        'Resource Allocation',
+      ],
+    },
+    {
+      step: '03',
+      title: 'Design & Development',
+      description:
+        'Our team creates stunning visuals and robust functionality that bring your vision to life.',
+      icon: '🎨',
+      activities: [
+        'UI/UX Design',
+        'Frontend Development',
+        'Backend Integration',
+        'Quality Assurance',
+      ],
+    },
+    {
+      step: '04',
+      title: 'Launch & Optimization',
+      description:
+        'We ensure a smooth launch and continuously optimize for maximum performance and results.',
+      icon: '🚀',
+      activities: [
+        'Performance Testing',
+        'SEO Optimization',
+        'Analytics Setup',
+        'Ongoing Support',
+      ],
+    },
+  ];
+
+  const caseStudies = [
+    {
+      title: 'TechStart E-commerce Platform',
+      industry: 'E-commerce',
+      challenge: 'Needed a scalable online platform to handle 10x growth',
+      solution:
+        'Built a custom e-commerce solution with advanced inventory management and analytics',
+      results: [
+        '250% increase in conversion rates',
+        '40% reduction in cart abandonment',
+        '300% growth in monthly revenue',
+      ],
+      image: '/case-studies/techstart.jpg',
+    },
+    {
+      title: 'École Internationale Learning Portal',
+      industry: 'Education',
+      challenge:
+        'Required an engaging platform for remote learning and student collaboration',
+      solution:
+        'Developed an interactive learning management system with real-time collaboration features',
+      results: [
+        '180% increase in student engagement',
+        '95% parent satisfaction rate',
+        '50% reduction in administrative workload',
+      ],
+      image: '/case-studies/ecole-internationale.jpg',
+    },
+    {
+      title: 'Tunisian Crafts Global Marketplace',
+      industry: 'Artisan & Crafts',
+      challenge:
+        'Wanted to reach global markets while preserving authentic cultural heritage',
+      solution:
+        'Created a multilingual marketplace with advanced shipping and payment systems',
+      results: [
+        '300% increase in online sales',
+        'Expansion to 15+ countries',
+        'Preserved cultural authenticity',
+      ],
+      image: '/case-studies/tunisian-crafts.jpg',
+    },
+  ];
+
+  const technologies = [
+    {
+      category: 'Frontend',
+      tools: [
+        'React',
+        'Next.js',
+        'TypeScript',
+        'Tailwind CSS',
+        'Framer Motion',
+      ],
+    },
+    {
+      category: 'Backend',
+      tools: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB', 'Redis'],
+    },
+    {
+      category: 'Cloud & DevOps',
+      tools: ['AWS', 'Vercel', 'Docker', 'GitHub Actions', 'CI/CD'],
+    },
+    {
+      category: 'Design & Content',
+      tools: [
+        'Figma',
+        'Adobe Creative Suite',
+        'Cinema 4D',
+        'After Effects',
+        'Premiere Pro',
+      ],
+    },
+  ];
+
   return (
-    <div className='min-h-screen'>
+    <main className='min-h-screen bg-[var(--bg-primary)]'>
       {/* Hero Section */}
       <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
-        <div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/50 to-slate-900'>
-          <div className="absolute inset-0 bg-[url('/hero-poster.jpg')] bg-cover bg-center opacity-20"></div>
-          <div className='absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/80'></div>
-        </div>
+        <div className='absolute inset-0 bg-gradient-to-br from-cinematic-blue to-cinematic-gold' />
+        <div className='absolute inset-0 bg-black/30' />
 
-        <div className='relative z-10 container mx-auto px-4 text-center'>
-          <h1 className='text-5xl md:text-7xl font-bold text-white mb-6'>
-            Solutions Matrix
-          </h1>
-          <p className='text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto mb-8'>
-            Where expertise meets industry. We specialize in crafting digital
-            solutions that are tailored to your specific business needs and
-            industry challenges.
-          </p>
-          <p className='text-lg text-gray-400 max-w-3xl mx-auto'>
-            Every business has unique challenges. Our expertise spans across
-            five core areas, each designed to address specific industry needs
-            and drive measurable results.
-          </p>
+        <div className='relative z-10 text-center text-white px-4 max-w-4xl mx-auto'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className='text-5xl md:text-7xl font-bold mb-6'>
+              {t('solutions.hero.title')}
+            </h1>
+            <h2 className='text-xl md:text-2xl font-light mb-8 text-gray-200'>
+              {t('solutions.hero.subtitle')}
+            </h2>
+            <p className='text-lg md:text-xl mb-12 text-gray-300 max-w-3xl mx-auto leading-relaxed'>
+              {t('solutions.hero.description')}
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* Solutions Overview */}
-      <section className='py-20 bg-gradient-to-br from-slate-900 to-blue-900'>
+      {/* Services Overview */}
+      <section className='py-16 bg-[var(--bg-secondary)]'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
-            <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
-              Our Expertise Areas
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              Our Services
             </h2>
-            <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-              Five specialized domains where creativity meets technology, each
-              designed to address your unique challenges and aspirations.
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              Comprehensive digital solutions that transform your vision into
+              reality, from concept to launch and beyond.
             </p>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {solutions.map(solution => (
-              <Link
-                key={solution.id}
-                href={solution.href}
-                className={`group relative p-8 rounded-2xl border border-white/10 backdrop-blur-sm ${solution.bgColor} hover:border-white/30 transition-all duration-500 hover:scale-105`}
+            {services.map((service, index) => (
+              <motion.div
+                key={service.key}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${solution.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
-                ></div>
-
-                <div className='relative z-10'>
-                  <div className='text-4xl mb-4'>{solution.icon}</div>
-                  <h3 className='text-2xl font-bold text-white mb-2'>
-                    {solution.title}
-                  </h3>
-                  <p className='text-gray-300 mb-4'>{solution.subtitle}</p>
-                  <p className='text-gray-400 text-sm leading-relaxed'>
-                    {solution.description}
-                  </p>
-
-                  <div className='mt-6 flex items-center text-blue-400 group-hover:text-blue-300 transition-colors'>
-                    <span>Learn More</span>
-                    <svg
-                      className='w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform'
-                      fill='none'
-                      stroke='currentColor'
-                      viewBox='0 0 24 24'
+                <Link href={service.href}>
+                  <div className='bg-[var(--bg-primary)] rounded-2xl p-8 shadow-lg border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105 h-full'>
+                    <div
+                      className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center mb-6`}
                     >
-                      <path
-                        strokeLinecap='round'
-                        strokeLinejoin='round'
-                        strokeWidth={2}
-                        d='M9 5l7 7-7 7'
-                      />
-                    </svg>
+                      <span className='text-3xl'>{service.icon}</span>
+                    </div>
+                    <h3 className='text-2xl font-bold text-cinematic-blue mb-4'>
+                      {t(`solutions.${service.key}.title`)}
+                    </h3>
+                    <p className='text-[var(--color-foreground)]/80 mb-4'>
+                      {t(`solutions.${service.key}.subtitle`)}
+                    </p>
+                    <p className='text-[var(--color-foreground)]/60 text-sm leading-relaxed'>
+                      {t(`solutions.${service.key}.description`)}
+                    </p>
                   </div>
-                </div>
-
-                {/* Hover Effect */}
-                <div className='absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl'></div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Industries We Serve */}
-      <section className='py-20 bg-gradient-to-br from-blue-900 to-slate-900'>
+      {/* Process Section */}
+      <section className='py-16 bg-[var(--bg-primary)]'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
-            <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
-              Industries We Serve
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              Our Process
             </h2>
-            <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-              From creative professionals to enterprise corporations, we
-              understand the unique challenges and opportunities in every
-              industry.
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              A proven methodology that ensures every project delivers
+              exceptional results and exceeds expectations.
             </p>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
-            {industries.map(industry => (
-              <div
-                key={industry}
-                className='bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-white/30 transition-all duration-300 hover:scale-105'
+          <div className='space-y-12'>
+            {processSteps.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className={`flex flex-col lg:flex-row gap-8 items-center ${
+                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+                }`}
               >
-                <h3 className='text-xl font-semibold text-white mb-2'>
-                  {industry}
-                </h3>
-                <p className='text-gray-300 text-sm'>
-                  Customized solutions designed specifically for{' '}
-                  {industry.toLowerCase()} professionals and businesses.
-                </p>
-              </div>
+                <div className='lg:w-1/2'>
+                  <div className='bg-[var(--bg-secondary)] rounded-2xl p-8 shadow-lg border border-[var(--color-border)]'>
+                    <div className='flex items-center mb-6'>
+                      <div className='text-4xl font-bold text-cinematic-blue mr-4'>
+                        {step.step}
+                      </div>
+                      <div className='text-3xl'>{step.icon}</div>
+                    </div>
+                    <h3 className='text-2xl font-bold text-[var(--color-foreground)] mb-4'>
+                      {step.title}
+                    </h3>
+                    <p className='text-[var(--color-foreground)]/70 mb-6 leading-relaxed'>
+                      {step.description}
+                    </p>
+                    <div className='space-y-2'>
+                      {step.activities.map((activity, i) => (
+                        <div key={i} className='flex items-center space-x-2'>
+                          <span className='text-cinematic-blue'>•</span>
+                          <span className='text-sm text-[var(--color-foreground)]/70'>
+                            {activity}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+
+                <div className='lg:w-1/2'>
+                  <div className='bg-gradient-to-br from-cinematic-blue to-cinematic-gold h-64 rounded-2xl flex items-center justify-center'>
+                    <div className='text-center text-white'>
+                      <div className='text-6xl font-bold opacity-20 mb-4'>
+                        {step.step}
+                      </div>
+                      <div className='text-4xl'>{step.icon}</div>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Process Overview */}
-      <section className='py-20 bg-gradient-to-br from-slate-900 to-blue-900'>
+      {/* Case Studies Section */}
+      <section className='py-16 bg-[var(--bg-secondary)]'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
-            <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
-              Our Approach
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              Success Stories
             </h2>
-            <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-              A collaborative process designed to transform your vision into
-              digital reality, with transparency and excellence at every step.
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              Real projects, real results. See how we&apos;ve helped businesses
+              transform their digital presence.
+            </p>
+          </div>
+
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+            {caseStudies.map((study, index) => (
+              <motion.div
+                key={study.title}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className='bg-[var(--bg-primary)] rounded-2xl shadow-lg border border-[var(--color-border)] overflow-hidden'
+              >
+                <div className='bg-gradient-to-br from-cinematic-blue to-cinematic-gold h-48 flex items-center justify-center'>
+                  <div className='text-white text-center'>
+                    <div className='text-4xl mb-2'>📊</div>
+                    <div className='text-sm opacity-80'>{study.industry}</div>
+                  </div>
+                </div>
+
+                <div className='p-6'>
+                  <h3 className='text-xl font-bold text-[var(--color-foreground)] mb-3'>
+                    {study.title}
+                  </h3>
+
+                  <div className='mb-4'>
+                    <h4 className='font-semibold text-cinematic-blue mb-2'>
+                      Challenge
+                    </h4>
+                    <p className='text-sm text-[var(--color-foreground)]/70'>
+                      {study.challenge}
+                    </p>
+                  </div>
+
+                  <div className='mb-4'>
+                    <h4 className='font-semibold text-cinematic-blue mb-2'>
+                      Solution
+                    </h4>
+                    <p className='text-sm text-[var(--color-foreground)]/70'>
+                      {study.solution}
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className='font-semibold text-cinematic-blue mb-2'>
+                      Results
+                    </h4>
+                    <ul className='space-y-1'>
+                      {study.results.map((result, i) => (
+                        <li
+                          key={i}
+                          className='text-sm text-[var(--color-foreground)]/70 flex items-start space-x-2'
+                        >
+                          <span className='text-cinematic-gold text-xs mt-1'>
+                            ✓
+                          </span>
+                          <span>{result}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className='py-16 bg-[var(--bg-primary)]'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-16'>
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              Technologies We Use
+            </h2>
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              Cutting-edge tools and technologies that power exceptional digital
+              experiences.
             </p>
           </div>
 
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
-            {[
-              {
-                step: '01',
-                title: 'Discovery & Strategy',
-                description:
-                  'We dive deep into understanding your business, challenges, and aspirations to craft a tailored digital strategy.',
-              },
-              {
-                step: '02',
-                title: 'Design & Prototyping',
-                description:
-                  'Our creative team transforms your vision into stunning visual concepts and interactive prototypes.',
-              },
-              {
-                step: '03',
-                title: 'Development & Integration',
-                description:
-                  'We build robust, scalable solutions using cutting-edge technologies and best practices.',
-              },
-              {
-                step: '04',
-                title: 'Launch & Optimization',
-                description:
-                  'We ensure a smooth launch and continuously optimize your solution for maximum impact.',
-              },
-            ].map(process => (
-              <div
-                key={process.step}
-                className='text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10'
+            {technologies.map((tech, index) => (
+              <motion.div
+                key={tech.category}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className='bg-[var(--bg-secondary)] rounded-2xl p-6 shadow-lg border border-[var(--color-border)]'
               >
-                <div className='text-4xl font-bold text-blue-500 mb-4'>
-                  {process.step}
-                </div>
-                <h3 className='text-xl font-bold text-white mb-4'>
-                  {process.title}
+                <h3 className='text-xl font-bold text-cinematic-blue mb-4'>
+                  {tech.category}
                 </h3>
-                <p className='text-gray-300'>{process.description}</p>
-              </div>
+                <div className='space-y-2'>
+                  {tech.tools.map((tool, i) => (
+                    <div
+                      key={i}
+                      className='text-sm text-[var(--color-foreground)]/70'
+                    >
+                      • {tool}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className='py-20 bg-gradient-to-br from-slate-900 via-blue-900/50 to-slate-900'>
-        <div className='container mx-auto px-4 text-center'>
-          <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>
-            Ready to Start Your Journey?
-          </h2>
-          <p className='text-xl text-gray-300 max-w-3xl mx-auto mb-8'>
-            Let&apos;s discuss how our solutions can address your specific
-            challenges and drive growth for your business.
-          </p>
-          <div className='flex flex-col sm:flex-row gap-4 justify-center'>
-            <Link
-              href='/contact'
-              className='bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-600 transition-all duration-300'
-            >
-              Get Started
-            </Link>
-            <Link
-              href='/portfolio'
-              className='border border-white/20 text-white px-8 py-4 rounded-lg font-semibold hover:bg-white/10 transition-all duration-300'
-            >
-              View Our Work
-            </Link>
-          </div>
-          <p className='text-cinematic-blue/80 max-w-3xl mx-auto'>
-            We&apos;re here to help you navigate the digital landscape and
-            achieve your goals.
-          </p>
+      {/* Call to Action */}
+      <section className='py-16 bg-gradient-to-br from-cinematic-blue to-cinematic-gold'>
+        <div className='container mx-auto px-4 text-center text-white'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className='text-4xl md:text-5xl font-bold mb-6'>
+              Ready to Start Your Project?
+            </h2>
+            <p className='text-xl md:text-2xl max-w-3xl mx-auto mb-8 leading-relaxed'>
+              Let&apos;s discuss your vision and create a digital solution that
+              transforms your business and delights your audience.
+            </p>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className='bg-white text-cinematic-blue px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300'
+              >
+                Get Started Today
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className='border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-cinematic-blue transition-all duration-300'
+              >
+                View Our Work
+              </motion.button>
+            </div>
+          </motion.div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

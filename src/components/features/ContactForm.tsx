@@ -102,10 +102,13 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
         <div className='bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden'>
           {/* Header */}
           <div className='bg-gradient-to-r from-cinematic-blue to-cinematic-gold p-8 text-white'>
-            <h3 className='text-2xl font-bold mb-2'>Start Your Journey</h3>
+            <h3 className='text-2xl font-bold mb-2'>
+              Begin Your Cinematic Transformation
+            </h3>
             <p className='text-blue-100'>
-              Let&apos;s discuss how we can bring your digital vision to life
-              with cinematic humanism
+              Let&apos;s unearth your unique story and craft a digital
+              experience that will captivate your audience, amplify your impact,
+              and create lasting connections.
             </p>
           </div>
 

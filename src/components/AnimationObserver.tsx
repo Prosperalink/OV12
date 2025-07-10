@@ -1,11 +1,10 @@
 'use client';
 
 import { motion, useAnimation, useInView, Variants } from 'framer-motion';
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef } from 'react';
 
-// Animation variants for cinematic humanism
-const animationObserver = {
-  // Animation variants
+// Extracted animation variants for better maintainability
+const ANIMATION_VARIANTS = {
   fadeIn: {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
@@ -59,13 +58,13 @@ const animationObserver = {
       },
     },
   },
-};
+} as const;
 
 // Props interface for AnimationObserver
 interface IAnimationObserverProps {
   children: React.ReactNode;
   className?: string;
-  animation?: keyof typeof animationObserver;
+  animation?: keyof typeof ANIMATION_VARIANTS;
   delay?: number;
   duration?: number;
   once?: boolean;
@@ -75,19 +74,19 @@ interface IAnimationObserverProps {
   staggerDelay?: number;
 }
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export default function AnimationObserver({
-  children,
-  className = '',
-  animation = 'fadeInUp',
-  delay = 0,
-  duration,
-  once = true,
-  direction = 'up',
-  distance = 30,
-  stagger = false,
-  staggerDelay = 0.1,
-}: IAnimationObserverProps) {
+// Extracted hook for animation logic
+const useAnimationLogic = (props: IAnimationObserverProps) => {
+  const {
+    animation = 'fadeInUp',
+    delay = 0,
+    duration,
+    once = true,
+    direction = 'up',
+    distance = 30,
+    stagger = false,
+    staggerDelay = 0.1,
+  } = props;
+
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
     once,
@@ -96,7 +95,7 @@ export default function AnimationObserver({
   const controls = useAnimation();
 
   // Custom animation based on direction and distance
-  const getCustomAnimation = (): Variants => {
+  const getCustomAnimation = useCallback((): Variants => {
     const baseAnimation = {
       hidden: { opacity: 0 },
       visible: { opacity: 1 },
@@ -130,18 +129,18 @@ export default function AnimationObserver({
       default:
         return baseAnimation;
     }
-  };
+  }, [direction, distance]);
 
   // Get animation variants
-  const getAnimationVariants = (): Variants => {
-    if (animation && animationObserver[animation]) {
-      return animationObserver[animation];
+  const getAnimationVariants = useCallback((): Variants => {
+    if (animation && ANIMATION_VARIANTS[animation]) {
+      return ANIMATION_VARIANTS[animation];
     }
     return getCustomAnimation();
-  };
+  }, [animation, getCustomAnimation]);
 
   // Get stagger variants
-  const getStaggerVariants = (): Variants => {
+  const getStaggerVariants = useCallback((): Variants => {
     return {
       hidden: {},
       visible: {
@@ -151,7 +150,20 @@ export default function AnimationObserver({
         },
       },
     };
-  };
+  }, [staggerDelay, delay]);
+
+  const variants = useMemo(() => {
+    return stagger ? getStaggerVariants() : getAnimationVariants();
+  }, [stagger, getStaggerVariants, getAnimationVariants]);
+
+  const transition = useMemo(
+    () => ({
+      duration: duration || 0.8,
+      ease: [0.4, 0, 0.2, 1],
+      delay,
+    }),
+    [duration, delay]
+  );
 
   useEffect(() => {
     if (isInView) {
@@ -161,12 +173,18 @@ export default function AnimationObserver({
     }
   }, [isInView, controls]);
 
-  const variants = stagger ? getStaggerVariants() : getAnimationVariants();
-  const transition = {
-    duration: duration || 0.8,
-    ease: [0.4, 0, 0.2, 1],
-    delay,
+  return {
+    ref,
+    variants,
+    transition,
+    controls,
   };
+};
+
+// Main AnimationObserver component
+export default function AnimationObserver(props: IAnimationObserverProps) {
+  const { children, className = '' } = props;
+  const { ref, variants, transition, controls } = useAnimationLogic(props);
 
   return (
     <motion.div
@@ -183,132 +201,73 @@ export default function AnimationObserver({
   );
 }
 
-// Convenience components
-/* eslint-disable @typescript-eslint/naming-convention */
-export const FadeInUp: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInUp' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
+// Extracted convenience component factory
+const createConvenienceComponent = (
+  animation: keyof typeof ANIMATION_VARIANTS
+) => {
+  const Component = ({
+    children,
+    className,
+  }: {
+    children: React.ReactNode;
+    className?: string;
+  }) => (
+    <AnimationObserver animation={animation} className={className || ''}>
+      {children}
+    </AnimationObserver>
+  );
+  Component.displayName = `ConvenienceComponent(${animation})`;
+  return Component;
+};
 
-export const FadeInDown: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInDown' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
+// Convenience components using factory pattern
+export const FadeInUp = createConvenienceComponent('fadeInUp');
+export const FadeInDown = createConvenienceComponent('fadeInDown');
+export const FadeInLeft = createConvenienceComponent('fadeInLeft');
+export const FadeInRight = createConvenienceComponent('fadeInRight');
+export const ScaleIn = createConvenienceComponent('scaleIn');
+export const SlideInUp = createConvenienceComponent('slideInUp');
+export const CinematicEntrance =
+  createConvenienceComponent('cinematicEntrance');
+export const DramaticReveal = createConvenienceComponent('dramaticReveal');
+export const HeroEntrance = createConvenienceComponent('heroEntrance');
+export const TextReveal = createConvenienceComponent('textReveal');
 
-export const FadeInLeft: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInLeft' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const FadeInRight: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInRight' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const ScaleIn: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='scaleIn' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const SlideInUp: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='slideInUp' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const CinematicEntrance: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='cinematicEntrance' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const DramaticReveal: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='dramaticReveal' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const HeroEntrance: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='heroEntrance' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const TextReveal: React.FC<{
-  children: React.ReactNode;
-  className?: string;
-}> = ({ children, className }) => (
-  <AnimationObserver animation='textReveal' className={className || ''}>
-    {children}
-  </AnimationObserver>
-);
-
-export const StaggerContainer: React.FC<{
+// Special case for StaggerContainer
+export const StaggerContainer = ({
+  children,
+  className,
+  staggerDelay = 0.1,
+}: {
   children: React.ReactNode;
   className?: string;
   staggerDelay?: number;
-}> = ({ children, className, staggerDelay = 0.1 }) => (
+}) => (
   <AnimationObserver
     animation='staggerContainer'
     className={className || ''}
-    stagger={true}
     staggerDelay={staggerDelay}
+    stagger={true}
   >
     {children}
   </AnimationObserver>
 );
-/* eslint-enable @typescript-eslint/naming-convention */
 
-// Hook for cinematic animations
-export const useCinematicAnimation = (
-  animation: keyof typeof animationObserver
-) => {
+// Extracted hook for cinematic animation
+export const useCinematicAnimation = () => {
   const controls = useAnimation();
 
-  const startAnimation = () => {
+  const startAnimation = useCallback(() => {
     controls.start('visible');
-  };
+  }, [controls]);
 
-  const resetAnimation = () => {
+  const resetAnimation = useCallback(() => {
     controls.start('hidden');
-  };
+  }, [controls]);
 
   return {
     controls,
     startAnimation,
     resetAnimation,
-    variants: animationObserver[animation],
   };
 };

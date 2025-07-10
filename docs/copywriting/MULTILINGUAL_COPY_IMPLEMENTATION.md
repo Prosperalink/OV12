@@ -10,8 +10,8 @@
 
 - **Main Headline:** "Orson Vision"
 - **Sub-headline:** "Cinematic Humanism in Digital Innovation"
-- **Description:** "We craft immersive digital experiences that blend cutting-edge technology with human-centered design, creating moments that inspire and transform."
-- **Primary CTA:** "Start Your Journey"
+- **Description:** "We unearth and amplify your unique story through cinematic digital experiences that resonate deeply, transform perceptions, and inspire meaningful action. Every interaction is crafted like a film scene—with precision, artistry, and emotional depth."
+- **Primary CTA:** "Begin Your Cinematic Journey"
 - **Secondary CTA:** "Watch Our Story"
 - **Social Proof:** "4.9/5 from 200+ clients" | "Trusted by 500+ businesses"
 
@@ -19,8 +19,8 @@
 
 - **Main Headline:** "Orson Vision"
 - **Sub-headline:** "Humanisme Cinématographique dans l'Innovation Numérique"
-- **Description:** "Nous créons des expériences numériques immersives qui allient technologie de pointe et design centré sur l'humain, créant des moments qui inspirent et transforment."
-- **Primary CTA:** "Commencez Votre Voyage"
+- **Description:** "Nous unissons et amplifions votre histoire unique à travers des expériences numériques cinématographiques qui résonnent profondément, transforment les perceptions et inspirent une action significative. Chaque interaction est conçue comme une scène de film—avec précision, art et profondeur émotionnelle."
+- **Primary CTA:** "Commencez Votre Voyage Cinématographique"
 - **Secondary CTA:** "Regardez Notre Histoire"
 - **Social Proof:** "4,9/5 de 200+ clients" | "Fait confiance par 500+ entreprises"
 
@@ -28,8 +28,8 @@
 
 - **Main Headline:** "أورسون فيجن"
 - **Sub-headline:** "الإنسانية السينمائية في الابتكار الرقمي"
-- **Description:** "نحن نبتكر تجارب رقمية غامرة تجمع بين التكنولوجيا المتطورة والتصميم المتمركز حول الإنسان، مما يخلق لحظات تلهم وتغير."
-- **Primary CTA:** "ابدأ رحلتك"
+- **Description:** "نحن نكشف ونعزز قصتك الفريدة من خلال التجارب الرقمية السينمائية التي تتردد بعمق، وتحول التصورات، وتلهم العمل الهادف. كل تفاعل مصمم مثل مشهد فيلم—بدقة وفن وعمق عاطفي."
+- **Primary CTA:** "ابدأ رحلتك السينمائية"
 - **Secondary CTA:** "شاهد قصتنا"
 - **Social Proof:** "٤.٩/٥ من ٢٠٠+ عميل" | "يثق بنا ٥٠٠+ شركة"
 
@@ -42,100 +42,100 @@
 **English Copy:**
 
 - **Title:** "Digital Innovation"
-- **Subtitle:** "Building robust digital foundations that drive growth and competitive advantage"
-- **Description:** "We craft cutting-edge digital solutions that bridge the gap between imagination and implementation, creating seamless user experiences that drive business growth."
+- **Subtitle:** "Transforming visions into compelling digital narratives that captivate audiences and amplify impact"
+- **Description:** "We transform your vision into compelling digital narratives that captivate audiences and amplify your impact. Every solution is crafted with cinematic precision, unearthing the human story behind your technology and creating experiences that resonate long after the first interaction."
 
 **French Copy:**
 
 - **Title:** "Innovation Numérique"
-- **Subtitle:** "Construire des fondations numériques robustes qui stimulent la croissance et l'avantage concurrentiel"
-- **Description:** "Nous créons des solutions numériques de pointe qui comblent le fossé entre l'imagination et la mise en œuvre, créant des expériences utilisateur fluides qui stimulent la croissance de l'entreprise."
+- **Subtitle:** "Transformer les visions en récits numériques captivants qui séduisent les publics et amplifient l'impact"
+- **Description:** "Nous transformons votre vision en récits numériques captivants qui séduisent les publics et amplifient votre impact. Chaque solution est conçue avec une précision cinématographique, révélant l'histoire humaine derrière votre technologie et créant des expériences qui résonnent longtemps après la première interaction."
 
 **Arabic Copy:**
 
 - **Title:** "الابتكار الرقمي"
-- **Subtitle:** "بناء أسس رقمية قوية تدفع النمو والميزة التنافسية"
-- **Description:** "نحن نبتكر حلول رقمية متطورة تربط بين الخيال والتنفيذ، مما يخلق تجارب مستخدم سلسة تدفع نمو الأعمال."
+- **Subtitle:** "تحويل الرؤى إلى قصص رقمية مقنعة تجذب الجماهير وتعزز التأثير"
+- **Description:** "نحن نحول رؤيتك إلى قصص رقمية مقنعة تجذب الجماهير وتعزز تأثيرك. كل حل مصمم بدقة سينمائية، يكشف القصة الإنسانية وراء تقنيتك ويخلق تجارب تتردد طويلاً بعد التفاعل الأول."
 
 #### **Creative Design**
 
 **English Copy:**
 
 - **Title:** "Creative Design"
-- **Subtitle:** "Crafting compelling visual narratives that connect with your audience and build lasting brand relationships"
-- **Description:** "We design immersive brand experiences that connect with audiences on an emotional level, building lasting relationships and driving brand loyalty."
+- **Subtitle:** "Crafting compelling visual narratives that unearth your brand's unique story and amplify it through cinematic design experiences"
+- **Description:** "We craft compelling visual narratives that unearth your brand's unique story and amplify it through cinematic design experiences. Every visual element is crafted with precision and artistry, creating emotional connections that transform how audiences perceive and engage with your brand."
 
 **French Copy:**
 
 - **Title:** "Design Créatif"
-- **Subtitle:** "Créer des récits visuels captivants qui se connectent avec votre public et construisent des relations de marque durables"
-- **Description:** "Nous concevons des expériences de marque immersives qui se connectent avec les publics au niveau émotionnel, construisant des relations durables et stimulant la fidélité à la marque."
+- **Subtitle:** "Créer des récits visuels captivants qui révèlent l'histoire unique de votre marque et l'amplifient à travers des expériences de design cinématographiques"
+- **Description:** "Nous créons des récits visuels captivants qui révèlent l'histoire unique de votre marque et l'amplifient à travers des expériences de design cinématographiques. Chaque élément visuel est conçu avec précision et art, créant des connexions émotionnelles qui transforment la façon dont les publics perçoivent et s'engagent avec votre marque."
 
 **Arabic Copy:**
 
 - **Title:** "التصميم الإبداعي"
-- **Subtitle:** "ابتكار قصص بصرية مقنعة تتصل بجمهورك وتبني علاقات علامة تجارية دائمة"
-- **Description:** "نحن نصمم تجارب علامة تجارية غامرة تتصل بالجماهير على المستوى العاطفي، مما يبني علاقات دائمة ويحفز الولاء للعلامة التجارية."
+- **Subtitle:** "ابتكار قصص بصرية مقنعة تكشف القصة الفريدة لعلامتك التجارية وتعززها من خلال تجارب التصميم السينمائية"
+- **Description:** "نحن نبتكر قصص بصرية مقنعة تكشف القصة الفريدة لعلامتك التجارية وتعززها من خلال تجارب التصميم السينمائية. كل عنصر بصري مصمم بدقة وفن، مما يخلق روابط عاطفية تحول طريقة إدراك الجماهير وتفاعلها مع علامتك التجارية."
 
 #### **Content Creation**
 
 **English Copy:**
 
 - **Title:** "Content Creation"
-- **Subtitle:** "Producing engaging content that tells your story and drives meaningful conversations across all channels"
-- **Description:** "We produce compelling content that tells your story, engages your audience, and drives meaningful conversations across all digital channels."
+- **Subtitle:** "Amplifying your voice through cinematic storytelling that resonates deeply and inspires meaningful action"
+- **Description:** "We amplify your voice through cinematic storytelling that resonates deeply with audiences and inspires meaningful action. From visual narratives to compelling copy, we craft content that unearths the human element in every story and transforms how your message connects with the world."
 
 **French Copy:**
 
 - **Title:** "Création de Contenu"
-- **Subtitle:** "Produire du contenu engageant qui raconte votre histoire et stimule des conversations significatives sur tous les canaux"
-- **Description:** "Nous produisons du contenu captivant qui raconte votre histoire, engage votre public et stimule des conversations significatives sur tous les canaux numériques."
+- **Subtitle:** "Amplifier votre voix à travers la narration cinématographique qui résonne profondément et inspire une action significative"
+- **Description:** "Nous amplifions votre voix à travers la narration cinématographique qui résonne profondément avec les publics et inspire une action significative. Des récits visuels au contenu captivant, nous créons du contenu qui révèle l'élément humain dans chaque histoire et transforme la façon dont votre message se connecte avec le monde."
 
 **Arabic Copy:**
 
 - **Title:** "إنشاء المحتوى"
-- **Subtitle:** "إنتاج محتوى جذاب يروي قصتك ويحفز محادثات هادفة عبر جميع القنوات"
-- **Description:** "نحن ننتج محتوى مقنع يروي قصتك، ويجذب جمهورك، ويحفز محادثات هادفة عبر جميع القنوات الرقمية."
+- **Subtitle:** "تعزيز صوتك من خلال السرد السينمائي الذي يتردد بعمق ويلهم العمل الهادف"
+- **Description:** "نحن نعزز صوتك من خلال السرد السينمائي الذي يتردد بعمق مع الجماهير ويلهم العمل الهادف. من القصص البصرية إلى المحتوى المقنع، نبتكر محتوى يكشف العنصر الإنساني في كل قصة ويحول طريقة اتصال رسالتك بالعالم."
 
 #### **Technology Solutions**
 
 **English Copy:**
 
 - **Title:** "Technology Solutions"
-- **Subtitle:** "Engineering reliable technology solutions that power your digital operations and ensure seamless performance"
-- **Description:** "We architect robust technology solutions that scale with your business, ensuring reliability, security, and performance for your digital operations."
+- **Subtitle:** "Crafting seamless technology experiences that amplify human potential and transform digital interactions"
+- **Description:** "We craft seamless technology experiences that amplify human potential and transform how people interact with your digital presence. Every solution is built with cinematic precision, ensuring reliability and performance while creating moments that resonate and inspire."
 
 **French Copy:**
 
 - **Title:** "Solutions Technologiques"
-- **Subtitle:** "Ingénierie de solutions technologiques fiables qui alimentent vos opérations numériques et assurent des performances fluides"
-- **Description:** "Nous architecturons des solutions technologiques robustes qui s'adaptent à votre entreprise, assurant fiabilité, sécurité et performance pour vos opérations numériques."
+- **Subtitle:** "Créer des expériences technologiques fluides qui amplifient le potentiel humain et transforment les interactions numériques"
+- **Description:** "Nous créons des expériences technologiques fluides qui amplifient le potentiel humain et transforment la façon dont les gens interagissent avec votre présence numérique. Chaque solution est construite avec une précision cinématographique, assurant fiabilité et performance tout en créant des moments qui résonnent et inspirent."
 
 **Arabic Copy:**
 
 - **Title:** "الحلول التقنية"
-- **Subtitle:** "هندسة حلول تقنية موثوقة تشغل عملياتك الرقمية وتضمن أداء سلس"
-- **Description:** "نحن نصمم حلول تقنية قوية تتوسع مع عملك، مما يضمن الموثوقية والأمان والأداء لعملياتك الرقمية."
+- **Subtitle:** "ابتكار تجارب تقنية سلسة تعزز الإمكانات البشرية وتحول التفاعلات الرقمية"
+- **Description:** "نحن نبتكر تجارب تقنية سلسة تعزز الإمكانات البشرية وتحول طريقة تفاعل الناس مع وجودك الرقمي. كل حل مبني بدقة سينمائية، مما يضمن الموثوقية والأداء مع خلق لحظات تتردد وتلهم."
 
 #### **Strategic Consulting**
 
 **English Copy:**
 
 - **Title:** "Strategic Consulting"
-- **Subtitle:** "Providing strategic guidance to navigate the digital landscape and achieve sustainable business growth"
-- **Description:** "We provide strategic guidance to help you navigate the digital landscape, optimize your operations, and achieve sustainable growth."
+- **Subtitle:** "Unearthing your unique potential and crafting strategic narratives that transform your market presence"
+- **Description:** "We unearth your unique potential and craft strategic narratives that transform your market presence. Through cinematic humanism, we help you navigate the digital landscape with clarity, purpose, and the confidence to amplify your impact in meaningful ways."
 
 **French Copy:**
 
 - **Title:** "Conseil Stratégique"
-- **Subtitle:** "Fournir des conseils stratégiques pour naviguer dans le paysage numérique et atteindre une croissance commerciale durable"
-- **Description:** "Nous fournissons des conseils stratégiques pour vous aider à naviguer dans le paysage numérique, optimiser vos opérations et atteindre une croissance durable."
+- **Subtitle:** "Révéler votre potentiel unique et créer des récits stratégiques qui transforment votre présence sur le marché"
+- **Description:** "Nous révélons votre potentiel unique et créons des récits stratégiques qui transforment votre présence sur le marché. À travers l'humanisme cinématographique, nous vous aidons à naviguer dans le paysage numérique avec clarté, objectif et la confiance d'amplifier votre impact de manière significative."
 
 **Arabic Copy:**
 
 - **Title:** "الاستشارات الاستراتيجية"
-- **Subtitle:** "تقديم إرشادات استراتيجية للتنقل في المشهد الرقمي وتحقيق نمو أعمال مستدام"
-- **Description:** "نحن نقدم إرشادات استراتيجية لمساعدتك في التنقل في المشهد الرقمي، وتحسين عملياتك، وتحقيق نمو مستدام."
+- **Subtitle:** "كشف إمكاناتك الفريدة وابتكار قصص استراتيجية تحول وجودك في السوق"
+- **Description:** "نحن نكشف إمكاناتك الفريدة ونبتكر قصص استراتيجية تحول وجودك في السوق. من خلال الإنسانية السينمائية، نساعدك في التنقل في المشهد الرقمي بوضوح وهدف والثقة لتعزيز تأثيرك بطرق هادفة."
 
 ---
 

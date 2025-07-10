@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import Footer from '@/components/layout/Footer';
 import Navigation from '@/components/layout/Navigation';
 import ThemeProvider from '@/components/layout/ThemeProvider';
+import { LanguageProvider } from '@/contexts/LanguageContext';
 import './globals.css';
 
 const geist = Inter({
@@ -97,13 +98,15 @@ export default function rootLayout({
         <link rel='manifest' href='/site.webmanifest' />
       </head>
       <body className={geist.className}>
-        <ThemeProvider>
-          <div className='min-h-screen'>
-            <Navigation />
-            {children}
-            <Footer />
-          </div>
-        </ThemeProvider>
+        <LanguageProvider>
+          <ThemeProvider>
+            <div className='min-h-screen'>
+              <Navigation />
+              {children}
+              <Footer />
+            </div>
+          </ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

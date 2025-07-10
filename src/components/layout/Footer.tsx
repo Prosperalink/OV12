@@ -111,9 +111,9 @@ export default function Footer() {
   ];
 
   return (
-    <footer className='relative bg-gray-900 dark:bg-gray-950 text-white overflow-hidden'>
+    <footer className='relative bg-[var(--bg-secondary)] text-[var(--color-foreground)] overflow-hidden'>
       {/* Enhanced background with cinematic effects */}
-      <div className='absolute inset-0 bg-gradient-to-br from-cinematic-blue/20 via-gray-900 to-cinematic-gold/20' />
+      <div className='absolute inset-0 bg-gradient-to-br from-cinematic-blue/10 via-[var(--bg-secondary)] to-cinematic-gold/10' />
 
       {/* Animated background elements */}
       <div className='absolute inset-0'>
@@ -148,7 +148,7 @@ export default function Footer() {
               </h3>
             </motion.div>
 
-            <p className='text-gray-300 mb-6 leading-relaxed'>
+            <p className='text-[var(--color-foreground)]/80 mb-6 leading-relaxed'>
               We craft digital experiences that blend artistic excellence with
               technical precision, creating moments that inspire, connect, and
               transform.
@@ -157,7 +157,7 @@ export default function Footer() {
             {/* Enhanced contact info with icons */}
             <div className='space-y-3'>
               <motion.div
-                className='flex items-center space-x-3 text-gray-300 hover:text-cinematic-gold transition-colors duration-300'
+                className='flex items-center space-x-3 text-[var(--color-foreground)]/70 hover:text-cinematic-gold transition-colors duration-300'
                 variants={linkVariants}
                 whileHover='hover'
               >
@@ -166,7 +166,7 @@ export default function Footer() {
               </motion.div>
 
               <motion.div
-                className='flex items-center space-x-3 text-gray-300 hover:text-cinematic-gold transition-colors duration-300'
+                className='flex items-center space-x-3 text-[var(--color-foreground)]/70 hover:text-cinematic-gold transition-colors duration-300'
                 variants={linkVariants}
                 whileHover='hover'
               >
@@ -175,7 +175,7 @@ export default function Footer() {
               </motion.div>
 
               <motion.div
-                className='flex items-center space-x-3 text-gray-300 hover:text-cinematic-gold transition-colors duration-300'
+                className='flex items-center space-x-3 text-[var(--color-foreground)]/70 hover:text-cinematic-gold transition-colors duration-300'
                 variants={linkVariants}
                 whileHover='hover'
               >
@@ -210,7 +210,7 @@ export default function Footer() {
                   >
                     <Link
                       href={link.href}
-                      className='text-gray-300 hover:text-cinematic-gold transition-all duration-300 group relative'
+                      className='text-[var(--color-foreground)]/70 hover:text-cinematic-gold transition-all duration-300 group relative'
                     >
                       <span className='relative z-10'>{link.name}</span>
                       {/* Animated underline */}
@@ -231,11 +231,11 @@ export default function Footer() {
           <div className='flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0'>
             {/* Copyright with enhanced styling */}
             <motion.div
-              className='text-gray-400 text-sm'
+              className='text-[var(--color-foreground)]/60 text-sm'
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.2 }}
             >
-              <span className='bg-gradient-to-r from-gray-400 to-cinematic-gold bg-clip-text text-transparent'>
+              <span className='bg-gradient-to-r from-[var(--color-foreground)]/60 to-cinematic-gold bg-clip-text text-transparent'>
                 © {currentYear} Orson Vision. All rights reserved.
               </span>
             </motion.div>
@@ -279,7 +279,7 @@ export default function Footer() {
             <h4 className='text-lg font-semibold text-cinematic-gold mb-2'>
               Stay Updated
             </h4>
-            <p className='text-gray-300 mb-4'>
+            <p className='text-[var(--color-foreground)]/80 mb-4'>
               Get the latest insights on cinematic humanism and digital
               innovation.
             </p>

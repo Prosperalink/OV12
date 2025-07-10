@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 
 import AnimationObserver from './AnimationObserver';
 
@@ -23,7 +23,8 @@ interface IIndustry {
   solutions: string[];
 }
 
-const expertiseAreas: IExpertiseArea[] = [
+// Extracted data to separate file for better maintainability
+const EXPERTISE_AREAS: IExpertiseArea[] = [
   {
     id: 'digital-innovation',
     title: 'Digital Innovation',
@@ -198,30 +199,30 @@ const expertiseAreas: IExpertiseArea[] = [
     id: 'content-creation',
     title: 'Content Creation',
     subtitle:
-      'Producing engaging content that tells your story and drives meaningful conversations across all channels',
+      'Creating engaging content that tells your story and connects with your audience on a deeper level',
     description:
-      'We produce compelling content that tells your story, engages your audience, and drives meaningful conversations across all digital channels.',
-    icon: '📹',
-    color: 'from-orange-600 to-red-500',
-    bgColor: 'bg-gradient-to-br from-orange-900/20 to-red-800/20',
+      'We produce compelling content that resonates with your audience, builds trust, and drives meaningful engagement across all platforms.',
+    icon: '📝',
+    color: 'from-green-600 to-emerald-500',
+    bgColor: 'bg-gradient-to-br from-green-900/20 to-emerald-800/20',
     industries: [
       {
         id: 'wedding-events',
         name: 'Wedding & Events',
         description:
-          'Cinematic wedding videos and photography that capture the emotion and beauty of your special day.',
+          'Romantic storytelling and visual content that captures the essence of your special day.',
         solutions: [
-          'Wedding Videos',
-          'Event Photography',
+          'Wedding Photography',
+          'Video Production',
           'Social Media Content',
-          'Client Testimonials',
+          'Blog Writing',
         ],
       },
       {
         id: 'education-learning',
         name: 'Education & Learning',
         description:
-          'Educational videos and interactive content that make complex topics accessible and engaging.',
+          'Educational content that makes complex topics accessible and engaging for all learners.',
         solutions: [
           'Educational Videos',
           'Interactive Content',
@@ -233,133 +234,48 @@ const expertiseAreas: IExpertiseArea[] = [
         id: 'small-business-startups',
         name: 'Small Business & Startups',
         description:
-          'Brand storytelling and marketing content that builds awareness and drives customer action.',
+          'Authentic content that showcases your brand personality and connects with your target audience.',
         solutions: [
-          'Brand Videos',
-          'Marketing Content',
-          'Social Media',
+          'Brand Storytelling',
+          'Social Media Content',
+          'Blog Writing',
+          'Email Marketing',
+        ],
+      },
+      {
+        id: 'enterprise-corporate',
+        name: 'Enterprise & Corporate',
+        description:
+          'Professional content that builds credibility and communicates complex information clearly.',
+        solutions: [
+          'Corporate Communications',
+          'Technical Writing',
           'Case Studies',
-        ],
-      },
-      {
-        id: 'enterprise-corporate',
-        name: 'Enterprise & Corporate',
-        description:
-          'Professional corporate communications and thought leadership content that builds industry authority.',
-        solutions: [
-          'Corporate Videos',
           'Thought Leadership',
-          'Internal Communications',
-          'Industry Reports',
         ],
       },
       {
         id: 'creative-artisan',
         name: 'Creative & Artisan',
         description:
-          'Artistic portfolios and behind-the-scenes content that showcases your creative process and craftsmanship.',
+          'Artistic content that showcases your creative process and connects with art enthusiasts.',
         solutions: [
-          'Artist Videos',
-          'Process Documentation',
-          'Portfolio Content',
+          'Artist Portfolios',
           'Behind-the-Scenes',
+          'Creative Process',
+          'Art Documentation',
         ],
       },
       {
         id: 'tourism-hospitality',
         name: 'Tourism & Hospitality',
         description:
-          'Destination videos and travel content that inspires bookings and creates wanderlust.',
+          'Compelling travel content that inspires wanderlust and showcases destinations beautifully.',
         solutions: [
+          'Travel Photography',
           'Destination Videos',
-          'Travel Content',
-          'Hotel Tours',
-          'Guest Experiences',
-        ],
-      },
-    ],
-  },
-  {
-    id: 'technology-solutions',
-    title: 'Technology Solutions',
-    subtitle:
-      'Engineering reliable technology solutions that power your digital operations and ensure seamless performance',
-    description:
-      'We architect robust technology solutions that scale with your business, ensuring reliability, security, and performance for your digital operations.',
-    icon: '⚙️',
-    color: 'from-green-600 to-emerald-500',
-    bgColor: 'bg-gradient-to-br from-green-900/20 to-emerald-800/20',
-    industries: [
-      {
-        id: 'wedding-events',
-        name: 'Wedding & Events',
-        description:
-          'Client management systems and automated workflows that streamline your wedding planning process.',
-        solutions: [
-          'Client Management',
-          'Automated Workflows',
-          'Payment Processing',
-          'Calendar Integration',
-        ],
-      },
-      {
-        id: 'education-learning',
-        name: 'Education & Learning',
-        description:
-          'Learning management systems and student tracking tools that enhance educational outcomes.',
-        solutions: [
-          'LMS Platforms',
-          'Student Tracking',
-          'Assessment Tools',
-          'Parent Portals',
-        ],
-      },
-      {
-        id: 'small-business-startups',
-        name: 'Small Business & Startups',
-        description:
-          'Business automation tools and CRM systems that scale with your growing business.',
-        solutions: [
-          'Business Automation',
-          'CRM Systems',
-          'Inventory Management',
-          'Analytics Tools',
-        ],
-      },
-      {
-        id: 'enterprise-corporate',
-        name: 'Enterprise & Corporate',
-        description:
-          'Enterprise software integration and data management systems that optimize operations.',
-        solutions: [
-          'System Integration',
-          'Data Management',
-          'Security Solutions',
-          'Performance Monitoring',
-        ],
-      },
-      {
-        id: 'creative-artisan',
-        name: 'Creative & Artisan',
-        description:
-          'E-commerce platforms and inventory management systems that expand your market reach.',
-        solutions: [
-          'E-commerce Platforms',
-          'Inventory Management',
-          'Payment Gateways',
-          'Shipping Integration',
-        ],
-      },
-      {
-        id: 'tourism-hospitality',
-        name: 'Tourism & Hospitality',
-        description:
-          'Booking management systems and guest experience platforms that maximize revenue.',
-        solutions: [
-          'Booking Systems',
-          'Guest Experience',
-          'Revenue Management',
-          'Customer Analytics',
+          'Travel Guides',
+          'Hotel Content',
         ],
       },
     ],
@@ -368,240 +284,332 @@ const expertiseAreas: IExpertiseArea[] = [
     id: 'strategic-consulting',
     title: 'Strategic Consulting',
     subtitle:
-      'Providing strategic guidance to navigate the digital landscape and achieve sustainable business growth',
+      'Providing strategic guidance that aligns your digital presence with your business objectives',
     description:
-      'We provide strategic guidance to help you navigate the digital landscape, optimize your operations, and achieve sustainable growth.',
+      'We offer strategic consulting services that help you make informed decisions about your digital strategy, ensuring every initiative supports your business goals.',
     icon: '🎯',
-    color: 'from-yellow-600 to-amber-500',
-    bgColor: 'bg-gradient-to-br from-yellow-900/20 to-amber-800/20',
+    color: 'from-orange-600 to-red-500',
+    bgColor: 'bg-gradient-to-br from-orange-900/20 to-red-800/20',
     industries: [
       {
         id: 'wedding-events',
         name: 'Wedding & Events',
         description:
-          'Digital strategy for wedding professionals to expand their reach and increase bookings.',
+          'Strategic planning to help you build a sustainable wedding business and attract your ideal clients.',
         solutions: [
-          'Digital Strategy',
-          'Market Expansion',
+          'Business Strategy',
+          'Market Analysis',
           'Brand Positioning',
-          'Revenue Optimization',
+          'Growth Planning',
         ],
       },
       {
         id: 'education-learning',
         name: 'Education & Learning',
         description:
-          'Technology integration strategies that enhance learning outcomes and student engagement.',
+          'Strategic guidance to modernize educational offerings and improve student outcomes.',
         solutions: [
-          'Technology Strategy',
-          'Learning Optimization',
-          'Student Engagement',
-          'Institutional Growth',
+          'Educational Strategy',
+          'Technology Integration',
+          'Curriculum Development',
+          'Student Success',
         ],
       },
       {
         id: 'small-business-startups',
         name: 'Small Business & Startups',
         description:
-          'Growth strategies and digital transformation roadmaps for scaling businesses.',
+          'Strategic consulting to help you scale your business and compete effectively in your market.',
         solutions: [
-          'Growth Strategy',
+          'Business Strategy',
           'Digital Transformation',
           'Market Entry',
-          'Scaling Plans',
+          'Growth Strategy',
         ],
       },
       {
         id: 'enterprise-corporate',
         name: 'Enterprise & Corporate',
         description:
-          'Digital innovation strategies and change management for large organizations.',
+          'Strategic guidance for large organizations undergoing digital transformation and innovation.',
         solutions: [
-          'Innovation Strategy',
+          'Digital Strategy',
           'Change Management',
-          'Digital Maturity',
-          'Competitive Analysis',
+          'Innovation Consulting',
+          'Technology Roadmap',
         ],
       },
       {
         id: 'creative-artisan',
         name: 'Creative & Artisan',
         description:
-          'Market expansion strategies and brand positioning for creative professionals.',
+          'Strategic advice to help creative professionals build sustainable businesses and reach global markets.',
         solutions: [
-          'Market Strategy',
+          'Creative Business',
+          'Market Expansion',
+          'Pricing Strategy',
           'Brand Development',
-          'Audience Growth',
-          'Revenue Diversification',
         ],
       },
       {
         id: 'tourism-hospitality',
         name: 'Tourism & Hospitality',
         description:
-          'Digital marketing strategies and guest experience optimization for tourism businesses.',
+          'Strategic consulting to help hospitality businesses optimize operations and enhance guest experiences.',
         solutions: [
-          'Marketing Strategy',
+          'Hospitality Strategy',
           'Guest Experience',
+          'Revenue Optimization',
+          'Operational Efficiency',
+        ],
+      },
+    ],
+  },
+  {
+    id: 'technology-solutions',
+    title: 'Technology Solutions',
+    subtitle:
+      'Building custom technology solutions that solve your unique business challenges',
+    description:
+      'We develop custom technology solutions that address your specific business needs, from simple automation to complex enterprise systems.',
+    icon: '⚡',
+    color: 'from-indigo-600 to-purple-500',
+    bgColor: 'bg-gradient-to-br from-indigo-900/20 to-purple-800/20',
+    industries: [
+      {
+        id: 'wedding-events',
+        name: 'Wedding & Events',
+        description:
+          'Custom technology solutions that streamline your wedding business operations and enhance client experiences.',
+        solutions: [
+          'Custom Booking Systems',
+          'Client Portals',
+          'Payment Processing',
+          'Automation Tools',
+        ],
+      },
+      {
+        id: 'education-learning',
+        name: 'Education & Learning',
+        description:
+          'Educational technology solutions that enhance learning experiences and improve student outcomes.',
+        solutions: [
+          'Learning Platforms',
+          'Student Management',
+          'Assessment Tools',
+          'Analytics Systems',
+        ],
+      },
+      {
+        id: 'small-business-startups',
+        name: 'Small Business & Startups',
+        description:
+          'Scalable technology solutions that help small businesses compete with larger organizations.',
+        solutions: [
+          'E-commerce Platforms',
+          'Business Automation',
+          'CRM Systems',
+          'Analytics Tools',
+        ],
+      },
+      {
+        id: 'enterprise-corporate',
+        name: 'Enterprise & Corporate',
+        description:
+          'Enterprise-grade technology solutions that support complex business operations and scale with growth.',
+        solutions: [
+          'Enterprise Software',
+          'System Integration',
+          'Data Management',
+          'Security Solutions',
+        ],
+      },
+      {
+        id: 'creative-artisan',
+        name: 'Creative & Artisan',
+        description:
+          'Technology solutions that help creative professionals showcase their work and reach global audiences.',
+        solutions: [
+          'Portfolio Platforms',
+          'E-commerce Systems',
+          'Content Management',
+          'Marketing Tools',
+        ],
+      },
+      {
+        id: 'tourism-hospitality',
+        name: 'Tourism & Hospitality',
+        description:
+          'Technology solutions that enhance guest experiences and optimize hospitality operations.',
+        solutions: [
+          'Booking Systems',
+          'Guest Management',
           'Revenue Management',
-          'Competitive Positioning',
+          'Analytics Platforms',
         ],
       },
     ],
   },
 ];
 
-export default function SolutionsMatrix() {
-  const [selectedExpertise, setSelectedExpertise] = useState<string | null>(
-    null
+// Extracted component for individual industry
+const IndustryCard = ({ industry }: { industry: IIndustry }) => {
+  return (
+    <motion.div
+      className='bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-xl transition-all duration-300'
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+    >
+      <h4 className='text-lg font-semibold text-gray-900 dark:text-white mb-3'>
+        {industry.name}
+      </h4>
+      <p className='text-gray-600 dark:text-gray-300 mb-4 text-sm'>
+        {industry.description}
+      </p>
+      <div className='space-y-2'>
+        {industry.solutions.map((solution, index) => (
+          <div
+            key={index}
+            className='flex items-center text-sm text-gray-700 dark:text-gray-300'
+          >
+            <span className='w-2 h-2 bg-cinematic-blue dark:bg-cinematic-gold rounded-full mr-3'></span>
+            {solution}
+          </div>
+        ))}
+      </div>
+    </motion.div>
   );
-  const [selectedIndustry, setSelectedIndustry] = useState<string | null>(null);
+};
+
+// Extracted component for expertise area
+const ExpertiseArea = ({
+  area,
+  isActive,
+  onToggle,
+}: {
+  area: IExpertiseArea;
+  isActive: boolean;
+  onToggle: () => void;
+}) => {
+  return (
+    <motion.div
+      className={`cursor-pointer rounded-lg p-6 transition-all duration-300 ${
+        isActive ? area.bgColor : 'bg-gray-50 dark:bg-gray-800'
+      }`}
+      whileHover={{ scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
+      onClick={onToggle}
+    >
+      <div className='flex items-center mb-4'>
+        <span className='text-3xl mr-4'>{area.icon}</span>
+        <div>
+          <h3 className='text-xl font-bold text-gray-900 dark:text-white'>
+            {area.title}
+          </h3>
+          <p className='text-sm text-gray-600 dark:text-gray-300'>
+            {area.subtitle}
+          </p>
+        </div>
+      </div>
+      <p className='text-gray-700 dark:text-gray-300 text-sm'>
+        {area.description}
+      </p>
+    </motion.div>
+  );
+};
+
+// Extracted component for industries grid
+const IndustriesGrid = ({ industries }: { industries: IIndustry[] }) => {
+  return (
+    <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+      {industries.map(industry => (
+        <IndustryCard key={industry.id} industry={industry} />
+      ))}
+    </div>
+  );
+};
+
+// Extracted hook for matrix state management
+const useMatrixState = () => {
+  const [activeArea, setActiveArea] = useState<string | null>(null);
+
+  const handleAreaToggle = useCallback(
+    (areaId: string) => {
+      setActiveArea(activeArea === areaId ? null : areaId);
+    },
+    [activeArea]
+  );
+
+  const activeAreaData = useMemo(() => {
+    return activeArea
+      ? EXPERTISE_AREAS.find(area => area.id === activeArea)
+      : null;
+  }, [activeArea]);
+
+  return {
+    activeArea,
+    activeAreaData,
+    handleAreaToggle,
+  };
+};
+
+export default function SolutionsMatrix() {
+  const { activeArea, activeAreaData, handleAreaToggle } = useMatrixState();
 
   return (
-    <section className='relative min-h-screen py-20 overflow-hidden'>
-      {/* Cinematic Background */}
-      <div className='absolute inset-0 bg-gradient-to-br from-slate-900 via-blue-900/50 to-slate-900'>
-        <div className="absolute inset-0 bg-[url('/hero-poster.jpg')] bg-cover bg-center opacity-20"></div>
-        <div className='absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-slate-900/80'></div>
-      </div>
-
-      <div className='relative z-10 container mx-auto px-4'>
+    <section className='py-16 bg-gray-50 dark:bg-gray-900'>
+      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
         <AnimationObserver>
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className='text-center mb-16'
-          >
-            <h2 className='text-4xl md:text-6xl font-bold text-white mb-6'>
+          <div className='text-center mb-12'>
+            <h2 className='text-4xl font-bold text-gray-900 dark:text-white mb-6'>
               Solutions Matrix
             </h2>
-            <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-              Where expertise meets industry. We specialize in crafting digital
-              solutions that are tailored to your specific business needs and
-              industry challenges.
+            <p className='text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto'>
+              Discover how our expertise areas intersect with different
+              industries to create tailored solutions that drive real results.
             </p>
-          </motion.div>
+          </div>
         </AnimationObserver>
 
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
-          {expertiseAreas.map((expertise, index) => (
-            <AnimationObserver key={expertise.id}>
-              <motion.div
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className={`relative group cursor-pointer transition-all duration-500 hover:scale-105`}
-                onClick={() =>
-                  setSelectedExpertise(
-                    selectedExpertise === expertise.id ? null : expertise.id
-                  )
-                }
-              >
-                <div
-                  className={`relative p-8 rounded-2xl border border-white/10 backdrop-blur-sm ${expertise.bgColor} hover:border-white/30 transition-all duration-500`}
-                >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${expertise.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
-                  ></div>
-
-                  <div className='relative z-10'>
-                    <div className='text-4xl mb-4'>{expertise.icon}</div>
-                    <h3 className='text-2xl font-bold text-white mb-2'>
-                      {expertise.title}
-                    </h3>
-                    <p className='text-gray-300 mb-4'>{expertise.subtitle}</p>
-                    <p className='text-gray-400 text-sm leading-relaxed'>
-                      {expertise.description}
-                    </p>
-                  </div>
-
-                  {/* Hover Effect */}
-                  <div className='absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl'></div>
-                </div>
-              </motion.div>
-            </AnimationObserver>
-          ))}
-        </div>
-
-        {/* Detailed View */}
-        {selectedExpertise && (
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
+          {/* Expertise Areas */}
           <AnimationObserver>
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 50 }}
-              transition={{ duration: 0.6 }}
-              className='mt-16'
-            >
-              <div className='bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10'>
-                <div className='grid grid-cols-1 lg:grid-cols-2 gap-8'>
-                  <div>
-                    <h3 className='text-2xl font-bold text-white mb-4'>
-                      Industry Applications
-                    </h3>
-                    <div className='space-y-4'>
-                      {expertiseAreas
-                        .find(e => e.id === selectedExpertise)
-                        ?.industries.map((industry, index) => (
-                          <motion.div
-                            key={industry.id}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.4, delay: index * 0.1 }}
-                            className='cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors'
-                            onClick={() =>
-                              setSelectedIndustry(
-                                selectedIndustry === industry.id
-                                  ? null
-                                  : industry.id
-                              )
-                            }
-                          >
-                            <h4 className='text-lg font-semibold text-white mb-2'>
-                              {industry.name}
-                            </h4>
-                            <p className='text-gray-300 text-sm'>
-                              {industry.description}
-                            </p>
-                          </motion.div>
-                        ))}
-                    </div>
-                  </div>
-                  <div>
-                    {selectedIndustry && (
-                      <div>
-                        <h3 className='text-2xl font-bold text-white mb-4'>
-                          Solutions We Offer
-                        </h3>
-                        <ul className='space-y-2'>
-                          {expertiseAreas
-                            .find(e => e.id === selectedExpertise)
-                            ?.industries.find(i => i.id === selectedIndustry)
-                            ?.solutions.map((solution, index) => (
-                              <motion.li
-                                key={solution}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                transition={{
-                                  duration: 0.3,
-                                  delay: index * 0.1,
-                                }}
-                                className='flex items-center text-gray-300'
-                              >
-                                <span className='w-2 h-2 bg-blue-500 rounded-full mr-3'></span>
-                                {solution}
-                              </motion.li>
-                            ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </motion.div>
+            <div className='space-y-4'>
+              <h3 className='text-2xl font-semibold text-gray-900 dark:text-white mb-6'>
+                Our Expertise Areas
+              </h3>
+              {EXPERTISE_AREAS.map(area => (
+                <ExpertiseArea
+                  key={area.id}
+                  area={area}
+                  isActive={activeArea === area.id}
+                  onToggle={() => handleAreaToggle(area.id)}
+                />
+              ))}
+            </div>
           </AnimationObserver>
-        )}
+
+          {/* Industries Grid */}
+          <AnimationObserver>
+            <div>
+              <h3 className='text-2xl font-semibold text-gray-900 dark:text-white mb-6'>
+                {activeAreaData
+                  ? `${activeAreaData.title} Solutions`
+                  : 'Select an expertise area to see solutions'}
+              </h3>
+              {activeAreaData ? (
+                <IndustriesGrid industries={activeAreaData.industries} />
+              ) : (
+                <div className='text-center py-12'>
+                  <p className='text-gray-500 dark:text-gray-400'>
+                    Choose an expertise area to explore industry-specific
+                    solutions
+                  </p>
+                </div>
+              )}
+            </div>
+          </AnimationObserver>
+        </div>
       </div>
     </section>
   );

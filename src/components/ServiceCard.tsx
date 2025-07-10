@@ -94,7 +94,7 @@ export default function ServiceCard({
 
   return (
     <motion.div
-      className='group relative overflow-hidden rounded-2xl bg-white dark:bg-gray-900 shadow-lg hover:shadow-2xl transition-all duration-500 card-cinematic'
+      className='group relative overflow-hidden rounded-2xl bg-[var(--bg-primary)] shadow-lg hover:shadow-2xl transition-all duration-500 card-cinematic border border-[var(--color-border)]'
       variants={cardVariants}
       initial='initial'
       animate='animate'
@@ -131,7 +131,7 @@ export default function ServiceCard({
           variants={badgeVariants}
           whileHover='hover'
         >
-          <span className='px-3 py-1 bg-white/90 dark:bg-gray-900/90 text-xs font-medium text-gray-700 dark:text-gray-300 rounded-full backdrop-blur-sm border border-white/20 animate-pulse-gold'>
+          <span className='px-3 py-1 bg-[var(--bg-primary)]/90 text-xs font-medium text-[var(--color-foreground)] rounded-full backdrop-blur-sm border border-[var(--color-border)] animate-pulse-gold'>
             {category
               ? category
                   .replace('-', ' ')
@@ -156,7 +156,7 @@ export default function ServiceCard({
                   'w-6 h-6 group-hover:animate-pulse-gold text-cinematic-blue dark:text-cinematic-gold',
               })}
             </motion.div>
-            <h3 className='text-xl font-bold text-gray-900 dark:text-white group-hover:text-cinematic-blue dark:group-hover:text-cinematic-gold transition-colors duration-300 bg-gradient-to-r from-gray-900 to-cinematic-blue dark:from-white dark:to-cinematic-gold bg-clip-text'>
+            <h3 className='text-xl font-bold text-[var(--color-foreground)] group-hover:text-cinematic-blue transition-colors duration-300 bg-gradient-to-r from-[var(--color-foreground)] to-cinematic-blue bg-clip-text'>
               {title}
             </h3>
           </div>
@@ -173,7 +173,7 @@ export default function ServiceCard({
         </div>
 
         {/* Description with enhanced typography */}
-        <p className='text-gray-600 dark:text-gray-300 mb-6 leading-relaxed group-hover:text-gray-700 dark:group-hover:text-gray-200 transition-colors duration-300'>
+        <p className='text-[var(--color-foreground)]/80 mb-6 leading-relaxed group-hover:text-[var(--color-foreground)] transition-colors duration-300'>
           {description}
         </p>
 
@@ -183,7 +183,7 @@ export default function ServiceCard({
             {features.slice(0, 3).map((feature, index) => (
               <motion.li
                 key={index}
-                className='flex items-center space-x-2 text-sm text-gray-600 dark:text-gray-400 group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors duration-300'
+                className='flex items-center space-x-2 text-sm text-[var(--color-foreground)]/70 group-hover:text-[var(--color-foreground)] transition-colors duration-300'
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.3 }}

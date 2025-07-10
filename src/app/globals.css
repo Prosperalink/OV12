@@ -97,8 +97,11 @@
   --color-cinematic-electric: #3b82f6;
   --color-cinematic-golden: #fbbf24;
 
-  /* Theme Colors - Light Mode */
-  --color-background: var(--color-gray-50);
+  /* Theme Colors - Light Mode (Unified Greyish White) */
+  --bg-primary: #f9fafb; /* Uniform Greyish White */
+  --bg-secondary: #f3f4f6; /* Slightly darker variant for subtle layering */
+  --bg-tertiary: #e5e7eb; /* Even darker for depth when needed */
+  --color-background: var(--bg-primary);
   --color-foreground: var(--color-gray-900);
   --color-primary: var(--color-primary-blue-800);
   --color-secondary: var(--color-primary-gold-500);
@@ -108,9 +111,12 @@
   --color-ring: var(--color-primary-blue-500);
 }
 
-/* Dark Mode Colors */
+/* Dark Mode Colors (Unified Deep Cinematic Blue) */
 [data-theme='dark'] {
-  --color-background: var(--color-gray-900);
+  --bg-primary: #101825; /* Uniform Deep Cinematic Blue */
+  --bg-secondary: #0f172a; /* Slightly darker variant for subtle layering */
+  --bg-tertiary: #0c1421; /* Even darker for depth when needed */
+  --color-background: var(--bg-primary);
   --color-foreground: var(--color-gray-50);
   --color-primary: var(--color-primary-blue-400);
   --color-secondary: var(--color-primary-gold-400);
@@ -189,7 +195,7 @@ html {
 
 body {
   color: var(--color-foreground);
-  background: var(--color-background);
+  background: var(--bg-primary);
   font-family: var(--font-inter);
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);

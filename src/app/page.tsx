@@ -1,97 +1,147 @@
 'use client';
 
-import {
-  Camera,
-  Code,
-  Lightbulb,
-  Palette,
-  Smartphone,
-  Star,
-  Users,
-} from 'lucide-react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
 
-import ContactForm from '@/components/ContactForm';
-import HeroSection from '@/components/HeroSection';
-import ServiceCard from '@/components/ServiceCard';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function HomePage() {
-  const services = [
+  const { t } = useLanguage();
+
+  const solutions = [
     {
-      title: 'Digital Innovation',
-      description:
-        'We craft cutting-edge digital solutions that bridge the gap between imagination and implementation, creating seamless user experiences that drive business growth.',
-      features: [
-        'Custom Software Development',
-        'API Integration',
-        'Cloud Solutions',
-        'Digital Transformation',
-      ],
-      icon: Code,
-      image: '/services/digital-marketing.jpg',
-      href: '/services/digital-innovation',
-      category: 'digital-innovation',
+      key: 'digitalInnovation',
+      href: '/solutions/digital-innovation',
+      icon: '🚀',
     },
     {
-      title: 'Creative Design',
-      description:
-        'We design immersive brand experiences that connect with audiences on an emotional level, building lasting relationships and driving brand loyalty.',
-      features: [
-        'Brand Identity Design',
-        'UI/UX Design',
-        'Visual Storytelling',
-        'Interactive Experiences',
-      ],
-      icon: Palette,
-      image: '/services/consulting.jpg',
-      href: '/services/creative-design',
-      category: 'creative-design',
+      key: 'creativeDesign',
+      href: '/solutions/creative-design',
+      icon: '🎨',
     },
     {
-      title: 'Content Creation',
-      description:
-        'We produce compelling content that tells your story, engages your audience, and drives meaningful conversations across all digital channels.',
-      features: [
-        'Video Production',
-        'Photography',
-        'Social Media Content',
-        'Brand Films',
-      ],
-      icon: Camera,
-      image: '/services/ai-integration.jpg',
-      href: '/services/content-creation',
-      category: 'content-creation',
+      key: 'contentCreation',
+      href: '/solutions/content-creation',
+      icon: '📹',
     },
     {
-      title: 'Technology Solutions',
+      key: 'technologySolutions',
+      href: '/solutions/technology-solutions',
+      icon: '⚙️',
+    },
+    {
+      key: 'strategicConsulting',
+      href: '/solutions/strategic-consulting',
+      icon: '💡',
+    },
+  ];
+
+  const industries = [
+    {
+      name: 'Wedding & Events',
       description:
-        'We architect robust technology solutions that scale with your business, ensuring reliability, security, and performance for your digital operations.',
-      features: [
-        'Web Development',
-        'Mobile Apps',
-        'E-commerce Solutions',
+        'Custom booking systems and portfolio websites that showcase your unique style and streamline client management.',
+      solutions: [
+        'Custom Booking Systems',
+        'Portfolio Websites',
+        'Client Management',
+        'Payment Processing',
+      ],
+      icon: '💒',
+    },
+    {
+      name: 'Education & Learning',
+      description:
+        'Interactive learning platforms and student engagement systems that modernize educational experiences.',
+      solutions: [
+        'Learning Management Systems',
+        'Student Portals',
+        'Interactive Content',
+        'Assessment Tools',
+      ],
+      icon: '🎓',
+    },
+    {
+      name: 'Small Business & Startups',
+      description:
+        'Scalable e-commerce solutions and business automation tools that accelerate growth.',
+      solutions: [
+        'E-commerce Platforms',
+        'Business Automation',
+        'CRM Systems',
+        'Payment Gateways',
+      ],
+      icon: '🚀',
+    },
+    {
+      name: 'Enterprise & Corporate',
+      description:
+        'Enterprise-grade digital infrastructure and workflow optimization systems.',
+      solutions: [
+        'Enterprise Software',
+        'Workflow Automation',
+        'Data Management',
         'System Integration',
       ],
-      icon: Smartphone,
-      image: '/services/digital-marketing.jpg',
-      href: '/services/technology-solutions',
-      category: 'technology-solutions',
+      icon: '🏢',
     },
     {
-      title: 'Strategic Consulting',
+      name: 'Creative & Artisan',
       description:
-        'We provide strategic guidance to help you navigate the digital landscape, optimize your operations, and achieve sustainable growth.',
-      features: [
-        'Digital Strategy',
-        'Market Analysis',
-        'Process Optimization',
-        'Growth Planning',
+        'Portfolio platforms and online marketplaces that showcase your craftsmanship and reach global audiences.',
+      solutions: [
+        'Portfolio Platforms',
+        'Online Marketplaces',
+        'Inventory Management',
+        'Global Shipping',
       ],
-      icon: Lightbulb,
-      image: '/services/consulting.jpg',
-      href: '/services/strategic-consulting',
-      category: 'strategic-consulting',
+      icon: '🎨',
     },
-  ] as const;
+    {
+      name: 'Tourism & Hospitality',
+      description:
+        'Booking engines and guest experience platforms that increase conversions and customer satisfaction.',
+      solutions: [
+        'Booking Systems',
+        'Guest Experience',
+        'Revenue Management',
+        'Customer Analytics',
+      ],
+      icon: '🏨',
+    },
+  ];
+
+  const journeySteps = [
+    {
+      step: '01',
+      title: 'Discovery & Strategy',
+      description:
+        'We dive deep into understanding your business, challenges, and aspirations to craft a tailored digital strategy.',
+      icon: '🔍',
+    },
+    {
+      step: '02',
+      title: 'Design & Prototyping',
+      description:
+        'Our creative team transforms your vision into stunning visual concepts and interactive prototypes.',
+      icon: '🎨',
+    },
+    {
+      step: '03',
+      title: 'Development & Integration',
+      description:
+        'We build robust, scalable solutions using cutting-edge technologies and best practices.',
+      icon: '⚙️',
+    },
+    {
+      step: '04',
+      title: 'Launch & Optimization',
+      description:
+        'We ensure a smooth launch and continuously optimize your solution for maximum impact.',
+      icon: '🚀',
+    },
+  ];
 
   const testimonials = [
     {
@@ -99,117 +149,346 @@ export default function HomePage() {
       role: 'CEO, TechStart',
       content:
         'Orson Vision transformed our digital presence with their cinematic approach. The results exceeded our expectations - our conversion rates increased by 250% within the first quarter.',
-      rating: 5,
-      avatar: '/avatars/sarah.jpg',
+      company: 'TechStart',
     },
     {
       name: 'Ahmed Ben Ali',
       role: 'Founder, Tunisian Crafts',
       content:
         'Their human-centered design philosophy perfectly captured our brand essence. Our online sales increased by 300% and we now reach customers worldwide while maintaining our authentic Tunisian heritage.',
-      rating: 5,
-      avatar: '/avatars/ahmed.jpg',
+      company: 'Tunisian Crafts',
     },
     {
       name: 'Marie Dubois',
       role: 'Marketing Director, École Internationale',
       content:
         'The team at Orson Vision understood our educational mission and created content that truly resonates with our community. Our student engagement increased by 180% and parent satisfaction scores are at an all-time high.',
-      rating: 5,
-      avatar: '/avatars/marie.jpg',
+      company: 'École Internationale',
     },
   ];
 
   return (
-    <main className='min-h-screen'>
+    <main className='min-h-screen bg-[var(--bg-primary)]'>
       {/* Hero Section */}
-      <section className='section-cinematic bg-cinematic-blue text-cinematic-gold transition-colors duration-500'>
-        <HeroSection videoSrc='/hero-video.mp4' posterSrc='/hero-poster.jpg' />
-      </section>
-
-      {/* Services Section */}
-      <section className='section-cinematic bg-cinematic-gold text-cinematic-blue transition-colors duration-500'>
-        <div className='container mx-auto px-4'>
-          <div className='text-center mb-16'>
-            <h2 className='text-display-3xl font-bold text-cinematic-blue mb-6'>
-              Our Services
-            </h2>
-            <p className='text-xl text-cinematic-blue/80 max-w-3xl mx-auto'>
-              We offer comprehensive digital solutions that blend cutting-edge
-              technology with human-centered design, creating transformative
-              experiences that inspire and drive results.
-            </p>
-          </div>
-          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {services.map(service => (
-              <ServiceCard
-                key={service.title}
-                title={service.title}
-                description={service.description}
-                features={[...service.features]}
-                icon={service.icon}
-                image={service.image}
-                href={service.href}
-                category={service.category}
-                className='card-cinematic h-full'
-              />
-            ))}
-          </div>
+      <section className='relative min-h-screen flex items-center justify-center overflow-hidden'>
+        {/* Solid background for light/dark mode */}
+        <div className='absolute inset-0 z-0 bg-cinematic-blue dark:bg-[#101825] transition-colors duration-500' />
+        {/* Cinematic blurred image overlay */}
+        <div className='absolute inset-0 z-10'>
+          <Image
+            src='/assets/homepage/hero_section/images/homepage_hero_section_cinematic_office_01.jpg'
+            alt='Cinematic Office'
+            fill
+            priority
+            className='object-cover object-center opacity-60 blur-md scale-105 select-none pointer-events-none'
+            style={{ filter: 'blur(16px) brightness(0.7)' }}
+            aria-hidden='true'
+          />
         </div>
+        {/* Glassmorphic content card */}
+        <div className='relative z-20 flex flex-col items-center justify-center w-full px-4'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className='backdrop-blur-lg bg-white/20 dark:bg-[#101825]/40 rounded-3xl shadow-2xl p-10 md:p-16 max-w-3xl mx-auto text-center border border-white/10 dark:border-[#1A237E]/10'
+            style={{ boxShadow: '0 8px 32px 0 rgba(16,24,37,0.25)' }}
+          >
+            <h1 className='text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-lg'>
+              {t('hero.title')}
+            </h1>
+            <h2 className='text-xl md:text-2xl font-light mb-8 text-gray-200'>
+              {t('hero.subtitle')}
+            </h2>
+            <p className='text-lg md:text-xl mb-12 text-gray-300 max-w-3xl mx-auto leading-relaxed'>
+              {t('hero.description')}
+            </p>
+            {/* CTA Buttons */}
+            <div className='flex flex-col sm:flex-row gap-4 justify-center mb-8'>
+              <motion.button
+                whileHover={{
+                  scale: 1.07,
+                  boxShadow: '0 6px 24px 0 rgba(26,35,126,0.25)',
+                  y: -2,
+                }}
+                whileTap={{ scale: 0.97, y: 1 }}
+                className='bg-cinematic-blue hover:bg-cinematic-blue/90 text-white px-8 py-4 rounded-xl font-semibold text-lg shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cinematic-gold focus:ring-offset-2'
+                style={{ perspective: '600px' }}
+              >
+                {t('hero.primaryCta')}
+              </motion.button>
+              <motion.button
+                whileHover={{
+                  scale: 1.07,
+                  boxShadow: '0 6px 24px 0 rgba(26,35,126,0.15)',
+                  y: -2,
+                }}
+                whileTap={{ scale: 0.97, y: 1 }}
+                className='border-2 border-white text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-white hover:text-cinematic-blue transition-all duration-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-cinematic-gold focus:ring-offset-2'
+                style={{ perspective: '600px' }}
+              >
+                {t('hero.secondaryCta')}
+              </motion.button>
+            </div>
+            {/* Social Proof */}
+            <div className='flex flex-col sm:flex-row gap-8 justify-center text-sm text-gray-300'>
+              <div className='flex items-center space-x-2'>
+                <span className='text-yellow-400'>★★★★★</span>
+                <span>{t('hero.socialProof')}</span>
+              </div>
+              <div className='flex items-center space-x-2'>
+                <span className='text-cinematic-blue'>✓</span>
+                <span>{t('hero.trustedBy')}</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+        {/* Gradient fade to next section */}
+        <div
+          className='absolute bottom-0 left-0 w-full h-32 z-30 pointer-events-none'
+          style={{
+            background:
+              'linear-gradient(to bottom, rgba(26,35,126,0.0) 0%, var(--bg-primary) 100%)',
+          }}
+        />
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1, duration: 0.8 }}
+          className='absolute bottom-8 left-1/2 transform -translate-x-1/2 z-40'
+        >
+          <div className='w-6 h-10 border-2 border-white rounded-full flex justify-center'>
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+              className='w-1 h-3 bg-white rounded-full mt-2'
+            />
+          </div>
+        </motion.div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className='section-cinematic bg-cinematic-blue text-cinematic-gold transition-colors duration-500'>
+      {/* Solutions Matrix */}
+      <section className='py-16 bg-[var(--bg-secondary)]'>
         <div className='container mx-auto px-4'>
           <div className='text-center mb-16'>
-            <h2 className='text-display-3xl font-bold text-cinematic-gold mb-6'>
-              Client Success Stories
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              What We Do
             </h2>
-            <p className='text-xl text-cinematic-gold/80 max-w-3xl mx-auto'>
-              Discover how we&apos;ve helped businesses transform their digital
-              presence and achieve remarkable results through our cinematic
-              approach to digital innovation.
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              We unearth and amplify your unique story through cinematic digital
+              experiences that resonate deeply, transform perceptions, and
+              inspire meaningful action.
             </p>
           </div>
+
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
-            {testimonials.map(testimonial => (
-              <div
-                key={testimonial.name}
-                className='card-cinematic bg-cinematic-gold text-cinematic-blue rounded-2xl p-8 shadow-cinematic hover:shadow-cinematic-gold transition-all duration-300'
+            {solutions.map((solution, index) => (
+              <motion.div
+                key={solution.key}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
               >
-                <div className='flex items-center mb-4'>
-                  <div className='flex text-cinematic-gold'>
-                    {/* eslint-disable-next-line @typescript-eslint/naming-convention */}
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className='w-5 h-5 fill-current' />
-                    ))}
-                  </div>
-                </div>
-                <p className='text-cinematic-blue mb-6 leading-relaxed'>
-                  &quot;{testimonial.content}&quot;
-                </p>
-                <div className='flex items-center'>
-                  <div className='w-12 h-12 bg-cinematic-blue rounded-full flex items-center justify-center mr-4'>
-                    <Users className='w-6 h-6 text-cinematic-gold' />
-                  </div>
-                  <div>
-                    <h4 className='font-semibold text-cinematic-blue'>
-                      {testimonial.name}
-                    </h4>
-                    <p className='text-sm text-cinematic-blue/70'>
-                      {testimonial.role}
+                <Link href={solution.href}>
+                  <div className='bg-[var(--bg-primary)] rounded-2xl p-8 shadow-lg border border-[var(--color-border)] hover:shadow-xl transition-all duration-300 hover:scale-105 h-full'>
+                    <div className='text-4xl mb-4'>{solution.icon}</div>
+                    <h3 className='text-2xl font-bold text-cinematic-blue mb-4'>
+                      {t(`solutions.${solution.key}.title`)}
+                    </h3>
+                    <p className='text-[var(--color-foreground)]/80 mb-4'>
+                      {t(`solutions.${solution.key}.subtitle`)}
+                    </p>
+                    <p className='text-[var(--color-foreground)]/60 text-sm leading-relaxed'>
+                      {t(`solutions.${solution.key}.description`)}
                     </p>
                   </div>
-                </div>
-              </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className='section-cinematic bg-cinematic-gold text-cinematic-blue transition-colors duration-500'>
-        <ContactForm />
+      {/* Industry Applications */}
+      <section className='py-16 bg-[var(--bg-primary)]'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-16'>
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              Who We Help
+            </h2>
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              From creative professionals to enterprise corporations, we unearth
+              the unique human stories within every industry and amplify them
+              through cinematic digital experiences.
+            </p>
+          </div>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
+            {industries.map((industry, index) => (
+              <motion.div
+                key={industry.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className='bg-[var(--bg-secondary)] rounded-xl p-6 border border-[var(--color-border)] hover:border-cinematic-blue transition-all duration-300'
+              >
+                <div className='text-3xl mb-4'>{industry.icon}</div>
+                <h3 className='text-xl font-semibold text-[var(--color-foreground)] mb-3'>
+                  {industry.name}
+                </h3>
+                <p className='text-[var(--color-foreground)]/70 text-sm mb-4'>
+                  {industry.description}
+                </p>
+                <div className='space-y-1'>
+                  {industry.solutions.map((solution, i) => (
+                    <div key={i} className='text-xs text-cinematic-blue'>
+                      • {solution}
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Client Journey */}
+      <section className='py-16 bg-[var(--bg-secondary)]'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-16'>
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              {t('clientJourney.title')}
+            </h2>
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              {t('clientJourney.subtitle')}
+            </p>
+          </div>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8'>
+            {journeySteps.map((step, index) => (
+              <motion.div
+                key={step.step}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+                className='text-center'
+              >
+                <div className='bg-[var(--bg-primary)] rounded-2xl p-8 shadow-lg border border-[var(--color-border)]'>
+                  <div className='text-4xl font-bold text-cinematic-blue mb-4'>
+                    {step.step}
+                  </div>
+                  <div className='text-3xl mb-4'>{step.icon}</div>
+                  <h3 className='text-xl font-bold text-[var(--color-foreground)] mb-4'>
+                    {step.title}
+                  </h3>
+                  <p className='text-[var(--color-foreground)]/70'>
+                    {step.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className='py-16 bg-[var(--bg-primary)]'>
+        <div className='container mx-auto px-4'>
+          <div className='text-center mb-16'>
+            <h2 className='text-4xl md:text-5xl font-bold text-cinematic-blue mb-6'>
+              {t('testimonials.title')}
+            </h2>
+            <p className='text-xl text-[var(--color-foreground)]/80 max-w-3xl mx-auto'>
+              {t('testimonials.subtitle')}
+            </p>
+          </div>
+
+          <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.name}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
+              >
+                <div className='bg-[var(--bg-secondary)] rounded-2xl p-8 shadow-lg border border-[var(--color-border)] h-full'>
+                  <div className='flex items-center mb-4'>
+                    <div className='flex text-cinematic-gold'>
+                      {(() => {
+                        const stars = [];
+                        for (let i = 0; i < 5; i++) {
+                          stars.push(
+                            <span key={i} className='text-xl'>
+                              ★
+                            </span>
+                          );
+                        }
+                        return stars;
+                      })()}
+                    </div>
+                  </div>
+                  <p className='text-[var(--color-foreground)] mb-6 leading-relaxed italic'>
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
+                  <div className='flex items-center'>
+                    <div className='w-12 h-12 bg-cinematic-blue rounded-full flex items-center justify-center mr-4'>
+                      <span className='text-white font-bold text-lg'>
+                        {testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                    <div>
+                      <h4 className='font-semibold text-[var(--color-foreground)]'>
+                        {testimonial.name}
+                      </h4>
+                      <p className='text-sm text-[var(--color-foreground)]/70'>
+                        {testimonial.role}
+                      </p>
+                      <p className='text-xs text-cinematic-blue'>
+                        {testimonial.company}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action */}
+      <section className='py-16 bg-gradient-to-br from-cinematic-blue to-cinematic-gold'>
+        <div className='container mx-auto px-4 text-center text-white'>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className='text-4xl md:text-5xl font-bold mb-6'>
+              Ready to Transform Your Story?
+            </h2>
+            <p className='text-xl md:text-2xl max-w-3xl mx-auto mb-8 leading-relaxed'>
+              Let&apos;s discuss your vision and create something extraordinary
+              together. Every great story starts with a conversation.
+            </p>
+            <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className='bg-white text-cinematic-blue px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300'
+              >
+                Start Your Project
+              </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className='border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-cinematic-blue transition-all duration-300'
+              >
+                See Our Process
+              </motion.button>
+            </div>
+          </motion.div>
+        </div>
       </section>
     </main>
   );

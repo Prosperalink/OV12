@@ -1,0 +1,339 @@
+Folder PATH listing
+Volume serial number is 480C-535A
+C:\USERS\HASSE\ORSON VISION\ASSETS
+¦   assets_tree.txt
+¦   COMPREHENSIVE_ASSET_ACQUISITION_README.md
+¦   download_with_progress.py
+¦   IMPLEMENTATION_SUMMARY.md
+¦   requirements.txt
+¦   run_download.py
+¦   test_video_download.py
+¦   VIDEO_DOWNLOAD_README.md
+¦   
++---about
+¦   +---cinematic_humanism
+¦   ¦   +---images
+¦   ¦   ¦       about_cinematic_humanism_cinematic_office_01.jpg
+¦   ¦   ¦       about_cinematic_humanism_cinematic_office_02.jpg
+¦   ¦   ¦       about_cinematic_humanism_cinematic_office_03.jpg
+¦   ¦   ¦       about_cinematic_humanism_cinematic_office_04.jpg
+¦   ¦   ¦       about_cinematic_humanism_cinematic_office_05.jpg
+¦   ¦   ¦       cinematic_humanism_storytelling_01.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   ¦       +---images
+¦   ¦       +---videos
+¦   +---cta
+¦   ¦   +---images
+¦   ¦   ¦       about_cta_cinematic_office_01.jpg
+¦   ¦   ¦       about_cta_cinematic_office_02.jpg
+¦   ¦   ¦       about_cta_cinematic_office_03.jpg
+¦   ¦   ¦       about_cta_cinematic_office_04.jpg
+¦   ¦   ¦       about_cta_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---hero
+¦   ¦   +---images
+¦   ¦   ¦       about_hero_cinematic_office_01.jpg
+¦   ¦   ¦       about_hero_cinematic_office_02.jpg
+¦   ¦   ¦       about_hero_cinematic_office_03.jpg
+¦   ¦   ¦       about_hero_cinematic_office_04.jpg
+¦   ¦   ¦       about_hero_cinematic_office_05.jpg
+¦   ¦   ¦       about_hero_team_studio_01.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---images
+¦   ¦   +---images
+¦   ¦   +---videos
+¦   +---mission
+¦   ¦   +---images
+¦   ¦   ¦       about_mission_cinematic_office_01.jpg
+¦   ¦   ¦       about_mission_cinematic_office_02.jpg
+¦   ¦   ¦       about_mission_cinematic_office_03.jpg
+¦   ¦   ¦       about_mission_cinematic_office_04.jpg
+¦   ¦   ¦       about_mission_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---story
+¦   ¦   +---images
+¦   ¦   ¦       about_story_cinematic_office_01.jpg
+¦   ¦   ¦       about_story_cinematic_office_02.jpg
+¦   ¦   ¦       about_story_cinematic_office_03.jpg
+¦   ¦   ¦       about_story_cinematic_office_04.jpg
+¦   ¦   ¦       about_story_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---team
+¦   ¦   +---images
+¦   ¦   ¦       about_team_cinematic_office_01.jpg
+¦   ¦   ¦       about_team_cinematic_office_02.jpg
+¦   ¦   ¦       about_team_cinematic_office_03.jpg
+¦   ¦   ¦       about_team_cinematic_office_04.jpg
+¦   ¦   ¦       about_team_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---values
+¦   ¦   +---images
+¦   ¦   ¦       about_values_cinematic_office_01.jpg
+¦   ¦   ¦       about_values_cinematic_office_02.jpg
+¦   ¦   ¦       about_values_cinematic_office_03.jpg
+¦   ¦   ¦       about_values_cinematic_office_04.jpg
+¦   ¦   ¦       about_values_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---videos
+¦       +---images
+¦       +---videos
++---blog
+¦   +---articles
+¦   ¦   +---images
+¦   ¦   ¦       blog_articles_cinematic_office_01.jpg
+¦   ¦   ¦       blog_articles_cinematic_office_02.jpg
+¦   ¦   ¦       blog_articles_cinematic_office_03.jpg
+¦   ¦   ¦       blog_articles_cinematic_office_04.jpg
+¦   ¦   ¦       blog_articles_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---featured
+¦   ¦   +---images
+¦   ¦   ¦       blog_featured_cinematic_office_01.jpg
+¦   ¦   ¦       blog_featured_cinematic_office_02.jpg
+¦   ¦   ¦       blog_featured_cinematic_office_03.jpg
+¦   ¦   ¦       blog_featured_cinematic_office_04.jpg
+¦   ¦   ¦       blog_featured_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---images
+¦   +---videos
++---careers
+¦   +---culture
+¦   ¦   +---images
+¦   ¦   ¦       careers_culture_cinematic_office_01.jpg
+¦   ¦   ¦       careers_culture_cinematic_office_02.jpg
+¦   ¦   ¦       careers_culture_cinematic_office_03.jpg
+¦   ¦   ¦       careers_culture_cinematic_office_04.jpg
+¦   ¦   ¦       careers_culture_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---hero
+¦   ¦   +---images
+¦   ¦   ¦       careers_hero_cinematic_office_01.jpg
+¦   ¦   ¦       careers_hero_cinematic_office_02.jpg
+¦   ¦   ¦       careers_hero_cinematic_office_03.jpg
+¦   ¦   ¦       careers_hero_cinematic_office_04.jpg
+¦   ¦   ¦       careers_hero_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---images
+¦   +---opportunities
+¦   ¦   +---images
+¦   ¦   ¦       careers_opportunities_cinematic_office_01.jpg
+¦   ¦   ¦       careers_opportunities_cinematic_office_02.jpg
+¦   ¦   ¦       careers_opportunities_cinematic_office_03.jpg
+¦   ¦   ¦       careers_opportunities_cinematic_office_04.jpg
+¦   ¦   ¦       careers_opportunities_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---videos
++---contact
+¦   +---contact_form
+¦   ¦   +---images
+¦   ¦   ¦       contact_contact_form_cinematic_office_01.jpg
+¦   ¦   ¦       contact_contact_form_cinematic_office_02.jpg
+¦   ¦   ¦       contact_contact_form_cinematic_office_03.jpg
+¦   ¦   ¦       contact_contact_form_cinematic_office_04.jpg
+¦   ¦   ¦       contact_contact_form_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---contact_info
+¦   ¦   +---images
+¦   ¦   ¦       contact_contact_info_cinematic_office_01.jpg
+¦   ¦   ¦       contact_contact_info_cinematic_office_02.jpg
+¦   ¦   ¦       contact_contact_info_cinematic_office_03.jpg
+¦   ¦   ¦       contact_contact_info_cinematic_office_04.jpg
+¦   ¦   ¦       contact_contact_info_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---hero
+¦   ¦   +---images
+¦   ¦   ¦       contact_hero_cinematic_office_01.jpg
+¦   ¦   ¦       contact_hero_cinematic_office_02.jpg
+¦   ¦   ¦       contact_hero_cinematic_office_03.jpg
+¦   ¦   ¦       contact_hero_cinematic_office_04.jpg
+¦   ¦   ¦       contact_hero_cinematic_office_05.jpg
+¦   ¦   ¦       contact_hero_communication_01.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---images
+¦   +---videos
++---homepage
+¦   +---client_journey
+¦   ¦   +---images
+¦   ¦   ¦       homepage_client_journey_client_journey_01.jpg
+¦   ¦   ¦       homepage_client_journey_client_journey_02.jpg
+¦   ¦   ¦       homepage_client_journey_client_journey_03.jpg
+¦   ¦   ¦       homepage_client_journey_client_journey_04.jpg
+¦   ¦   ¦       homepage_client_journey_client_journey_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---contact_section
+¦   ¦   +---images
+¦   ¦   ¦       homepage_contact_section_contact_section_01.jpg
+¦   ¦   ¦       homepage_contact_section_contact_section_02.jpg
+¦   ¦   ¦       homepage_contact_section_contact_section_03.jpg
+¦   ¦   ¦       homepage_contact_section_contact_section_04.jpg
+¦   ¦   ¦       homepage_contact_section_contact_section_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---hero_section
+¦   ¦   +---images
+¦   ¦   ¦       homepage_hero_cinematic_office_01.jpg
+¦   ¦   ¦       homepage_hero_creative_team_02.jpg
+¦   ¦   ¦       homepage_hero_section_cinematic_office_01.jpg
+¦   ¦   ¦       homepage_hero_section_cinematic_office_02.jpg
+¦   ¦   ¦       homepage_hero_section_cinematic_office_03.jpg
+¦   ¦   ¦       homepage_hero_section_cinematic_office_04.jpg
+¦   ¦   ¦       homepage_hero_section_cinematic_office_05.jpg
+¦   ¦   ¦       homepage_hero_technology_interface_03.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---images
+¦   +---solutions_matrix
+¦   ¦   +---content_creation
+¦   ¦   ¦   +---images
+¦   ¦   ¦   ¦       content_creation_storytelling_02.jpg
+¦   ¦   ¦   ¦       content_creation_video_production_01.jpg
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---videos
+¦   ¦   +---creative_design
+¦   ¦   ¦   +---images
+¦   ¦   ¦   ¦       creative_design_brand_identity_01.jpg
+¦   ¦   ¦   ¦       creative_design_visual_narrative_02.jpg
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---videos
+¦   ¦   +---digital_innovation
+¦   ¦   ¦   +---images
+¦   ¦   ¦   ¦       digital_innovation_coding_screen_01.jpg
+¦   ¦   ¦   ¦       digital_innovation_dashboard_02.jpg
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---videos
+¦   ¦   +---strategic_consulting
+¦   ¦   ¦   +---images
+¦   ¦   ¦   ¦       strategic_consulting_business_meeting_01.jpg
+¦   ¦   ¦   ¦       strategic_consulting_growth_strategy_02.jpg
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---videos
+¦   ¦   +---technology_solutions
+¦   ¦       +---images
+¦   ¦       ¦       technology_solutions_infrastructure_01.jpg
+¦   ¦       ¦       technology_solutions_integration_02.jpg
+¦   ¦       ¦       
+¦   ¦       +---videos
+¦   +---success_stories
+¦   ¦   +---images
+¦   ¦   ¦       homepage_success_stories_success_stories_01.jpg
+¦   ¦   ¦       homepage_success_stories_success_stories_02.jpg
+¦   ¦   ¦       homepage_success_stories_success_stories_03.jpg
+¦   ¦   ¦       homepage_success_stories_success_stories_04.jpg
+¦   ¦   ¦       homepage_success_stories_success_stories_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---videos
++---legal
+¦   +---images
+¦   +---privacy
+¦   ¦   +---images
+¦   ¦   ¦       legal_privacy_cinematic_office_01.jpg
+¦   ¦   ¦       legal_privacy_cinematic_office_02.jpg
+¦   ¦   ¦       legal_privacy_cinematic_office_03.jpg
+¦   ¦   ¦       legal_privacy_cinematic_office_04.jpg
+¦   ¦   ¦       legal_privacy_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---terms
+¦   ¦   +---images
+¦   ¦   ¦       legal_terms_cinematic_office_01.jpg
+¦   ¦   ¦       legal_terms_cinematic_office_02.jpg
+¦   ¦   ¦       legal_terms_cinematic_office_03.jpg
+¦   ¦   ¦       legal_terms_cinematic_office_04.jpg
+¦   ¦   ¦       legal_terms_cinematic_office_05.jpg
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---videos
++---services
+¦   +---content_creation
+¦   ¦   +---images
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       services_content_creation_cinematic_office_01.jpg
+¦   ¦   ¦       services_content_creation_cinematic_office_02.jpg
+¦   ¦   ¦       services_content_creation_cinematic_office_03.jpg
+¦   ¦   ¦       services_content_creation_cinematic_office_04.jpg
+¦   ¦   ¦       services_content_creation_cinematic_office_05.jpg
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---creative_design
+¦   ¦   +---images
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       services_creative_design_cinematic_office_01.jpg
+¦   ¦   ¦       services_creative_design_cinematic_office_02.jpg
+¦   ¦   ¦       services_creative_design_cinematic_office_03.jpg
+¦   ¦   ¦       services_creative_design_cinematic_office_04.jpg
+¦   ¦   ¦       services_creative_design_cinematic_office_05.jpg
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---digital_innovation
+¦   ¦   +---images
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       services_digital_innovation_cinematic_office_01.jpg
+¦   ¦   ¦       services_digital_innovation_cinematic_office_02.jpg
+¦   ¦   ¦       services_digital_innovation_cinematic_office_03.jpg
+¦   ¦   ¦       services_digital_innovation_cinematic_office_04.jpg
+¦   ¦   ¦       services_digital_innovation_cinematic_office_05.jpg
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---images
+¦   +---strategic_consulting
+¦   ¦   +---images
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       services_strategic_consulting_cinematic_office_01.jpg
+¦   ¦   ¦       services_strategic_consulting_cinematic_office_02.jpg
+¦   ¦   ¦       services_strategic_consulting_cinematic_office_03.jpg
+¦   ¦   ¦       services_strategic_consulting_cinematic_office_04.jpg
+¦   ¦   ¦       services_strategic_consulting_cinematic_office_05.jpg
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---technology_solutions
+¦   ¦   +---images
+¦   ¦   ¦       metadata.csv
+¦   ¦   ¦       services_technology_solutions_cinematic_office_01.jpg
+¦   ¦   ¦       services_technology_solutions_cinematic_office_02.jpg
+¦   ¦   ¦       services_technology_solutions_cinematic_office_03.jpg
+¦   ¦   ¦       services_technology_solutions_cinematic_office_04.jpg
+¦   ¦   ¦       services_technology_solutions_cinematic_office_05.jpg
+¦   ¦   ¦       
+¦   ¦   +---videos
+¦   +---videos
++---__pycache__
+        download_with_progress.cpython-312.pyc
+        

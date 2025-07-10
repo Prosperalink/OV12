@@ -1,0 +1,364 @@
+{
+  "timestamp": "2025-07-10T11:39:50.621Z",
+  "metrics": {
+    "complexity": {
+      "totalComplexity": 4215,
+      "complexFunctions": 39,
+      "averageComplexity": 82.6470588235294
+    },
+    "security": {
+      "securityIssues": 0,
+      "criticalIssues": 0
+    },
+    "performance": {
+      "bundleSize": 200,
+      "performanceIssues": 0
+    },
+    "architecture": {
+      "architecturalIssues": 0
+    },
+    "maintainability": {
+      "maintainabilityIssues": 16,
+      "averageFileSize": 194.88235294117646
+    }
+  },
+  "issues": [
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\about\\page.tsx",
+      "severity": "high",
+      "message": "Function has complexity 20, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\api\\auth\\google\\callback\\route.ts",
+      "severity": "high",
+      "message": "Function has complexity 23, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\api\\auth\\google\\refresh\\route.ts",
+      "severity": "high",
+      "message": "Function has complexity 23, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\api\\contact\\route.ts",
+      "severity": "high",
+      "message": "Function has complexity 16, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\layout.tsx",
+      "severity": "high",
+      "message": "Function has complexity 54, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\page.tsx",
+      "severity": "high",
+      "message": "Function has complexity 56, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\solutions\\digital-innovation\\page.tsx",
+      "severity": "high",
+      "message": "Function has complexity 66, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\solutions\\page.tsx",
+      "severity": "high",
+      "message": "Function has complexity 81, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\universes\\page.tsx",
+      "severity": "high",
+      "message": "Function has complexity 20, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\AnimationObserver.tsx",
+      "severity": "high",
+      "message": "Function has complexity 172, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\ClientJourney.tsx",
+      "severity": "high",
+      "message": "Function has complexity 82, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\ContactForm.tsx",
+      "severity": "high",
+      "message": "Function has complexity 243, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\CreativeUniverses.tsx",
+      "severity": "high",
+      "message": "Function has complexity 114, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\features\\ContactForm.tsx",
+      "severity": "high",
+      "message": "Function has complexity 109, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\HeroSection.tsx",
+      "severity": "high",
+      "message": "Function has complexity 43, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\layout\\Footer.tsx",
+      "severity": "high",
+      "message": "Function has complexity 130, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\layout\\Navigation.tsx",
+      "severity": "high",
+      "message": "Function has complexity 55, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\layout\\ThemeProvider.tsx",
+      "severity": "high",
+      "message": "Function has complexity 32, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\layout\\ThemeToggle.tsx",
+      "severity": "high",
+      "message": "Function has complexity 84, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\Navigation.tsx",
+      "severity": "high",
+      "message": "Function has complexity 122, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\QualityDemo.tsx",
+      "severity": "high",
+      "message": "Function has complexity 109, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\sections\\ClientJourney.tsx",
+      "severity": "high",
+      "message": "Function has complexity 57, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\sections\\CreativeUniverses.tsx",
+      "severity": "high",
+      "message": "Function has complexity 219, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\sections\\HeroSection.tsx",
+      "severity": "high",
+      "message": "Function has complexity 96, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\sections\\TestimonialsSection.tsx",
+      "severity": "high",
+      "message": "Function has complexity 74, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\ServiceCard.tsx",
+      "severity": "high",
+      "message": "Function has complexity 132, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\ServicesSection.tsx",
+      "severity": "high",
+      "message": "Function has complexity 43, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\SolutionsMatrix.tsx",
+      "severity": "high",
+      "message": "Function has complexity 222, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\TestimonialsSection.tsx",
+      "severity": "high",
+      "message": "Function has complexity 96, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\ui\\AnimationObserver.tsx",
+      "severity": "high",
+      "message": "Function has complexity 14, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\constants\\index.ts",
+      "severity": "high",
+      "message": "Function has complexity 92, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\animations.ts",
+      "severity": "high",
+      "message": "Function has complexity 369, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\asset-management.ts",
+      "severity": "high",
+      "message": "Function has complexity 239, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\colors.ts",
+      "severity": "high",
+      "message": "Function has complexity 203, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\fonts.ts",
+      "severity": "high",
+      "message": "Function has complexity 90, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\google-workspace.ts",
+      "severity": "high",
+      "message": "Function has complexity 272, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\layout.ts",
+      "severity": "high",
+      "message": "Function has complexity 234, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\types\\index.ts",
+      "severity": "high",
+      "message": "Function has complexity 44, exceeds limit of 10"
+    },
+    {
+      "type": "complexity",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\utils\\index.ts",
+      "severity": "high",
+      "message": "Function has complexity 28, exceeds limit of 10"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\app\\about\\page.tsx",
+      "severity": "low",
+      "message": "Function aboutPage has 200 lines, consider breaking it down"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\ContactForm.tsx",
+      "severity": "medium",
+      "message": "File has 648 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\CreativeUniverses.tsx",
+      "severity": "medium",
+      "message": "File has 346 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\CreativeUniverses.tsx",
+      "severity": "low",
+      "message": "Function universes has 158 lines, consider breaking it down"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\features\\ContactForm.tsx",
+      "severity": "medium",
+      "message": "File has 370 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\features\\ContactForm.tsx",
+      "severity": "low",
+      "message": "Function getStatusMessage has 285 lines, consider breaking it down"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\layout\\Footer.tsx",
+      "severity": "medium",
+      "message": "File has 311 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\QualityDemo.tsx",
+      "severity": "medium",
+      "message": "File has 408 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\sections\\CreativeUniverses.tsx",
+      "severity": "medium",
+      "message": "File has 611 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\sections\\CreativeUniverses.tsx",
+      "severity": "low",
+      "message": "Function EXPERTISE_AREAS has 429 lines, consider breaking it down"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\SolutionsMatrix.tsx",
+      "severity": "medium",
+      "message": "File has 617 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\components\\SolutionsMatrix.tsx",
+      "severity": "low",
+      "message": "Function EXPERTISE_AREAS has 429 lines, consider breaking it down"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\animations.ts",
+      "severity": "medium",
+      "message": "File has 352 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\asset-management.ts",
+      "severity": "medium",
+      "message": "File has 347 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\google-workspace.ts",
+      "severity": "medium",
+      "message": "File has 556 lines, exceeds limit of 300"
+    },
+    {
+      "type": "maintainability",
+      "file": "C:\\Users\\hasse\\Orson Vision\\src\\lib\\layout.ts",
+      "severity": "medium",
+      "message": "File has 322 lines, exceeds limit of 300"
+    }
+  ],
+  "summary": {
+    "totalIssues": 55,
+    "criticalIssues": 0,
+    "highIssues": 39,
+    "mediumIssues": 11,
+    "lowIssues": 5
+  }
+}

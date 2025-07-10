@@ -2,17 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
-import Link from 'next/link';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
 interface IHeroSectionProps {
-  videoSrc: string;
-  posterSrc: string;
+  videoSrc?: string;
+  posterSrc?: string;
 }
 
 export default function HeroSection({
-  videoSrc,
-  posterSrc,
+  videoSrc = '/hero-video.mp4',
+  posterSrc = '/hero-poster.jpg',
 }: IHeroSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
@@ -109,7 +109,20 @@ export default function HeroSection({
           <source src={videoSrc} type='video/mp4' />
           Your browser does not support the video tag.
         </video>
-
+        {/* Accessible hero image for screen readers */}
+        <Image
+          src={posterSrc}
+          alt='Cinematic hero background visual'
+          width={1}
+          height={1}
+          priority
+          style={{
+            position: 'absolute',
+            opacity: 0,
+            pointerEvents: 'none',
+          }}
+          aria-hidden='false'
+        />
         {/* Cinematic gradient overlay */}
         <div className='absolute inset-0 bg-gradient-to-br from-cinematic-blue/80 via-cinematic-blue/60 to-cinematic-gold/40' />
 
@@ -152,9 +165,9 @@ export default function HeroSection({
             className='text-xl md:text-2xl lg:text-3xl text-white/90 mb-8 max-w-4xl mx-auto leading-relaxed'
             variants={textVariants}
           >
-            We craft digital experiences that blend artistic excellence with
-            technical precision, creating moments that inspire, connect, and
-            transform.
+            We craft digital experiences with a cinematic approach that blend
+            artistic excellence with technical precision, creating moments that
+            inspire, connect, and transform.
           </motion.p>
 
           {/* Call-to-Action Buttons */}
@@ -162,39 +175,64 @@ export default function HeroSection({
             className='flex flex-col sm:flex-row gap-4 justify-center items-center'
             variants={buttonVariants}
           >
-            {/* Primary CTA with animated underline */}
+            {/* Primary CTA as button with proper accessibility */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className='relative group'
             >
-              <Link
-                href='/services'
+              <button
+                aria-label='Get Started - Begin your journey with Orson Vision'
                 className='inline-flex items-center px-8 py-4 bg-cinematic-gold text-cinematic-blue font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden'
               >
-                <span className='relative z-10'>Explore Our Services</span>
+                <span className='relative z-10'>Get Started</span>
                 <ArrowRight className='ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform duration-200 relative z-10' />
                 {/* Animated underline */}
                 <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-cinematic-blue group-hover:w-full transition-all duration-300 ease-out'></span>
-              </Link>
+              </button>
             </motion.div>
 
-            {/* Secondary CTA with glass morphism */}
+            {/* Secondary CTA as button with proper accessibility */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className='relative group'
             >
-              <Link
-                href='/about'
+              <button
+                aria-label='Learn More - Discover our story and approach'
                 className='inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-semibold rounded-lg hover:bg-white/10 hover:border-white/50 transition-all duration-300 group backdrop-blur-sm relative overflow-hidden'
               >
                 <Play className='mr-2 w-5 h-5 group-hover:scale-110 transition-transform duration-200' />
-                <span>Watch Our Story</span>
+                <span>Learn More</span>
                 {/* Animated underline */}
                 <span className='absolute bottom-0 left-0 w-0 h-0.5 bg-cinematic-gold group-hover:w-full transition-all duration-300 ease-out'></span>
-              </Link>
+              </button>
             </motion.div>
+          </motion.div>
+
+          {/* Additional navigation links for accessibility */}
+          <motion.div
+            className='mt-6 flex flex-wrap justify-center items-center gap-4 text-white/70'
+            variants={textVariants}
+          >
+            <a
+              href='/services'
+              className='text-cinematic-gold hover:text-white transition-colors duration-200 underline-offset-4 hover:underline'
+            >
+              Our Services
+            </a>
+            <a
+              href='/about'
+              className='text-cinematic-gold hover:text-white transition-colors duration-200 underline-offset-4 hover:underline'
+            >
+              About Us
+            </a>
+            <a
+              href='/contact'
+              className='text-cinematic-gold hover:text-white transition-colors duration-200 underline-offset-4 hover:underline'
+            >
+              Contact
+            </a>
           </motion.div>
 
           {/* Trust indicators with floating animations and glass morphism */}
