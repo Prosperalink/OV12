@@ -87,6 +87,8 @@ export default function TestimonialsSection() {
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
+  const currentTestimonialData = testimonials[currentTestimonial];
+
   return (
     <section className='relative min-h-screen py-20 overflow-hidden'>
       {/* Cinematic Background */}
@@ -114,39 +116,37 @@ export default function TestimonialsSection() {
             <div className='text-center'>
               {/* Rating Stars */}
               <div className='flex justify-center mb-6'>
-                {testimonials[currentTestimonial] &&
-                  [...Array(testimonials[currentTestimonial].rating)].map(
-                    (_, i) => (
-                      <span key={i} className='text-2xl text-yellow-400 mx-1'>
-                        ⭐
-                      </span>
-                    )
-                  )}
+                {currentTestimonialData &&
+                  [...Array(currentTestimonialData.rating)].map((item, i) => (
+                    <span key={i} className='text-2xl text-yellow-400 mx-1'>
+                      ⭐
+                    </span>
+                  ))}
               </div>
 
               {/* Testimonial Content */}
-              {testimonials[currentTestimonial] && (
+              {currentTestimonialData && (
                 <p className='text-gray-600 dark:text-gray-300 mb-4'>
-                  &ldquo;{testimonials[currentTestimonial].content}&rdquo;
+                  &ldquo;{currentTestimonialData.content}&rdquo;
                 </p>
               )}
 
               {/* Author Info */}
-              {testimonials[currentTestimonial] && (
+              {currentTestimonialData && (
                 <div className='flex items-center justify-center space-x-4'>
                   <div className='text-4xl'>
-                    {testimonials[currentTestimonial].avatar}
+                    {currentTestimonialData.avatar}
                   </div>
                   <div className='text-left'>
                     <h4 className='text-white font-bold text-lg'>
-                      {testimonials[currentTestimonial].name}
+                      {currentTestimonialData.name}
                     </h4>
                     <p className='text-gray-400'>
-                      {testimonials[currentTestimonial].role} at{' '}
-                      {testimonials[currentTestimonial].company}
+                      {currentTestimonialData.role} at{' '}
+                      {currentTestimonialData.company}
                     </p>
                     <span className='text-sm text-blue-400'>
-                      {testimonials[currentTestimonial].industry} Industry
+                      {currentTestimonialData.industry} Industry
                     </span>
                   </div>
                 </div>
@@ -156,7 +156,7 @@ export default function TestimonialsSection() {
 
           {/* Navigation Dots */}
           <div className='flex justify-center mt-8 space-x-2'>
-            {testimonials.map((_, index) => (
+            {testimonials.map((testimonial, index) => (
               <button
                 key={index}
                 onClick={() => {

@@ -45,7 +45,7 @@ const testimonials: ITestimonial[] = [
     role: 'Founder',
     company: 'Creative Studios',
     content:
-      'The team at Orson Vision doesn&rsquo;t just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.',
+      'The team at Orson Vision doesn&apos;t just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.',
     rating: 5,
     avatar: '👩‍🎨',
     industry: 'Creative',
@@ -88,7 +88,8 @@ export default function TestimonialsSection() {
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
 
-  if (!testimonials[currentTestimonial]) return null;
+  const currentTestimonialData = testimonials[currentTestimonial];
+  if (!currentTestimonialData) return null;
 
   return (
     <section className='relative min-h-screen py-20 overflow-hidden'>
@@ -130,40 +131,33 @@ export default function TestimonialsSection() {
               <div className='text-center'>
                 {/* Rating Stars */}
                 <div className='flex justify-center mb-6'>
-                  {testimonials[currentTestimonial] &&
-                    [...Array(testimonials[currentTestimonial].rating)].map(
-                      // eslint-disable-next-line @typescript-eslint/naming-convention
-                      (_, i) => (
-                        <motion.span
-                          key={i}
-                          className='w-5 h-5 text-yellow-400'
-                        >
-                          ★
-                        </motion.span>
-                      )
-                    )}
+                  {[...Array(currentTestimonialData.rating)].map((item, i) => (
+                    <motion.span key={i} className='w-5 h-5 text-yellow-400'>
+                      ★
+                    </motion.span>
+                  ))}
                 </div>
 
                 {/* Testimonial Content */}
                 <blockquote className='text-xl text-gray-300 leading-relaxed mb-8 italic'>
-                  &quot;{testimonials[currentTestimonial].content}&quot;
+                  &quot;{currentTestimonialData.content}&quot;
                 </blockquote>
 
                 {/* Author Info */}
                 <div className='flex items-center justify-center space-x-4'>
                   <div className='text-4xl'>
-                    {testimonials[currentTestimonial].avatar}
+                    {currentTestimonialData.avatar}
                   </div>
                   <div className='text-left'>
                     <h4 className='text-white font-bold text-lg'>
-                      {testimonials[currentTestimonial].name}
+                      {currentTestimonialData.name}
                     </h4>
                     <p className='text-gray-400'>
-                      {testimonials[currentTestimonial].role} at{' '}
-                      {testimonials[currentTestimonial].company}
+                      {currentTestimonialData.role} at{' '}
+                      {currentTestimonialData.company}
                     </p>
                     <span className='text-sm text-blue-400'>
-                      {testimonials[currentTestimonial].industry} Industry
+                      {currentTestimonialData.industry} Industry
                     </span>
                   </div>
                 </div>

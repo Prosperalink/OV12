@@ -19,7 +19,7 @@ export default function HomePage() {
     {
       title: 'Digital Innovation',
       description:
-        'Building robust digital foundations that drive growth and competitive advantage',
+        'We craft cutting-edge digital solutions that bridge the gap between imagination and implementation, creating seamless user experiences that drive business growth.',
       features: [
         'Custom Software Development',
         'API Integration',
@@ -34,7 +34,7 @@ export default function HomePage() {
     {
       title: 'Creative Design',
       description:
-        'Crafting compelling visual narratives that connect with your audience',
+        'We design immersive brand experiences that connect with audiences on an emotional level, building lasting relationships and driving brand loyalty.',
       features: [
         'Brand Identity Design',
         'UI/UX Design',
@@ -49,7 +49,7 @@ export default function HomePage() {
     {
       title: 'Content Creation',
       description:
-        'Producing engaging content that tells your story across all channels',
+        'We produce compelling content that tells your story, engages your audience, and drives meaningful conversations across all digital channels.',
       features: [
         'Video Production',
         'Photography',
@@ -64,7 +64,7 @@ export default function HomePage() {
     {
       title: 'Technology Solutions',
       description:
-        'Engineering reliable technology solutions for seamless performance',
+        'We architect robust technology solutions that scale with your business, ensuring reliability, security, and performance for your digital operations.',
       features: [
         'Web Development',
         'Mobile Apps',
@@ -79,7 +79,7 @@ export default function HomePage() {
     {
       title: 'Strategic Consulting',
       description:
-        'Providing strategic guidance to navigate the digital landscape',
+        'We provide strategic guidance to help you navigate the digital landscape, optimize your operations, and achieve sustainable growth.',
       features: [
         'Digital Strategy',
         'Market Analysis',
@@ -98,7 +98,7 @@ export default function HomePage() {
       name: 'Sarah Johnson',
       role: 'CEO, TechStart',
       content:
-        'Orson Vision transformed our digital presence with their cinematic approach. The results exceeded our expectations.',
+        'Orson Vision transformed our digital presence with their cinematic approach. The results exceeded our expectations - our conversion rates increased by 250% within the first quarter.',
       rating: 5,
       avatar: '/avatars/sarah.jpg',
     },
@@ -106,7 +106,7 @@ export default function HomePage() {
       name: 'Ahmed Ben Ali',
       role: 'Founder, Tunisian Crafts',
       content:
-        'Their human-centered design philosophy perfectly captured our brand essence. Our online sales increased by 300%.',
+        'Their human-centered design philosophy perfectly captured our brand essence. Our online sales increased by 300% and we now reach customers worldwide while maintaining our authentic Tunisian heritage.',
       rating: 5,
       avatar: '/avatars/ahmed.jpg',
     },
@@ -114,7 +114,7 @@ export default function HomePage() {
       name: 'Marie Dubois',
       role: 'Marketing Director, École Internationale',
       content:
-        'The team at Orson Vision understood our educational mission and created content that truly resonates with our community.',
+        'The team at Orson Vision understood our educational mission and created content that truly resonates with our community. Our student engagement increased by 180% and parent satisfaction scores are at an all-time high.',
       rating: 5,
       avatar: '/avatars/marie.jpg',
     },
@@ -136,7 +136,8 @@ export default function HomePage() {
             </h2>
             <p className='text-xl text-cinematic-blue/80 max-w-3xl mx-auto'>
               We offer comprehensive digital solutions that blend cutting-edge
-              technology with human-centered design.
+              technology with human-centered design, creating transformative
+              experiences that inspire and drive results.
             </p>
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>
@@ -166,7 +167,8 @@ export default function HomePage() {
             </h2>
             <p className='text-xl text-cinematic-gold/80 max-w-3xl mx-auto'>
               Discover how we&apos;ve helped businesses transform their digital
-              presence and achieve remarkable results.
+              presence and achieve remarkable results through our cinematic
+              approach to digital innovation.
             </p>
           </div>
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8'>

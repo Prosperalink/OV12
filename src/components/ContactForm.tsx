@@ -276,8 +276,9 @@ export default function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
         >
-          Thank you for reaching out. We&apos;ll get back to you within 24
-          hours.
+          Thank you for reaching out! We&apos;ll get back to you within 24 hours
+          to discuss your project and how we can bring your vision to life with
+          our cinematic approach to digital innovation.
         </motion.p>
 
         <motion.button
@@ -377,7 +378,9 @@ export default function ContactForm() {
               <InputField field='company' label='Company Name' />
               <div className='text-center'>
                 <p className='text-gray-600 dark:text-gray-300 mb-4'>
-                  Tell us about your project and requirements
+                  Share your vision with us - let&apos;s discuss how we can
+                  transform your digital presence with our cinematic approach to
+                  innovation.
                 </p>
               </div>
             </motion.div>
