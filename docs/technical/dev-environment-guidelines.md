@@ -102,12 +102,32 @@ npm run test:ci               # CI-optimized test run
 ```bash
 # Performance monitoring
 npm run performance           # Performance measurement
+npm run performance:realtime  # Real-time monitoring
+npm run performance:monitor   # Continuous monitoring
 npm run analyze               # Bundle analysis
 npm run perf                  # Performance testing
 
 # Security
 npm run security-scan         # Security audit
 npm run test:security         # Security tests
+```
+
+### Mock API & Data
+
+```bash
+# Mock API server
+npm run mock-api              # Start mock API server (port 4000)
+# Example endpoint: GET http://localhost:4000/api/hello
+```
+
+### Lighthouse CI (Performance Metrics)
+
+```bash
+# Collect metrics
+npm run lhci:collect          # Collect performance metrics
+npm run lhci:assert           # Assert performance thresholds
+npm run lhci:report           # Generate performance report
+npm run lhci                  # Full performance analysis
 ```
 
 ### Maintenance
@@ -149,6 +169,7 @@ NODE_OPTIONS='--max-old-space-size=4096'
 
 # Custom ports
 PORT=3001
+MOCK_API_PORT=4000
 ```
 
 ## Performance Optimizations
@@ -207,6 +228,25 @@ PORT=3001
 - **TypeScript Memory**: 4GB allocation
 - **File Watching**: Optimized exclusions
 
+### Debugging Configuration
+
+- **Next.js Dev Server**: `.vscode/launch.json` includes debug config
+- **Node.js Current File**: Debug any Node.js script
+- **How to use**: Open Run & Debug panel, select config, and start debugging
+
+### Code Snippets
+
+- **React/Next.js**: `.vscode/snippets/react.json`
+  - `rfc` - React Functional Component
+  - `npage` - Next.js Page
+  - `usestate` - React useState Hook
+  - `useeffect` - React useEffect Hook
+- **Tailwind CSS**: `.vscode/snippets/tailwind.json`
+  - `tw-flex-center` - Flexbox center utility
+  - `tw-btn` - Button utility
+  - `tw-card` - Card utility
+- **How to use**: Type snippet prefix and expand
+
 ## Real-time Development Best Practices
 
 ### Hot Module Replacement (HMR)
@@ -222,6 +262,7 @@ PORT=3001
 2. **Type Safety**: Use `npm run type-check:watch` in separate terminal
 3. **Code Quality**: Use `npm run standards` before commits
 4. **Performance**: Use `npm run performance` for optimization
+5. **Mock Data**: Use `npm run mock-api` for local development
 
 ### Troubleshooting HMR Issues
 
@@ -256,6 +297,53 @@ npm run type-check
 - Use `npm run analyze` to identify large dependencies
 - Monitor bundle size with performance script
 - Remove unused imports and dependencies
+
+### Performance Monitoring
+
+- **Real-time Monitoring**: `npm run performance:realtime`
+- **Continuous Monitoring**: `npm run performance:monitor`
+- **Lighthouse CI**: `npm run lhci` for automated metrics
+- **Target Metrics**:
+  - Cold Start: < 10 seconds
+  - Hot Reload: < 1 second
+  - Type Check: < 5 seconds
+  - Build Time: < 30 seconds
+  - Memory Usage: < 2GB
+
+## Mock API Development
+
+### Starting Mock API
+
+```bash
+npm run mock-api
+# Server starts on http://localhost:4000
+```
+
+### Example Endpoints
+
+```bash
+# GET /api/hello
+curl http://localhost:4000/api/hello
+# Response: {"message": "Hello from the mock API!"}
+```
+
+### Adding Custom Endpoints
+
+Edit `mock-api.js` to add your own endpoints:
+
+```javascript
+app.get('/api/custom', (req, res) => {
+  res.json({ data: 'Your custom data' });
+});
+```
+
+### Integration with Frontend
+
+```javascript
+// In your React components
+const response = await fetch('http://localhost:4000/api/hello');
+const data = await response.json();
+```
 
 ## Troubleshooting Guide
 
@@ -316,14 +404,28 @@ npm run analyze
 node scripts/performance-monitor.js
 ```
 
+#### Mock API Issues
+
+```bash
+# Check if mock API is running
+curl http://localhost:4000/api/hello
+
+# Restart mock API
+npm run mock-api
+
+# Check port conflicts
+netstat -ano | findstr :4000
+```
+
 ### Error Patterns
 
-| Error              | Cause              | Solution                    |
-| ------------------ | ------------------ | --------------------------- |
-| `EADDRINUSE`       | Port conflict      | Use `npm run dev:smart`     |
-| `Module not found` | Import path issue  | Check `tsconfig.json` paths |
-| `Type errors`      | TypeScript issues  | Run `npm run type-check`    |
-| `Build failures`   | Linting/formatting | Run `npm run standards`     |
+| Error                | Cause              | Solution                    |
+| -------------------- | ------------------ | --------------------------- |
+| `EADDRINUSE`         | Port conflict      | Use `npm run dev:smart`     |
+| `Module not found`   | Import path issue  | Check `tsconfig.json` paths |
+| `Type errors`        | TypeScript issues  | Run `npm run type-check`    |
+| `Build failures`     | Linting/formatting | Run `npm run standards`     |
+| `Mock API not found` | Mock server down   | Run `npm run mock-api`      |
 
 ## Contributing to Dev Environment
 
@@ -347,6 +449,13 @@ node scripts/performance-monitor.js
 2. **Quality**: Add to quality gate scripts
 3. **Performance**: Add to performance monitoring
 4. **Documentation**: Update this guide
+
+### Adding Mock API Endpoints
+
+1. **Edit mock-api.js**: Add new routes
+2. **Document endpoints**: Update this guide
+3. **Test endpoints**: Use curl or browser
+4. **Update frontend**: Integrate with React components
 
 ## Security Considerations
 
@@ -385,6 +494,9 @@ npm run analyze
 
 # Memory usage
 node scripts/performance-monitor.js
+
+# Lighthouse CI
+npm run lhci
 ```
 
 ## Support and Maintenance
@@ -403,37 +515,8 @@ node scripts/performance-monitor.js
 3. **Review logs**: Check terminal output
 4. **Team support**: Contact development team
 
-## New Tools & Scripts
-
-### Mock API Server
-
-- **Start mock API**: `npm run mock-api`
-- **Default port**: 4000
-- **Example endpoint**: `GET /api/hello`
-- **Usage**: Use for local data simulation and frontend development without backend dependencies.
-
-### Lighthouse CI (Performance Metrics)
-
-- **Collect metrics**: `npm run lhci:collect`
-- **Assert metrics**: `npm run lhci:assert`
-- **Report metrics**: `npm run lhci:report`
-- **Full run**: `npm run lhci`
-- **Config**: `lighthouserc.json` (edit URLs as needed)
-- **Results**: `lhci-results/`
-
-### Debugging
-
-- **VS Code launch config**: `.vscode/launch.json` for Next.js and Node.js debugging
-- **How to use**: Open Run & Debug panel, select config, and start debugging
-
-### Code Snippets
-
-- **React/Next.js**: `.vscode/snippets/react.json`
-- **Tailwind CSS**: `.vscode/snippets/tailwind.json`
-- **How to use**: Type snippet prefix (e.g., `rfc`, `tw-btn`) and expand
-
 ---
 
 **Last Updated**: December 2024
-**Version**: 1.0
+**Version**: 2.0
 **Maintainer**: Development Team

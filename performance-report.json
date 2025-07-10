@@ -1,9 +1,28 @@
 {
-  "startTime": 1752063518675,
+  "startTime": 1752064936475,
   "buildTime": 0,
   "typeCheckTime": 0,
   "lintTime": 0,
   "testTime": 0,
   "memoryUsage": 5,
-  "bundleSize": 0
+  "bundleSize": 0,
+  "systemMemory": 13814,
+  "cpuUsage": 44,
+  "analysis": {
+    "buildTime": true,
+    "typeCheckTime": true,
+    "lintTime": true,
+    "testTime": true,
+    "memoryUsage": true,
+    "bundleSize": true
+  },
+  "timestamp": "2025-07-09T12:43:46.629Z",
+  "thresholds": {
+    "buildTime": 30000,
+    "typeCheckTime": 5000,
+    "lintTime": 3000,
+    "testTime": 10000,
+    "memoryUsage": 500,
+    "bundleSize": 1000000
+  }
 }

@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+
 import AnimationObserver from './AnimationObserver';
 
 interface ITestimonial {
@@ -44,7 +45,7 @@ const testimonials: ITestimonial[] = [
     role: 'Founder',
     company: 'Creative Studios',
     content:
-      "The team at Orson Vision doesn't just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.",
+      'The team at Orson Vision doesn&rsquo;t just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.',
     rating: 5,
     avatar: '👩‍🎨',
     industry: 'Creative',
@@ -55,7 +56,7 @@ const testimonials: ITestimonial[] = [
     role: 'CTO',
     company: 'Innovate Labs',
     content:
-      "Orson Vision's technical expertise combined with their creative vision delivered a solution that not only looks stunning but performs exceptionally well. Their ongoing support has been invaluable.",
+      'Orson Vision&rsquo;s technical expertise combined with their creative vision delivered a solution that not only looks stunning but performs exceptionally well. Their ongoing support has been invaluable.',
     rating: 5,
     avatar: '👨‍💻',
     industry: 'Startup',
@@ -86,6 +87,8 @@ export default function TestimonialsSection() {
 
     return () => clearInterval(interval);
   }, [isAutoPlaying]);
+
+  if (!testimonials[currentTestimonial]) return null;
 
   return (
     <section className='relative min-h-screen py-20 overflow-hidden'>
@@ -127,24 +130,23 @@ export default function TestimonialsSection() {
               <div className='text-center'>
                 {/* Rating Stars */}
                 <div className='flex justify-center mb-6'>
-                  {[...Array(testimonials[currentTestimonial].rating)].map(
-                    (_, i) => (
-                      <motion.span
-                        key={i}
-                        initial={{ opacity: 0, scale: 0 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: i * 0.1 }}
-                        className='text-2xl text-yellow-400 mx-1'
-                      >
-                        ⭐
-                      </motion.span>
-                    )
-                  )}
+                  {testimonials[currentTestimonial] &&
+                    [...Array(testimonials[currentTestimonial].rating)].map(
+                      // eslint-disable-next-line @typescript-eslint/naming-convention
+                      (_, i) => (
+                        <motion.span
+                          key={i}
+                          className='w-5 h-5 text-yellow-400'
+                        >
+                          ★
+                        </motion.span>
+                      )
+                    )}
                 </div>
 
                 {/* Testimonial Content */}
                 <blockquote className='text-xl text-gray-300 leading-relaxed mb-8 italic'>
-                  "{testimonials[currentTestimonial].content}"
+                  &quot;{testimonials[currentTestimonial].content}&quot;
                 </blockquote>
 
                 {/* Author Info */}
@@ -202,7 +204,7 @@ export default function TestimonialsSection() {
               { number: '150+', label: 'Projects Completed', icon: '🚀' },
               { number: '98%', label: 'Client Satisfaction', icon: '⭐' },
               { number: '24/7', label: 'Support Available', icon: '🛡️' },
-              { number: '5+', label: 'Years Experience', icon: '🎯' },
+              { number: '5+', label: 'Years Experience', icon: '🏆' },
             ].map((stat, index) => (
               <motion.div
                 key={index}

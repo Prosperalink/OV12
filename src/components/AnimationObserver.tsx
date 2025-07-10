@@ -4,130 +4,58 @@ import { motion, useAnimation, useInView, Variants } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 
 // Animation variants for cinematic humanism
-const cinematicVariants: Record<string, Variants> = {
-  // Fade animations
+const animationObserver = {
+  // Animation variants
   fadeIn: {
-    initial: { opacity: 0 },
-    animate: { opacity: 1 },
-    exit: { opacity: 0 },
-    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
   },
   fadeInUp: {
-    initial: { opacity: 0, y: 30 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -30 },
-    transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0 },
   },
   fadeInDown: {
-    initial: { opacity: 0, y: -30 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: 30 },
-    transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+    hidden: { opacity: 0, y: -30 },
+    visible: { opacity: 1, y: 0 },
   },
   fadeInLeft: {
-    initial: { opacity: 0, x: -30 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 30 },
-    transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+    hidden: { opacity: 0, x: -30 },
+    visible: { opacity: 1, x: 0 },
   },
   fadeInRight: {
-    initial: { opacity: 0, x: 30 },
-    animate: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: -30 },
-    transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
+    hidden: { opacity: 0, x: 30 },
+    visible: { opacity: 1, x: 0 },
   },
-
-  // Scale animations
   scaleIn: {
-    initial: { scale: 0.8, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.8, opacity: 0 },
-    transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] },
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: { opacity: 1, scale: 1 },
   },
-  scaleInUp: {
-    initial: { scale: 0.8, y: 30, opacity: 0 },
-    animate: { scale: 1, y: 0, opacity: 1 },
-    exit: { scale: 0.8, y: -30, opacity: 0 },
-    transition: { duration: 0.8, ease: [0.4, 0, 0.2, 1] },
-  },
-
-  // Slide animations
   slideInUp: {
-    initial: { y: 100, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: -100, opacity: 0 },
-    transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94] },
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 },
   },
-  slideInDown: {
-    initial: { y: -100, opacity: 0 },
-    animate: { y: 0, opacity: 1 },
-    exit: { y: 100, opacity: 0 },
-    transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-  slideInLeft: {
-    initial: { x: -100, opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: 100, opacity: 0 },
-    transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-  slideInRight: {
-    initial: { x: 100, opacity: 0 },
-    animate: { x: 0, opacity: 1 },
-    exit: { x: -100, opacity: 0 },
-    transition: { duration: 1, ease: [0.25, 0.46, 0.45, 0.94] },
-  },
-
-  // Cinematic animations
   cinematicEntrance: {
-    initial: { opacity: 0, scale: 1.1, y: 50 },
-    animate: { opacity: 1, scale: 1, y: 0 },
-    transition: {
-      duration: 1.2,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
+    hidden: { opacity: 0, y: 100, scale: 0.9 },
+    visible: { opacity: 1, y: 0, scale: 1 },
   },
   dramaticReveal: {
-    initial: { opacity: 0, y: 100, scale: 0.8 },
-    animate: { opacity: 1, y: 0, scale: 1 },
-    transition: {
-      duration: 1.5,
-      ease: [0.68, -0.55, 0.265, 1.55],
-    },
+    hidden: { opacity: 0, scale: 0.5, rotateY: 90 },
+    visible: { opacity: 1, scale: 1, rotateY: 0 },
   },
   heroEntrance: {
-    initial: { opacity: 0, y: 100, scale: 0.9 },
-    animate: { opacity: 1, y: 0, scale: 1 },
-    transition: {
-      duration: 1.8,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
+    hidden: { opacity: 0, y: 200, scale: 0.8 },
+    visible: { opacity: 1, y: 0, scale: 1 },
   },
-
-  // Text animations
   textReveal: {
-    initial: { clipPath: 'inset(0 100% 0 0)' },
-    animate: { clipPath: 'inset(0 0% 0 0)' },
-    transition: {
-      duration: 0.8,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
   },
-  textStagger: {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1],
-    },
-  },
-
-  // Stagger container
   staggerContainer: {
-    initial: {},
-    animate: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
       transition: {
         staggerChildren: 0.1,
-        delayChildren: 0.1,
       },
     },
   },
@@ -137,10 +65,9 @@ const cinematicVariants: Record<string, Variants> = {
 interface IAnimationObserverProps {
   children: React.ReactNode;
   className?: string;
-  animation?: keyof typeof cinematicVariants;
+  animation?: keyof typeof animationObserver;
   delay?: number;
   duration?: number;
-  threshold?: number;
   once?: boolean;
   direction?: 'up' | 'down' | 'left' | 'right';
   distance?: number;
@@ -148,22 +75,21 @@ interface IAnimationObserverProps {
   staggerDelay?: number;
 }
 
-export const AnimationObserver: React.FC<IAnimationObserverProps> = ({
+// eslint-disable-next-line @typescript-eslint/naming-convention
+export default function AnimationObserver({
   children,
   className = '',
   animation = 'fadeInUp',
   delay = 0,
   duration,
-  threshold = 0.1,
   once = true,
   direction = 'up',
   distance = 30,
   stagger = false,
   staggerDelay = 0.1,
-}) => {
+}: IAnimationObserverProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, {
-    threshold,
     once,
     margin: '-100px',
   });
@@ -172,44 +98,34 @@ export const AnimationObserver: React.FC<IAnimationObserverProps> = ({
   // Custom animation based on direction and distance
   const getCustomAnimation = (): Variants => {
     const baseAnimation = {
-      initial: { opacity: 0 },
-      animate: { opacity: 1 },
-      exit: { opacity: 0 },
-      transition: {
-        duration: duration || 0.8,
-        ease: [0.4, 0, 0.2, 1],
-        delay,
-      },
+      hidden: { opacity: 0 },
+      visible: { opacity: 1 },
     };
 
     switch (direction) {
       case 'up':
         return {
           ...baseAnimation,
-          initial: { ...baseAnimation.initial, y: distance },
-          animate: { ...baseAnimation.animate, y: 0 },
-          exit: { ...baseAnimation.exit, y: -distance },
+          hidden: { ...baseAnimation.hidden, y: distance },
+          visible: { ...baseAnimation.visible, y: 0 },
         };
       case 'down':
         return {
           ...baseAnimation,
-          initial: { ...baseAnimation.initial, y: -distance },
-          animate: { ...baseAnimation.animate, y: 0 },
-          exit: { ...baseAnimation.exit, y: distance },
+          hidden: { ...baseAnimation.hidden, y: -distance },
+          visible: { ...baseAnimation.visible, y: 0 },
         };
       case 'left':
         return {
           ...baseAnimation,
-          initial: { ...baseAnimation.initial, x: distance },
-          animate: { ...baseAnimation.animate, x: 0 },
-          exit: { ...baseAnimation.exit, x: -distance },
+          hidden: { ...baseAnimation.hidden, x: -distance },
+          visible: { ...baseAnimation.visible, x: 0 },
         };
       case 'right':
         return {
           ...baseAnimation,
-          initial: { ...baseAnimation.initial, x: -distance },
-          animate: { ...baseAnimation.animate, x: 0 },
-          exit: { ...baseAnimation.exit, x: distance },
+          hidden: { ...baseAnimation.hidden, x: distance },
+          visible: { ...baseAnimation.visible, x: 0 },
         };
       default:
         return baseAnimation;
@@ -218,37 +134,17 @@ export const AnimationObserver: React.FC<IAnimationObserverProps> = ({
 
   // Get animation variants
   const getAnimationVariants = (): Variants => {
-    if (animation === 'custom') {
-      return getCustomAnimation();
+    if (animation && animationObserver[animation]) {
+      return animationObserver[animation];
     }
-
-    const selectedAnimation = cinematicVariants[animation];
-    if (!selectedAnimation) {
-      return cinematicVariants.fadeInUp;
-    }
-
-    // Add custom delay and duration if provided
-    if (delay || duration) {
-      return {
-        ...selectedAnimation,
-        transition: {
-          ...selectedAnimation.transition,
-          delay: delay || selectedAnimation.transition?.delay,
-          duration: duration || selectedAnimation.transition?.duration,
-        },
-      };
-    }
-
-    return selectedAnimation;
+    return getCustomAnimation();
   };
 
-  // Handle stagger animations
+  // Get stagger variants
   const getStaggerVariants = (): Variants => {
-    if (!stagger) return getAnimationVariants();
-
     return {
-      initial: {},
-      animate: {
+      hidden: {},
+      visible: {
         transition: {
           staggerChildren: staggerDelay,
           delayChildren: delay,
@@ -257,54 +153,43 @@ export const AnimationObserver: React.FC<IAnimationObserverProps> = ({
     };
   };
 
-  // Trigger animation when in view
   useEffect(() => {
     if (isInView) {
-      controls.start('animate');
-    } else if (!once) {
-      controls.start('initial');
+      controls.start('visible');
+    } else {
+      controls.start('hidden');
     }
-  }, [isInView, controls, once]);
+  }, [isInView, controls]);
 
-  // Stagger container wrapper
-  if (stagger) {
-    return (
-      <motion.div
-        ref={ref}
-        className={className}
-        variants={getStaggerVariants()}
-        initial='initial'
-        animate={controls}
-        exit='exit'
-      >
-        {children}
-      </motion.div>
-    );
-  }
+  const variants = stagger ? getStaggerVariants() : getAnimationVariants();
+  const transition = {
+    duration: duration || 0.8,
+    ease: [0.4, 0, 0.2, 1],
+    delay,
+  };
 
-  // Regular animation wrapper
   return (
     <motion.div
       ref={ref}
       className={className}
-      variants={getAnimationVariants()}
-      initial='initial'
+      variants={variants}
+      initial='hidden'
       animate={controls}
-      exit='exit'
-      whileInView={!once ? 'animate' : undefined}
-      viewport={{ once, threshold }}
+      exit='hidden'
+      transition={transition}
     >
       {children}
     </motion.div>
   );
-};
+}
 
-// Specialized animation components
+// Convenience components
+/* eslint-disable @typescript-eslint/naming-convention */
 export const FadeInUp: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInUp' className={className}>
+  <AnimationObserver animation='fadeInUp' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -313,7 +198,7 @@ export const FadeInDown: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInDown' className={className}>
+  <AnimationObserver animation='fadeInDown' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -322,7 +207,7 @@ export const FadeInLeft: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInLeft' className={className}>
+  <AnimationObserver animation='fadeInLeft' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -331,7 +216,7 @@ export const FadeInRight: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='fadeInRight' className={className}>
+  <AnimationObserver animation='fadeInRight' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -340,7 +225,7 @@ export const ScaleIn: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='scaleIn' className={className}>
+  <AnimationObserver animation='scaleIn' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -349,7 +234,7 @@ export const SlideInUp: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='slideInUp' className={className}>
+  <AnimationObserver animation='slideInUp' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -358,7 +243,7 @@ export const CinematicEntrance: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='cinematicEntrance' className={className}>
+  <AnimationObserver animation='cinematicEntrance' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -367,7 +252,7 @@ export const DramaticReveal: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='dramaticReveal' className={className}>
+  <AnimationObserver animation='dramaticReveal' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -376,7 +261,7 @@ export const HeroEntrance: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='heroEntrance' className={className}>
+  <AnimationObserver animation='heroEntrance' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -385,7 +270,7 @@ export const TextReveal: React.FC<{
   children: React.ReactNode;
   className?: string;
 }> = ({ children, className }) => (
-  <AnimationObserver animation='textReveal' className={className}>
+  <AnimationObserver animation='textReveal' className={className || ''}>
     {children}
   </AnimationObserver>
 );
@@ -397,32 +282,33 @@ export const StaggerContainer: React.FC<{
 }> = ({ children, className, staggerDelay = 0.1 }) => (
   <AnimationObserver
     animation='staggerContainer'
-    className={className}
+    className={className || ''}
     stagger={true}
     staggerDelay={staggerDelay}
   >
     {children}
   </AnimationObserver>
 );
+/* eslint-enable @typescript-eslint/naming-convention */
 
-// Performance-optimized animation hook
+// Hook for cinematic animations
 export const useCinematicAnimation = (
-  animation: keyof typeof cinematicVariants
+  animation: keyof typeof animationObserver
 ) => {
   const controls = useAnimation();
 
   const startAnimation = () => {
-    controls.start('animate');
+    controls.start('visible');
   };
 
   const resetAnimation = () => {
-    controls.start('initial');
+    controls.start('hidden');
   };
 
   return {
     controls,
     startAnimation,
     resetAnimation,
-    variants: cinematicVariants[animation],
+    variants: animationObserver[animation],
   };
 };

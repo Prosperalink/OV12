@@ -1,4 +1,4 @@
-import { Inter } from 'next/font/google'
+import { Inter } from 'next/font/google';
 
 // Inter font with variable weights for cinematic typography
 export const inter = Inter({
@@ -6,7 +6,7 @@ export const inter = Inter({
   variable: '--font-inter',
   display: 'swap',
   weight: ['300', '400', '500', '600', '700'],
-})
+});
 
 // Typography scale system for consistent hierarchy
 export const typography = {
@@ -46,7 +46,7 @@ export const typography = {
     md: 'text-base font-semibold tracking-wide',
     sm: 'text-sm font-semibold tracking-wide',
   },
-}
+};
 
 // CSS custom properties for typography
 export const typographyCSS = `
@@ -57,7 +57,7 @@ export const typographyCSS = `
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --font-weight-bold: 700;
-    
+
     /* Typography scale */
     --text-xs: 0.75rem;
     --text-sm: 0.875rem;
@@ -72,7 +72,7 @@ export const typographyCSS = `
     --text-7xl: 4.5rem;
     --text-8xl: 6rem;
     --text-9xl: 8rem;
-    
+
     /* Line heights */
     --leading-none: 1;
     --leading-tight: 1.25;
@@ -80,7 +80,7 @@ export const typographyCSS = `
     --leading-normal: 1.5;
     --leading-relaxed: 1.625;
     --leading-loose: 2;
-    
+
     /* Letter spacing */
     --tracking-tighter: -0.05em;
     --tracking-tight: -0.025em;
@@ -89,7 +89,7 @@ export const typographyCSS = `
     --tracking-wider: 0.05em;
     --tracking-widest: 0.1em;
   }
-`
+`;
 
 // Animation classes for text reveals
 export const textAnimations = {
@@ -99,9 +99,18 @@ export const textAnimations = {
   fadeInRight: 'animate-fade-in-right',
   stagger: 'animate-stagger',
   typewriter: 'animate-typewriter',
-}
+};
 
 // Utility function for responsive typography
-export const getResponsiveText = (size: keyof typeof typography.display | keyof typeof typography.heading | keyof typeof typography.body) => {
-  return typography.display[size] || typography.heading[size] || typography.body[size] || ''
-} 
+export const getResponsiveText = (size: string) => {
+  if (size in typography.display) {
+    return typography.display[size as keyof typeof typography.display];
+  }
+  if (size in typography.heading) {
+    return typography.heading[size as keyof typeof typography.heading];
+  }
+  if (size in typography.body) {
+    return typography.body[size as keyof typeof typography.body];
+  }
+  return '';
+};

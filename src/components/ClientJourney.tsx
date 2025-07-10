@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+
 import AnimationObserver from './AnimationObserver';
 
 interface IJourneyStep {
@@ -140,7 +141,7 @@ export default function ClientJourney() {
                     className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}
                   >
                     <motion.div
-                      className={`p-6 rounded-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br ${step.bgColor} cursor-pointer transition-all duration-500 hover:scale-105 ${
+                      className={`p-6 rounded-2xl border border-white/10 backdrop-blur-sm bg-gradient-to-br ${step.color} cursor-pointer transition-all duration-500 hover:scale-105 ${
                         activeStep === step.id
                           ? 'border-white/30 shadow-lg shadow-blue-500/20'
                           : ''

@@ -10,21 +10,21 @@ export const breakpoints = {
   xl: '1280px',
   '2xl': '1536px',
   '3xl': '1920px',
-}
+};
 
 // Spacing scale for consistent rhythm
 export const spacing = {
-  xs: '0.25rem',    // 4px
-  sm: '0.5rem',     // 8px
-  md: '1rem',       // 16px
-  lg: '1.5rem',     // 24px
-  xl: '2rem',       // 32px
-  '2xl': '3rem',    // 48px
-  '3xl': '4rem',    // 64px
-  '4xl': '6rem',    // 96px
-  '5xl': '8rem',    // 128px
-  '6xl': '12rem',   // 192px
-}
+  xs: '0.25rem', // 4px
+  sm: '0.5rem', // 8px
+  md: '1rem', // 16px
+  lg: '1.5rem', // 24px
+  xl: '2rem', // 32px
+  '2xl': '3rem', // 48px
+  '3xl': '4rem', // 64px
+  '4xl': '6rem', // 96px
+  '5xl': '8rem', // 128px
+  '6xl': '12rem', // 192px
+};
 
 // Grid system for cinematic layouts
 export const gridSystem = {
@@ -53,14 +53,15 @@ export const gridSystem = {
     desktop: 'repeat(3, 1fr)',
     wide: 'repeat(4, 1fr)',
   },
-}
+};
 
 // Layout containers for different content types
 export const layoutContainers = {
   // Hero section layouts
   hero: {
     fullscreen: 'min-h-screen grid place-items-center',
-    cinematic: 'min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-8 items-center',
+    cinematic:
+      'min-h-screen grid grid-cols-1 lg:grid-cols-3 gap-8 items-center',
     split: 'min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-8 items-center',
     centered: 'min-h-screen flex items-center justify-center',
   },
@@ -84,7 +85,7 @@ export const layoutContainers = {
     vertical: 'flex flex-col space-y-4',
     sidebar: 'grid grid-cols-1 lg:grid-cols-4 gap-8',
   },
-}
+};
 
 // Cinematic composition patterns
 export const cinematicCompositions = {
@@ -114,7 +115,7 @@ export const cinematicCompositions = {
     hero: 'lg:col-span-3',
     content: 'lg:col-span-2',
   },
-}
+};
 
 // Spacing utilities for visual hierarchy
 export const spacingUtilities = {
@@ -150,7 +151,7 @@ export const spacingUtilities = {
     xl: 'm-12',
     '2xl': 'm-16',
   },
-}
+};
 
 // Z-index system for layering
 export const zIndex = {
@@ -162,7 +163,7 @@ export const zIndex = {
   tooltip: 40,
   dropdown: 50,
   toast: 60,
-}
+};
 
 // Aspect ratios for responsive media
 export const aspectRatios = {
@@ -173,7 +174,7 @@ export const aspectRatios = {
   landscape: 'aspect-[4/3]',
   wide: 'aspect-[16/10]',
   ultrawide: 'aspect-[21/9]',
-}
+};
 
 // Container queries for component-level responsiveness
 export const containerQueries = {
@@ -189,7 +190,7 @@ export const containerQueries = {
     container: 'container-type-inline-size',
     responsive: 'container-type-size',
   },
-}
+};
 
 // CSS Grid utilities for complex layouts
 export const gridUtilities = {
@@ -223,7 +224,7 @@ export const gridUtilities = {
     'end-center': 'justify-self-end self-center',
     'end-end': 'justify-self-end self-end',
   },
-}
+};
 
 // Layout components for common patterns
 export const layoutComponents = {
@@ -231,7 +232,8 @@ export const layoutComponents = {
   hero: {
     fullscreen: 'min-h-screen flex items-center justify-center',
     split: 'min-h-screen grid grid-cols-1 lg:grid-cols-2 gap-8 items-center',
-    centered: 'min-h-screen flex flex-col items-center justify-center text-center',
+    centered:
+      'min-h-screen flex flex-col items-center justify-center text-center',
     cinematic: 'min-h-screen relative overflow-hidden',
   },
   // Content sections
@@ -253,27 +255,34 @@ export const layoutComponents = {
     masonry: 'columns-1 md:columns-2 lg:columns-3 gap-6',
     gallery: 'grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4',
   },
-}
+};
 
 // Utility functions for layout
 export const createGridLayout = (columns: number, gap: string = '1rem') => ({
   display: 'grid',
   gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
   gap,
-})
+});
 
-export const createFlexLayout = (direction: 'row' | 'column' = 'row', justify: string = 'flex-start', align: string = 'stretch') => ({
+export const createFlexLayout = (
+  direction: 'row' | 'column' = 'row',
+  justify: string = 'flex-start',
+  align: string = 'stretch'
+) => ({
   display: 'flex',
   flexDirection: direction,
   justifyContent: justify,
   alignItems: align,
-})
+});
 
-export const createResponsiveLayout = (breakpoint: keyof typeof breakpoints, layout: string) => ({
+export const createResponsiveLayout = (
+  breakpoint: keyof typeof breakpoints,
+  layout: Record<string, unknown>
+) => ({
   [`@media (min-width: ${breakpoints[breakpoint]})`]: {
     ...layout,
   },
-})
+});
 
 // CSS custom properties for layout
 export const layoutCSS = `
@@ -286,7 +295,7 @@ export const layoutCSS = `
     --breakpoint-xl: ${breakpoints.xl};
     --breakpoint-2xl: ${breakpoints['2xl']};
     --breakpoint-3xl: ${breakpoints['3xl']};
-    
+
     /* Spacing */
     --spacing-xs: ${spacing.xs};
     --spacing-sm: ${spacing.sm};
@@ -298,7 +307,7 @@ export const layoutCSS = `
     --spacing-4xl: ${spacing['4xl']};
     --spacing-5xl: ${spacing['5xl']};
     --spacing-6xl: ${spacing['6xl']};
-    
+
     /* Z-index */
     --z-base: ${zIndex.base};
     --z-content: ${zIndex.content};
@@ -309,4 +318,4 @@ export const layoutCSS = `
     --z-dropdown: ${zIndex.dropdown};
     --z-toast: ${zIndex.toast};
   }
-` 
+`;

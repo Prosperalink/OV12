@@ -540,8 +540,144 @@ orson-vision/
 └── scripts/           # Build and utility scripts
 ```
 
+## Development Server
+
+### Automatic Free Port Detection
+
+The development server automatically finds an available port when the default port (3000) is busy. This feature is built into the `npm run dev` command and eliminates the need to manually specify ports.
+
+**Features:**
+
+- Automatically detects if port 3000 is in use
+- Searches for the next available port (3001, 3002, etc.)
+- Provides clear console output showing which port is being used
+- Includes performance optimizations for faster development
+
+**Usage:**
+
+```bash
+npm run dev          # Uses smart server with free port detection
+npm run dev:fast     # Same as dev, with performance optimizations
+npm run dev:debug    # Development with debugging enabled
+```
+
+**Console Output Example:**
+
+```
+🚀 Starting optimized development server on port 3001...
+📊 Node.js Memory: 16GB available
+⚡ Performance optimizations enabled
+```
+
+### Development Scripts
+
+| Script                | Description                                       |
+| --------------------- | ------------------------------------------------- |
+| `npm run dev`         | Smart development server with free port detection |
+| `npm run dev:fast`    | Optimized development server                      |
+| `npm run dev:debug`   | Development with debugging enabled                |
+| `npm run dev:analyze` | Development with bundle analysis                  |
+
+## Build Manifest Error Resolution
+
+### Problem
+
+When running `npm run dev`, you may encounter ENOENT errors related to build manifest files:
+
+```
+⨯ [Error: ENOENT: no such file or directory, open '.next\static\development\_buildManifest.js.tmp.xxx']
+```
+
+### Solution
+
+1. **Clean the build cache**:
+
+   ```bash
+   npm run clean
+   ```
+
+2. **If the above doesn't work, manually remove the .next directory**:
+
+   ```bash
+   # Windows
+   if exist .next rmdir /s /q .next
+
+   # Unix/Linux/Mac
+   rm -rf .next
+   ```
+
+3. **Clear npm cache**:
+
+   ```bash
+   npm cache clean --force
+   ```
+
+4. **Reinstall dependencies if needed**:
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+### Windows Compatibility
+
+The project has been updated to use cross-platform commands:
+
+- **Clean scripts**: Now use `rimraf` instead of `rm -rf`
+- **Port detection**: Uses Windows-compatible commands
+- **File operations**: All scripts work on Windows, Linux, and macOS
+
+### Development Server Commands
+
+```bash
+# Standard development server
+npm run dev
+
+# Fast development server with optimizations
+npm run dev:fast
+
+# Development server with debugging
+npm run dev:debug
+
+# Smart development server with auto-port detection
+npm run dev:smart
+```
+
+### Troubleshooting
+
+#### Common Issues
+
+1. **Build manifest errors**: Use `npm run clean` to clear cache
+2. **Port conflicts**: Use `npm run kill-ports` to free up ports
+3. **Dependency conflicts**: Use `--legacy-peer-deps` flag
+4. **Memory issues**: The dev server is optimized for 24GB+ systems
+
+#### Performance Optimization
+
+The development server includes:
+
+- Automatic free port detection
+- Turbopack support for faster builds
+- Memory optimization for large systems
+- Performance monitoring capabilities
+
+### Quality Assurance
+
+Run these commands to ensure code quality:
+
+```bash
+# Run all quality checks
+npm run standards
+
+# Fix linting issues
+npm run lint:fix
+
+# Format code
+npm run format
+
+# Type checking
+npm run type-check
+```
+
 ---
 
 _Last Updated: December 2024_
-_Version: 2.0_
-_Status: Optimized for Development_
+_Version: 1.0_

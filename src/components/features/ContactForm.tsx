@@ -1,14 +1,15 @@
 'use client';
 
-import { FadeInUp } from '@/components/AnimationObserver';
-import {
-  IContactFormData,
-  googleWorkspaceManager,
-} from '@/lib/google-workspace';
 import { AnimatePresence, motion } from 'framer-motion';
 import { AlertCircle, CheckCircle, Loader2, Send } from 'lucide-react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+
+import AnimationObserver from '@/components/AnimationObserver';
+import {
+  IContactFormData,
+  googleWorkspaceManager,
+} from '@/lib/google-workspace';
 
 interface IContactFormProps {
   className?: string;
@@ -19,6 +20,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error';
 export default function ContactForm({ className = '' }: IContactFormProps) {
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+  const [message, setMessage] = useState('');
 
   const {
     register,
@@ -39,6 +41,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
         const success = await googleWorkspaceManager.processContactForm(data);
         if (success) {
           setStatus('success');
+          setMessage('Thank you! Your message has been sent successfully.');
           reset();
           return;
         }
@@ -55,16 +58,15 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
 
       if (response.ok) {
         setStatus('success');
+        setMessage('Thank you! Your message has been sent successfully.');
         reset();
       } else {
-        const errorData = await response.json();
-        setErrorMessage(errorData.error || 'Failed to send message');
         setStatus('error');
+        setMessage('Something went wrong. Please try again.');
       }
-    } catch (error) {
-      console.error('Contact form error:', error);
-      setErrorMessage('An unexpected error occurred. Please try again.');
+    } catch {
       setStatus('error');
+      setMessage('Something went wrong. Please try again.');
     }
   };
 
@@ -84,7 +86,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
   const getStatusMessage = () => {
     switch (status) {
       case 'success':
-        return 'Thank you! Your message has been sent successfully.';
+        return message || 'Thank you! Your message has been sent successfully.';
       case 'error':
         return errorMessage || 'Failed to send message. Please try again.';
       case 'submitting':
@@ -95,15 +97,15 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
   };
 
   return (
-    <FadeInUp className={className}>
+    <AnimationObserver className={className}>
       <div className='max-w-2xl mx-auto'>
         <div className='bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700 overflow-hidden'>
           {/* Header */}
           <div className='bg-gradient-to-r from-cinematic-blue to-cinematic-gold p-8 text-white'>
             <h3 className='text-2xl font-bold mb-2'>Start Your Journey</h3>
             <p className='text-blue-100'>
-              Let's discuss how we can bring your digital vision to life with
-              cinematic humanism
+              Let&apos;s discuss how we can bring your digital vision to life
+              with cinematic humanism
             </p>
           </div>
 
@@ -173,7 +175,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
                   {...register('phone')}
                   type='tel'
                   id='phone'
-                  className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cinematic-blue focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors'
+                  className='form-input-cinematic'
                   placeholder='+216 XX XXX XXX'
                 />
               </div>
@@ -189,7 +191,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
                   {...register('company')}
                   type='text'
                   id='company'
-                  className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cinematic-blue focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors'
+                  className='form-input-cinematic'
                   placeholder='Your company name'
                 />
               </div>
@@ -208,7 +210,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
                   required: 'Please select a service',
                 })}
                 id='service'
-                className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cinematic-blue focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors'
+                className='form-input-cinematic'
               >
                 <option value=''>Select a service</option>
                 <option value='digital-innovation'>Digital Innovation</option>
@@ -242,7 +244,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
                 <select
                   {...register('budget')}
                   id='budget'
-                  className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cinematic-blue focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors'
+                  className='form-input-cinematic'
                 >
                   <option value=''>Select budget range</option>
                   <option value='under-1000'>Under 1,000 TND</option>
@@ -264,7 +266,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
                 <select
                   {...register('timeline')}
                   id='timeline'
-                  className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cinematic-blue focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors'
+                  className='form-input-cinematic'
                 >
                   <option value=''>Select timeline</option>
                   <option value='asap'>ASAP</option>
@@ -295,7 +297,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
                 })}
                 id='message'
                 rows={6}
-                className='w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-cinematic-blue focus:border-transparent dark:bg-gray-700 dark:text-white transition-colors resize-none'
+                className='form-input-cinematic resize-none'
                 placeholder='Tell us about your project, goals, and vision...'
               />
               {errors.message && (
@@ -309,7 +311,7 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
             <motion.button
               type='submit'
               disabled={isSubmitting || status === 'submitting'}
-              className='w-full bg-gradient-to-r from-cinematic-gold to-cinematic-gold-dark text-white font-semibold py-4 px-8 rounded-lg hover:from-cinematic-gold-dark hover:to-cinematic-gold transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-cinematic-gold focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
+              className='w-full bg-gradient-to-r from-cinematic-gold to-cinematic-gold-dark text-white font-semibold py-4 px-8 rounded-lg hover:from-cinematic-gold-dark hover:to-cinematic-gold transform hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed'
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
@@ -348,7 +350,9 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
 
         {/* Additional Info */}
         <div className='mt-8 text-center text-sm text-gray-600 dark:text-gray-400'>
-          <p>We typically respond within 24 hours during business days.</p>
+          <p className='text-sm text-gray-500'>
+            We&apos;ll get back to you within 24 hours.
+          </p>
           <p className='mt-1'>
             Or email us directly at{' '}
             <a
@@ -360,6 +364,6 @@ export default function ContactForm({ className = '' }: IContactFormProps) {
           </p>
         </div>
       </div>
-    </FadeInUp>
+    </AnimationObserver>
   );
 }

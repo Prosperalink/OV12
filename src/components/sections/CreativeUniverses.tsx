@@ -1,7 +1,9 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import { useState } from 'react';
-import AnimationObserver from '../ui/AnimationObserver';
+
+import AnimationObserver from '@/components/AnimationObserver';
 
 interface IExpertiseArea {
   id: string;
@@ -449,7 +451,7 @@ const expertiseAreas: IExpertiseArea[] = [
   },
 ];
 
-export default function SolutionsMatrix() {
+export default function CreativeUniverses() {
   const [selectedExpertise, setSelectedExpertise] = useState<string | null>(
     null
   );
@@ -478,39 +480,40 @@ export default function SolutionsMatrix() {
         </AnimationObserver>
 
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16'>
-          {expertiseAreas.map((expertise, index) => (
-            <AnimationObserver key={expertise.id}>
+          {expertiseAreas.map(expertise => (
+            <motion.div
+              key={expertise.id}
+              className={`relative group cursor-pointer transition-all duration-500 hover:scale-105`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.3 }}
+              onClick={() =>
+                setSelectedExpertise(
+                  selectedExpertise === expertise.id ? null : expertise.id
+                )
+              }
+            >
               <div
-                className={`relative group cursor-pointer transition-all duration-500 hover:scale-105`}
-                onClick={() =>
-                  setSelectedExpertise(
-                    selectedExpertise === expertise.id ? null : expertise.id
-                  )
-                }
+                className={`relative p-8 rounded-2xl border border-white/10 backdrop-blur-sm ${expertise.bgColor} hover:border-white/30 transition-all duration-500`}
               >
                 <div
-                  className={`relative p-8 rounded-2xl border border-white/10 backdrop-blur-sm ${expertise.bgColor} hover:border-white/30 transition-all duration-500`}
-                >
-                  <div
-                    className={`absolute inset-0 bg-gradient-to-br ${expertise.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
-                  ></div>
+                  className={`absolute inset-0 bg-gradient-to-br ${expertise.color} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-2xl`}
+                ></div>
 
-                  <div className='relative z-10'>
-                    <div className='text-4xl mb-4'>{expertise.icon}</div>
-                    <h3 className='text-2xl font-bold text-white mb-2'>
-                      {expertise.title}
-                    </h3>
-                    <p className='text-gray-300 mb-4'>{expertise.subtitle}</p>
-                    <p className='text-gray-400 text-sm leading-relaxed'>
-                      {expertise.description}
-                    </p>
-                  </div>
-
-                  {/* Hover Effect */}
-                  <div className='absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl'></div>
+                <div className='relative z-10'>
+                  <div className='text-4xl mb-4'>{expertise.icon}</div>
+                  <h3 className='text-2xl font-bold text-white mb-2'>
+                    {expertise.title}
+                  </h3>
+                  <p className='text-gray-300 mb-4'>{expertise.subtitle}</p>
+                  <p className='text-gray-400 text-sm leading-relaxed'>
+                    {expertise.description}
+                  </p>
                 </div>
+
+                {/* Hover Effect */}
+                <div className='absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl'></div>
               </div>
-            </AnimationObserver>
+            </motion.div>
           ))}
         </div>
 
@@ -527,7 +530,7 @@ export default function SolutionsMatrix() {
                     <div className='space-y-4'>
                       {expertiseAreas
                         .find(e => e.id === selectedExpertise)
-                        ?.industries.map((industry, index) => (
+                        ?.industries.map(industry => (
                           <div
                             key={industry.id}
                             className='cursor-pointer p-4 rounded-lg bg-white/5 hover:bg-white/10 transition-colors'
@@ -559,9 +562,9 @@ export default function SolutionsMatrix() {
                           {expertiseAreas
                             .find(e => e.id === selectedExpertise)
                             ?.industries.find(i => i.id === selectedIndustry)
-                            ?.solutions.map((solution, index) => (
+                            ?.solutions.map(solution => (
                               <li
-                                key={index}
+                                key={solution}
                                 className='flex items-center text-gray-300'
                               >
                                 <span className='w-2 h-2 bg-blue-500 rounded-full mr-3'></span>

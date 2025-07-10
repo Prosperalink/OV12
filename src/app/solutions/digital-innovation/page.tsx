@@ -117,7 +117,7 @@ const industries = [
   },
 ];
 
-export default function DigitalInnovationPage() {
+export default function digitalInnovationPage() {
   return (
     <div className='min-h-screen'>
       {/* Hero Section */}
@@ -244,7 +244,7 @@ export default function DigitalInnovationPage() {
                 description:
                   'Deploy your solution and continuously optimize for maximum impact and ROI.',
               },
-            ].map((process, index) => (
+            ].map(process => (
               <div
                 key={process.step}
                 className='text-center bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10'
@@ -269,8 +269,8 @@ export default function DigitalInnovationPage() {
             Ready to Transform Your Digital Presence?
           </h2>
           <p className='text-xl text-gray-300 max-w-3xl mx-auto mb-8'>
-            Let's discuss how our digital innovation solutions can drive growth
-            and competitive advantage for your business.
+            Let&apos;s discuss how our digital innovation solutions can drive
+            growth and competitive advantage for your business.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <button className='bg-gradient-to-r from-blue-600 to-cyan-500 text-white px-8 py-4 rounded-lg font-semibold hover:from-blue-700 hover:to-cyan-600 transition-all duration-300'>
@@ -280,6 +280,9 @@ export default function DigitalInnovationPage() {
               Learn More
             </button>
           </div>
+          <p className='text-gray-300'>
+            We&apos;re committed to your long-term success and partnership.
+          </p>
         </div>
       </section>
     </div>

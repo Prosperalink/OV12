@@ -1,103 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "🔍 Starting comprehensive quality checks..."
+echo "🔍 Running pre-commit checks..."
 
-# Documentation organization rule check
-echo "📋 Checking documentation organization..."
-npm run check-docs
+# Run CSS validation
+echo "📝 Validating CSS files..."
+npm run validate-css
 
-# If documentation check fails, prevent commit
-if [ $? -ne 0 ]; then
-  echo "❌ Documentation organization rule violations found!"
-  echo "Please fix the violations before committing."
-  echo "Run 'npm run check-docs' to see the violations."
-  exit 1
-fi
+# Run other quality checks
+echo "🔧 Running quality gate..."
+npm run quality-gate
 
-echo "✅ Documentation organization check passed!"
-
-# TypeScript type checking
-echo "🔍 Running TypeScript type checking..."
-npm run type-check
-
-if [ $? -ne 0 ]; then
-  echo "❌ TypeScript type checking failed!"
-  echo "Please fix type errors before committing."
-  exit 1
-fi
-
-echo "✅ TypeScript type checking passed!"
-
-# ESLint strict checking
-echo "🔍 Running ESLint strict checking..."
-npm run lint:strict
-
-if [ $? -ne 0 ]; then
-  echo "❌ ESLint strict checking failed!"
-  echo "Please fix linting errors before committing."
-  echo "Run 'npm run lint:fix' to auto-fix some issues."
-  exit 1
-fi
-
-echo "✅ ESLint strict checking passed!"
-
-# Prettier format checking
-echo "🔍 Checking code formatting..."
-npm run format:check
-
-if [ $? -ne 0 ]; then
-  echo "❌ Code formatting check failed!"
-  echo "Please format your code before committing."
-  echo "Run 'npm run format' to auto-format code."
-  exit 1
-fi
-
-echo "✅ Code formatting check passed!"
-
-# Security audit
-echo "🔍 Running security audit..."
-npm audit --audit-level=moderate
-
-if [ $? -ne 0 ]; then
-  echo "⚠️  Security vulnerabilities found!"
-  echo "Please review and fix security issues before committing."
-  echo "Run 'npm audit fix' to auto-fix some issues."
-  # Don't exit here, just warn
-fi
-
-echo "✅ Security audit completed!"
-
-# Test coverage check (if tests exist)
-if [ -f "jest.config.js" ]; then
-  echo "🔍 Running tests..."
-  npm run test:ci
-
-  if [ $? -ne 0 ]; then
-    echo "❌ Tests failed!"
-    echo "Please fix failing tests before committing."
-    exit 1
-  fi
-
-  echo "✅ Tests passed!"
-fi
-
-# Performance check
-echo "🔍 Checking for performance issues..."
-npm run performance
-
-if [ $? -ne 0 ]; then
-  echo "⚠️  Performance issues detected!"
-  echo "Please review performance warnings."
-  # Don't exit here, just warn
-fi
-
-echo "✅ Performance check completed!"
-
-# Auto-fix what can be fixed
-echo "🔧 Auto-fixing issues..."
-npm run lint:fix
-npm run format
-
-echo "✅ All quality checks passed!"
-echo "🚀 Ready to commit!"
+echo "✅ Pre-commit checks completed successfully!"

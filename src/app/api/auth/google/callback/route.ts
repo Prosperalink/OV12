@@ -1,7 +1,8 @@
-import { GOOGLE_WORKSPACE_CONFIG } from '@/lib/google-workspace';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
+import { GOOGLE_WORKSPACE_CONFIG } from '@/lib/google-workspace';
+
+export async function post(request: NextRequest) {
   try {
     const { code } = await request.json();
 

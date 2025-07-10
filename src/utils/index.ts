@@ -39,7 +39,7 @@ export function generateSlug(text: string): string {
 /**
  * Debounces a function
  */
-export function debounce<T extends (...args: any[]) => any>(
+export function debounce<T extends (...args: unknown[]) => unknown>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
@@ -84,4 +84,4 @@ export function isClient(): boolean {
  */
 export function isServer(): boolean {
   return typeof window === 'undefined';
-} 
+}

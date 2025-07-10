@@ -301,7 +301,7 @@ export class GoogleWorkspaceManager {
   async sendEmail(
     to: string,
     subject: string,
-    htmlBody: string,
+    _htmlBody: string,
     textBody: string
   ): Promise<boolean> {
     const accessToken = await this.getValidAccessToken();
@@ -350,6 +350,11 @@ export class GoogleWorkspaceManager {
       const adminEmail =
         process.env.NEXT_PUBLIC_ADMIN_EMAIL || 'contact@orsonvision.com';
       const notificationTemplate = EMAIL_TEMPLATES.contactForm;
+      const autoReplyTemplate = EMAIL_TEMPLATES.autoReply;
+
+      if (!notificationTemplate || !autoReplyTemplate) {
+        throw new Error('Email templates not found');
+      }
 
       const notificationHtml = notificationTemplate.htmlBody
         .replace(/{name}/g, data.name)
@@ -357,9 +362,9 @@ export class GoogleWorkspaceManager {
         .replace(/{phone}/g, data.phone || '')
         .replace(/{company}/g, data.company || '')
         .replace(/{service}/g, data.service)
+        .replace(/{message}/g, data.message)
         .replace(/{budget}/g, data.budget || '')
-        .replace(/{timeline}/g, data.timeline || '')
-        .replace(/{message}/g, data.message);
+        .replace(/{timeline}/g, data.timeline || '');
 
       const notificationText = notificationTemplate.textBody
         .replace(/{name}/g, data.name)
@@ -367,19 +372,9 @@ export class GoogleWorkspaceManager {
         .replace(/{phone}/g, data.phone || '')
         .replace(/{company}/g, data.company || '')
         .replace(/{service}/g, data.service)
+        .replace(/{message}/g, data.message)
         .replace(/{budget}/g, data.budget || '')
-        .replace(/{timeline}/g, data.timeline || '')
-        .replace(/{message}/g, data.message);
-
-      await this.sendEmail(
-        adminEmail,
-        notificationTemplate.subject,
-        notificationHtml,
-        notificationText
-      );
-
-      // 2. Send auto-reply to customer
-      const autoReplyTemplate = EMAIL_TEMPLATES.autoReply;
+        .replace(/{timeline}/g, data.timeline || '');
 
       const autoReplyHtml = autoReplyTemplate.htmlBody
         .replace(/{name}/g, data.name)
@@ -391,6 +386,14 @@ export class GoogleWorkspaceManager {
         .replace(/{service}/g, data.service)
         .replace(/{message}/g, data.message);
 
+      await this.sendEmail(
+        adminEmail,
+        notificationTemplate.subject,
+        notificationHtml,
+        notificationText
+      );
+
+      // 2. Send auto-reply to customer
       await this.sendEmail(
         data.email,
         autoReplyTemplate.subject,
@@ -421,12 +424,12 @@ export class GoogleWorkspaceManager {
         timestamp: new Date().toISOString(),
         name: data.name,
         email: data.email,
-        phone: data.phone,
-        company: data.company,
+        phone: data.phone || '',
+        company: data.company || '',
         service: data.service,
         message: data.message,
-        budget: data.budget,
-        timeline: data.timeline,
+        budget: data.budget || '',
+        timeline: data.timeline || '',
         status: 'new',
       };
 

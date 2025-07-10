@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import AnimationObserver from './AnimationObserver';
+
+import AnimationObserver from '@/components/AnimationObserver';
 
 interface IUniverse {
   id: string;

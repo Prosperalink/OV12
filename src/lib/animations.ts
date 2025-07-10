@@ -1,7 +1,7 @@
 // Cinematic Humanism Animation System
 // Performance-optimized animations with cinematic timing
 
-import { Variants } from 'framer-motion'
+import { Variants } from 'framer-motion';
 
 // Animation timing presets for cinematic feel
 export const animationTiming = {
@@ -30,7 +30,7 @@ export const animationTiming = {
     duration: 1.2,
     ease: [0.68, -0.55, 0.265, 1.55], // cubic-bezier(0.68, -0.55, 0.265, 1.55)
   },
-}
+};
 
 // Stagger delays for sequential animations
 export const staggerDelays = {
@@ -39,7 +39,7 @@ export const staggerDelays = {
   smooth: 0.15,
   cinematic: 0.2,
   dramatic: 0.3,
-}
+};
 
 // Fade animations
 export const fadeAnimations: Record<string, Variants> = {
@@ -73,7 +73,7 @@ export const fadeAnimations: Record<string, Variants> = {
     exit: { opacity: 0, x: -30 },
     transition: animationTiming.smooth,
   },
-}
+};
 
 // Scale animations
 export const scaleAnimations: Record<string, Variants> = {
@@ -95,7 +95,7 @@ export const scaleAnimations: Record<string, Variants> = {
     exit: { scale: 0.8, y: 30, opacity: 0 },
     transition: animationTiming.smooth,
   },
-}
+};
 
 // Slide animations
 export const slideAnimations: Record<string, Variants> = {
@@ -123,7 +123,7 @@ export const slideAnimations: Record<string, Variants> = {
     exit: { x: -100, opacity: 0 },
     transition: animationTiming.cinematic,
   },
-}
+};
 
 // Hover animations
 export const hoverAnimations: Record<string, Variants> = {
@@ -147,35 +147,26 @@ export const hoverAnimations: Record<string, Variants> = {
     hover: { rotate: 5 },
     transition: animationTiming.fast,
   },
-}
+};
 
 // Text animations
 export const textAnimations: Record<string, Variants> = {
   typewriter: {
     initial: { width: 0 },
     animate: { width: '100%' },
-    transition: {
-      duration: 1,
-      ease: 'easeInOut',
-    },
+    transition: animationTiming.smooth,
   },
   staggerText: {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    transition: {
-      duration: 0.5,
-      ease: animationTiming.smooth.ease,
-    },
+    transition: animationTiming.smooth,
   },
   revealText: {
     initial: { clipPath: 'inset(0 100% 0 0)' },
     animate: { clipPath: 'inset(0 0% 0 0)' },
-    transition: {
-      duration: 0.8,
-      ease: animationTiming.cinematic.ease,
-    },
+    transition: animationTiming.cinematic,
   },
-}
+};
 
 // Page transition animations
 export const pageTransitions: Record<string, Variants> = {
@@ -197,36 +188,24 @@ export const pageTransitions: Record<string, Variants> = {
     exit: { scale: 1.1, opacity: 0 },
     transition: animationTiming.cinematic,
   },
-}
+};
 
 // Loading animations
 export const loadingAnimations: Record<string, Variants> = {
   pulse: {
     initial: { opacity: 0.5 },
     animate: { opacity: 1 },
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      repeatType: 'reverse',
-    },
+    transition: animationTiming.smooth,
   },
   spin: {
     animate: { rotate: 360 },
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      ease: 'linear',
-    },
+    transition: animationTiming.smooth,
   },
   bounce: {
     animate: { y: [0, -10, 0] },
-    transition: {
-      duration: 1,
-      repeat: Infinity,
-      ease: 'easeInOut',
-    },
+    transition: animationTiming.smooth,
   },
-}
+};
 
 // Stagger container animations
 export const staggerContainer: Variants = {
@@ -237,60 +216,50 @@ export const staggerContainer: Variants = {
       delayChildren: 0.1,
     },
   },
-}
+};
 
 // Intersection Observer animations
 export const intersectionAnimations: Record<string, Variants> = {
   fadeInOnScroll: {
     initial: { opacity: 0, y: 50 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: '-100px' },
     transition: animationTiming.smooth,
   },
   slideInOnScroll: {
     initial: { x: -100, opacity: 0 },
     whileInView: { x: 0, opacity: 1 },
-    viewport: { once: true, margin: '-50px' },
     transition: animationTiming.cinematic,
   },
   scaleInOnScroll: {
     initial: { scale: 0.8, opacity: 0 },
     whileInView: { scale: 1, opacity: 1 },
-    viewport: { once: true, margin: '-100px' },
     transition: animationTiming.smooth,
   },
-}
+};
 
 // Cinematic entrance animations
 export const cinematicEntrances: Record<string, Variants> = {
   heroEntrance: {
     initial: { opacity: 0, scale: 1.1, y: 50 },
     animate: { opacity: 1, scale: 1, y: 0 },
-    transition: {
-      duration: 1.2,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
+    transition: animationTiming.dramatic,
   },
   dramaticReveal: {
     initial: { opacity: 0, y: 100, scale: 0.8 },
     animate: { opacity: 1, y: 0, scale: 1 },
-    transition: {
-      duration: 1.5,
-      ease: [0.68, -0.55, 0.265, 1.55],
-    },
+    transition: animationTiming.dramatic,
   },
   slideInFromBottom: {
     initial: { y: '100vh', opacity: 0 },
     animate: { y: 0, opacity: 1 },
-    transition: {
-      duration: 1,
-      ease: [0.25, 0.46, 0.45, 0.94],
-    },
+    transition: animationTiming.cinematic,
   },
-}
+};
 
 // Utility functions for animation
-export const createStaggerAnimation = (delay: number = staggerDelays.standard) => ({
+export const createStaggerAnimation = (
+  delay: number = staggerDelays.standard
+) => ({
   initial: {},
   animate: {
     transition: {
@@ -298,35 +267,42 @@ export const createStaggerAnimation = (delay: number = staggerDelays.standard) =
       delayChildren: 0.1,
     },
   },
-})
+});
 
 export const createHoverAnimation = (scale: number = 1.05, y: number = -5) => ({
   initial: { scale: 1, y: 0 },
   hover: { scale, y },
   transition: animationTiming.fast,
-})
+});
 
-export const createScrollAnimation = (direction: 'up' | 'down' | 'left' | 'right' = 'up') => {
+export const createScrollAnimation = (
+  direction: 'up' | 'down' | 'left' | 'right' = 'up'
+) => {
   const baseAnimation = {
     initial: { opacity: 0 },
     whileInView: { opacity: 1 },
-    viewport: { once: true, margin: '-100px' },
     transition: animationTiming.smooth,
-  }
+  };
 
   switch (direction) {
     case 'up':
-      return { ...baseAnimation, initial: { ...baseAnimation.initial, y: 50 } }
+      return { ...baseAnimation, initial: { ...baseAnimation.initial, y: 50 } };
     case 'down':
-      return { ...baseAnimation, initial: { ...baseAnimation.initial, y: -50 } }
+      return {
+        ...baseAnimation,
+        initial: { ...baseAnimation.initial, y: -50 },
+      };
     case 'left':
-      return { ...baseAnimation, initial: { ...baseAnimation.initial, x: 50 } }
+      return { ...baseAnimation, initial: { ...baseAnimation.initial, x: 50 } };
     case 'right':
-      return { ...baseAnimation, initial: { ...baseAnimation.initial, x: -50 } }
+      return {
+        ...baseAnimation,
+        initial: { ...baseAnimation.initial, x: -50 },
+      };
     default:
-      return baseAnimation
+      return baseAnimation;
   }
-}
+};
 
 // Performance optimization utilities
 export const animationConfig = {
@@ -343,7 +319,7 @@ export const animationConfig = {
     type: 'tween',
     ease: 'easeOut',
   },
-}
+};
 
 // Animation presets for common use cases
 export const animationPresets = {
@@ -372,4 +348,4 @@ export const animationPresets = {
     pulse: loadingAnimations.pulse,
     spin: loadingAnimations.spin,
   },
-} 
+};

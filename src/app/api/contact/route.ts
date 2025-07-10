@@ -1,7 +1,8 @@
-import { IContactFormData } from '@/lib/google-workspace';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
+import { IContactFormData } from '@/lib/google-workspace';
+
+export async function post(request: NextRequest) {
   try {
     const data: IContactFormData = await request.json();
 

@@ -214,13 +214,13 @@ export const colorCSS = `
     /* Primary Colors */
     --color-primary-blue: ${colors.primary.blue[800]};
     --color-primary-gold: ${colors.primary.gold[500]};
-    
+
     /* Semantic Colors */
     --color-success: ${colors.semantic.success[500]};
     --color-warning: ${colors.semantic.warning[500]};
     --color-error: ${colors.semantic.error[500]};
     --color-info: ${colors.semantic.info[500]};
-    
+
     /* Neutral Colors */
     --color-gray-50: ${colors.neutral.gray[50]};
     --color-gray-100: ${colors.neutral.gray[100]};
@@ -232,13 +232,13 @@ export const colorCSS = `
     --color-gray-700: ${colors.neutral.gray[700]};
     --color-gray-800: ${colors.neutral.gray[800]};
     --color-gray-900: ${colors.neutral.gray[900]};
-    
+
     /* Cinematic Colors */
     --color-cinematic-sunset: ${colors.cinematic.warm.sunset};
     --color-cinematic-ocean: ${colors.cinematic.cool.ocean};
     --color-cinematic-electric: ${colors.cinematic.accent.electric};
     --color-cinematic-golden: ${colors.cinematic.accent.golden};
-    
+
     /* Theme Colors */
     --color-background: ${themeColors.light.background};
     --color-foreground: ${themeColors.light.foreground};
@@ -259,16 +259,16 @@ export const colorCSS = `
 `
 
 // Utility functions for color manipulation
-export const getColor = (colorPath: string) => {
+export const getColor = (colorPath: string): string | undefined => {
   const path = colorPath.split('.')
-  let current: any = colors
-  
+  let current: Record<string, unknown> = colors
+
   for (const key of path) {
-    current = current[key]
+    current = current[key] as Record<string, unknown>
     if (!current) return undefined
   }
-  
-  return current
+
+  return current as unknown as string
 }
 
 export const getAccessibleTextColor = (backgroundColor: string) => {
@@ -283,6 +283,6 @@ export const getColorWithOpacity = (color: string, opacity: number) => {
   const r = parseInt(hex.substr(0, 2), 16)
   const g = parseInt(hex.substr(2, 2), 16)
   const b = parseInt(hex.substr(4, 2), 16)
-  
+
   return `rgba(${r}, ${g}, ${b}, ${opacity})`
-} 
+}

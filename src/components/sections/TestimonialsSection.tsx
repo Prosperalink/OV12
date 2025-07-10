@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+
 import AnimationObserver from '../ui/AnimationObserver';
 
 interface ITestimonial {
@@ -43,7 +44,7 @@ const testimonials: ITestimonial[] = [
     role: 'Founder',
     company: 'Creative Studios',
     content:
-      "The team at Orson Vision doesn't just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.",
+      'The team at Orson Vision doesn&rsquo;t just build websites - they create digital experiences that tell stories. Their strategic approach and attention to detail made all the difference for our creative agency.',
     rating: 5,
     avatar: '👩‍🎨',
     industry: 'Creative',
@@ -54,7 +55,7 @@ const testimonials: ITestimonial[] = [
     role: 'CTO',
     company: 'Innovate Labs',
     content:
-      "Orson Vision's technical expertise combined with their creative vision delivered a solution that not only looks stunning but performs exceptionally well. Their ongoing support has been invaluable.",
+      'Orson Vision&rsquo;s technical expertise combined with their creative vision delivered a solution that not only looks stunning but performs exceptionally well. Their ongoing support has been invaluable.',
     rating: 5,
     avatar: '👨‍💻',
     industry: 'Startup',
@@ -101,7 +102,7 @@ export default function TestimonialsSection() {
               Client Success Stories
             </h2>
             <p className='text-xl text-gray-300 max-w-3xl mx-auto'>
-              Discover how we've helped businesses transform their digital
+              Discover how we&apos;ve helped businesses transform their digital
               presence and achieve remarkable results.
             </p>
           </div>
@@ -113,38 +114,43 @@ export default function TestimonialsSection() {
             <div className='text-center'>
               {/* Rating Stars */}
               <div className='flex justify-center mb-6'>
-                {[...Array(testimonials[currentTestimonial].rating)].map(
-                  (_, i) => (
-                    <span key={i} className='text-2xl text-yellow-400 mx-1'>
-                      ⭐
-                    </span>
-                  )
-                )}
+                {testimonials[currentTestimonial] &&
+                  [...Array(testimonials[currentTestimonial].rating)].map(
+                    (_, i) => (
+                      <span key={i} className='text-2xl text-yellow-400 mx-1'>
+                        ⭐
+                      </span>
+                    )
+                  )}
               </div>
 
               {/* Testimonial Content */}
-              <blockquote className='text-xl text-gray-300 leading-relaxed mb-8 italic'>
-                "{testimonials[currentTestimonial].content}"
-              </blockquote>
+              {testimonials[currentTestimonial] && (
+                <p className='text-gray-600 dark:text-gray-300 mb-4'>
+                  &ldquo;{testimonials[currentTestimonial].content}&rdquo;
+                </p>
+              )}
 
               {/* Author Info */}
-              <div className='flex items-center justify-center space-x-4'>
-                <div className='text-4xl'>
-                  {testimonials[currentTestimonial].avatar}
+              {testimonials[currentTestimonial] && (
+                <div className='flex items-center justify-center space-x-4'>
+                  <div className='text-4xl'>
+                    {testimonials[currentTestimonial].avatar}
+                  </div>
+                  <div className='text-left'>
+                    <h4 className='text-white font-bold text-lg'>
+                      {testimonials[currentTestimonial].name}
+                    </h4>
+                    <p className='text-gray-400'>
+                      {testimonials[currentTestimonial].role} at{' '}
+                      {testimonials[currentTestimonial].company}
+                    </p>
+                    <span className='text-sm text-blue-400'>
+                      {testimonials[currentTestimonial].industry} Industry
+                    </span>
+                  </div>
                 </div>
-                <div className='text-left'>
-                  <h4 className='text-white font-bold text-lg'>
-                    {testimonials[currentTestimonial].name}
-                  </h4>
-                  <p className='text-gray-400'>
-                    {testimonials[currentTestimonial].role} at{' '}
-                    {testimonials[currentTestimonial].company}
-                  </p>
-                  <span className='text-sm text-blue-400'>
-                    {testimonials[currentTestimonial].industry} Industry
-                  </span>
-                </div>
-              </div>
+              )}
             </div>
           </div>
 
@@ -174,7 +180,7 @@ export default function TestimonialsSection() {
               { number: '150+', label: 'Projects Completed', icon: '🚀' },
               { number: '98%', label: 'Client Satisfaction', icon: '⭐' },
               { number: '24/7', label: 'Support Available', icon: '🛡️' },
-              { number: '5+', label: 'Years Experience', icon: '🎯' },
+              { number: '5+', label: 'Years Experience', icon: '🏆' },
             ].map((stat, index) => (
               <div key={index} className='text-center'>
                 <div className='text-4xl mb-2'>{stat.icon}</div>

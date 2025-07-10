@@ -291,7 +291,9 @@ export class AssetManager {
   }
 
   // Add new asset
-  addAsset(asset: IAsset): void {}
+  addAsset(asset: IAsset): void {
+    this.assets.set(asset.id, asset);
+  }
 
   // Remove asset
   removeAsset(id: string): boolean {
@@ -310,7 +312,7 @@ export class AssetManager {
   }
 
   // Optimize image URL for different sizes
-  getOptimizedImageUrl(asset: IAsset, width: number, height?: number): string {
+  getOptimizedImageUrl(asset: IAsset): string {
     if (asset.type !== 'image') return asset.url;
 
     // For now, return the original URL

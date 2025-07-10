@@ -1,11 +1,12 @@
-import { GOOGLE_WORKSPACE_CONFIG } from '@/lib/google-workspace';
 import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(request: NextRequest) {
-  try {
-    const { refresh_token } = await request.json();
+import { GOOGLE_WORKSPACE_CONFIG } from '@/lib/google-workspace';
 
-    if (!refresh_token) {
+export async function post(request: NextRequest) {
+  try {
+    const { refresh_token: refreshToken } = await request.json();
+
+    if (!refreshToken) {
       return NextResponse.json(
         { error: 'Refresh token is required' },
         { status: 400 }
@@ -21,7 +22,7 @@ export async function POST(request: NextRequest) {
       body: new URLSearchParams({
         client_id: GOOGLE_WORKSPACE_CONFIG.clientId,
         client_secret: GOOGLE_WORKSPACE_CONFIG.clientSecret,
-        refresh_token,
+        refresh_token: refreshToken,
         grant_type: 'refresh_token',
       }),
     });

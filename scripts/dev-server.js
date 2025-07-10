@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { spawn } = require('child_process');
+const spawn = require('cross-spawn');
 const net = require('net');
 const os = require('os');
 
@@ -8,11 +8,7 @@ const DEFAULT_PORT = 3000;
 const MAX_PORT_ATTEMPTS = 10;
 
 // Performance optimizations
-const NODE_OPTIONS = [
-  '--max-old-space-size=4096',
-  '--optimize-for-size',
-  '--gc-interval=100',
-].join(' ');
+const NODE_OPTIONS = ['--max-old-space-size=4096'].join(' ');
 
 function isPortAvailable(port) {
   return new Promise(resolve => {
@@ -49,17 +45,24 @@ async function startDevServer() {
     );
     console.log(`⚡ Performance optimizations enabled`);
 
-    const devProcess = spawn('npm', ['run', 'dev'], {
-      stdio: 'inherit',
-      env: {
-        ...process.env,
-        PORT: port.toString(),
-        NODE_OPTIONS: NODE_OPTIONS,
-        // Development optimizations
-        NEXT_TELEMETRY_DISABLED: '1',
-        NODE_ENV: 'development',
-      },
-    });
+    // Use npx.cmd on Windows, npx elsewhere
+    const isWindows = process.platform === 'win32';
+    const nextCmd = isWindows ? 'npx.cmd' : 'npx';
+
+    const devProcess = spawn(
+      nextCmd,
+      ['next', 'dev', '--turbopack', '--port', port.toString()],
+      {
+        stdio: 'inherit',
+        env: {
+          ...process.env,
+          NODE_OPTIONS: NODE_OPTIONS,
+          // Development optimizations
+          NEXT_TELEMETRY_DISABLED: '1',
+          NODE_ENV: 'development',
+        },
+      }
+    );
 
     devProcess.on('error', error => {
       console.error('❌ Failed to start development server:', error.message);

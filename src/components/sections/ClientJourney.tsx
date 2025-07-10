@@ -1,7 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import AnimationObserver from '../ui/AnimationObserver';
+
+import AnimationObserver from '@/components/AnimationObserver';
 
 interface IJourneyStep {
   id: string;
